@@ -15,31 +15,49 @@
         .header {
             background: #253669;
             color: #fff;
-            padding: 2rem 1rem 1rem 1rem;
+            padding: 2.7rem 1rem 2rem 1rem;
             position: relative;
             text-align: center;
+            min-height: 210px;
         }
         .header .seal {
             position: absolute;
             left: 2rem;
             top: 2rem;
-            width: 80px;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .header h1 {
-            margin: 0.5rem 0 0.5rem 0;
+            margin: 0.6rem 0 0.5rem 0;
             font-size: 2.2rem;
             font-weight: 700;
         }
         .header .subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
+            font-size: 1.09rem;
+            letter-spacing: 0.2px;
+            margin-bottom: 0.2rem;
+        }
+        .header .service-area {
+            font-size: 1.13rem;
+            font-weight: 600;
+            color: #ffe082;
+            margin-bottom: 0.4rem;
+            margin-top: 0.4rem;
+            letter-spacing: 0.1rem;
+        }
+        .header .service-list {
+            font-size: 1.02rem;
+            margin-bottom: 0.3rem;
         }
         .container {
             display: flex;
             flex-wrap: wrap;
             max-width: 920px;
-            margin: -3rem auto 2rem auto;
+            margin: 2.2rem auto 2rem auto;
             background: #fff;
             box-shadow: 0 6px 32px rgba(0,0,0,0.11);
             border-radius: 18px;
@@ -53,14 +71,6 @@
             align-items: center;
             justify-content: center;
             padding: 2rem 1rem 1rem 1rem;
-        }
-        .profile img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1.2rem;
-            border: 5px solid #fff;
-            box-shadow: 0 2px 12px rgba(30,50,50,0.13);
         }
         .profile h2 {
             margin: 0 0 0.2rem 0;
@@ -120,13 +130,9 @@
                 margin: 1.2rem 0.4rem;
             }
             .profile {
-                flex-direction: row;
+                flex-direction: column;
                 justify-content: flex-start;
                 padding: 1.5rem 1rem;
-            }
-            .profile img {
-                margin-right: 1.2rem;
-                margin-bottom: 0;
             }
         }
         @media (max-width: 520px) {
@@ -141,21 +147,25 @@
 </head>
 <body>
     <div class="header">
-        <img src="https://cdn.pixabay.com/photo/2013/07/13/14/08/seal-162471_1280.png" alt="Notary Seal" class="seal">
-        <div class="subtitle">JOSEPH VELASCO, TEXAS NOTARY PUBLIC<br>EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR</div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Notary_public_seal.svg" alt="Notary Seal" class="seal">
+        <div class="subtitle">
+            JOSEPH VELASCO, TEXAS NOTARY PUBLIC<br>
+            EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR
+        </div>
+        <div class="service-area">
+            Serving the Greater Houston Area
+        </div>
         <h1>MOBILE NOTARY SERVICE</h1>
-        <div style="margin-bottom:1rem;">
+        <div class="service-list">
             <span style="font-weight:700;">Our Service:</span>
-            <span>Notary Public Services <span title="Included">&#x2714;</span> &nbsp; Mobile Notary Services <span title="Included">&#x2714;</span></span>
+            Notary Public Services <span title="Included">&#x2714;</span> &nbsp; 
+            Mobile Notary Services <span title="Included">&#x2714;</span>
         </div>
     </div>
     <div class="container">
         <div class="profile">
-            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Joseph Velasco">
-            <div>
-                <h2>Joseph Velasco</h2>
-                <p>Texas Notary Public<br>Mobile Notary Expert</p>
-            </div>
+            <h2>Joseph Velasco</h2>
+            <p>Texas Notary Public<br>Mobile Notary Expert</p>
         </div>
         <div class="content">
             <h3>SERVICES</h3>
@@ -176,7 +186,7 @@
             <a href="mailto:Info@texaspublicnotary.us" class="cta">Contact Us Today</a>
             <div class="contact">
                 <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
-                <div><strong>Phone:</strong> <a href="tel:8329650089">832-965-0089</a></div>
+                <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
             </div>
         </div>
     </div>
