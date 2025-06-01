@@ -2,10 +2,183 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello from GitHub Pages!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Velasco, Texas Mobile Notary Service</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f5f6fa;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            color: #1a2236;
+        }
+        .header {
+            background: #253669;
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            position: relative;
+            text-align: center;
+        }
+        .header .seal {
+            position: absolute;
+            left: 2rem;
+            top: 2rem;
+            width: 80px;
+        }
+        .header h1 {
+            margin: 0.5rem 0 0.5rem 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 920px;
+            margin: -3rem auto 2rem auto;
+            background: #fff;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.11);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        .profile {
+            flex: 1 1 220px;
+            background: linear-gradient(135deg, #f2c94c 0%, #253669 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem 1rem 1rem;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 1.2rem;
+            border: 5px solid #fff;
+            box-shadow: 0 2px 12px rgba(30,50,50,0.13);
+        }
+        .profile h2 {
+            margin: 0 0 0.2rem 0;
+            color: #fff;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+        }
+        .profile p {
+            color: #eee;
+            margin: 0;
+        }
+        .content {
+            flex: 2 1 350px;
+            padding: 2rem 2rem 2rem 2rem;
+        }
+        .content h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            color: #253669;
+        }
+        .services {
+            margin-bottom: 2rem;
+        }
+        .services ul {
+            padding: 0;
+            margin: 0.2rem 0 0 0;
+            list-style: none;
+        }
+        .services li {
+            padding: 0.15rem 0;
+            font-size: 1.07rem;
+            border-bottom: 1px solid #f3f3f3;
+        }
+        .cta {
+            background: #253669;
+            color: #fff;
+            padding: 1.1rem 1.5rem;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 1.16rem;
+            font-weight: 700;
+            margin: 0.8rem 0 0.5rem 0;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+        }
+        .contact {
+            margin-top: 1.4rem;
+            font-size: 1.12rem;
+            color: #253669;
+        }
+        .contact strong {
+            color: #111;
+        }
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+                margin: 1.2rem 0.4rem;
+            }
+            .profile {
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 1.5rem 1rem;
+            }
+            .profile img {
+                margin-right: 1.2rem;
+                margin-bottom: 0;
+            }
+        }
+        @media (max-width: 520px) {
+            .content {
+                padding: 1.2rem 0.7rem;
+            }
+            .profile {
+                padding: 1.1rem 0.4rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, world!</h1>
-    <p>Your free website is live on GitHub Pages.</p>
+    <div class="header">
+        <img src="https://cdn.pixabay.com/photo/2013/07/13/14/08/seal-162471_1280.png" alt="Notary Seal" class="seal">
+        <div class="subtitle">JOSEPH VELASCO, TEXAS NOTARY PUBLIC<br>EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR</div>
+        <h1>MOBILE NOTARY SERVICE</h1>
+        <div style="margin-bottom:1rem;">
+            <span style="font-weight:700;">Our Service:</span>
+            <span>Notary Public Services <span title="Included">&#x2714;</span> &nbsp; Mobile Notary Services <span title="Included">&#x2714;</span></span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="profile">
+            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Joseph Velasco">
+            <div>
+                <h2>Joseph Velasco</h2>
+                <p>Texas Notary Public<br>Mobile Notary Expert</p>
+            </div>
+        </div>
+        <div class="content">
+            <h3>SERVICES</h3>
+            <div class="services">
+                <ul>
+                    <li><strong>$35</strong> Trip Fee</li>
+                    <li><strong>$7.99</strong> First 30 minutes at location</li>
+                    <li><strong>$1.49</strong> Per mile fee (if beyond 10-mile radius)</li>
+                    <li><strong>$10</strong> Per standard notary act</li>
+                    <li><strong>$4</strong> Certificate and seal to protest</li>
+                    <li><strong>$4</strong> Protesting a bill or note for non-acceptance or non-payment, register and seal</li>
+                    <li><strong>$1</strong> Per 100 words for witness dispositions</li>
+                    <li><strong>$10</strong> Swearing a witness to a disposition</li>
+                    <li><strong>$1</strong> For each notice of protest</li>
+                    <li><strong>$10</strong> For any notary act not listed above or contact us for a custom service package quote</li>
+                </ul>
+            </div>
+            <a href="mailto:Info@texaspublicnotary.us" class="cta">Contact Us Today</a>
+            <div class="contact">
+                <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
+                <div><strong>Phone:</strong> <a href="tel:8329650089">832-965-0089</a></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
