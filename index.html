@@ -27,11 +27,11 @@
       top: 2rem;
       width: 75px;
       height: 75px;
-      border-radius: 50%;
+      border-radius: 50%;    /* CIRCLE! */
       background: #fff;
       border: 2px solid #eee;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      object-fit: contain;
+      object-fit: cover;     /* Ensures it fills the circle */
     }
     .header .headshot {
       width: 110px;
@@ -229,7 +229,8 @@
 </head>
 <body>
   <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TX_Notary_Public_Seal.png" alt="Notary Seal" class="seal">
+    <!-- USE YOUR CUSTOM SEAL FILE: notaryseal.png -->
+    <img src="notaryseal.png" alt="Notary Seal" class="seal">
     <!-- Replace 'headshot.jpg' with your uploaded image's filename -->
     <img src="headshot.jpg" alt="Joseph Velasco" class="headshot"
     onerror="this.onerror=null;this.src='https://randomuser.me/api/portraits/men/43.jpg';">
