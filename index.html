@@ -1,205 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Velasco, Texas Mobile Notary Service</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,400&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: #f5f6fa;
-            font-family: 'Montserrat', Arial, sans-serif;
-            margin: 0;
-            color: #1a2236;
-        }
-        .header {
-            background: #253669;
-            color: #fff;
-            padding: 2.7rem 1rem 2rem 1rem;
-            position: relative;
-            text-align: center;
-            min-height: 210px;
-        }
-        .header .seal {
-            position: absolute;
-            left: 2rem;
-            top: 2rem;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: #fff;
-            border: 2px solid #eee;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            object-fit: contain;
-        }
-        .header h1 {
-            margin: 0.6rem 0 0.5rem 0;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        .header .subtitle {
-            font-size: 1.09rem;
-            letter-spacing: 0.2px;
-            margin-bottom: 0.2rem;
-        }
-        .header .service-area {
-            font-size: 1.13rem;
-            font-weight: 600;
-            color: #ffe082;
-            margin-bottom: 0.4rem;
-            margin-top: 0.4rem;
-            letter-spacing: 0.1rem;
-        }
-        .header .service-list {
-            font-size: 1.02rem;
-            margin-bottom: 0.3rem;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 920px;
-            margin: 2.2rem auto 2rem auto;
-            background: #fff;
-            box-shadow: 0 6px 32px rgba(0,0,0,0.11);
-            border-radius: 18px;
-            overflow: hidden;
-        }
-        .profile {
-            flex: 1 1 220px;
-            background: #253669;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem 1rem 1rem;
-        }
-        .profile img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            margin-bottom: 1.2rem;
-            border: 5px solid #fff;
-            box-shadow: 0 2px 12px rgba(30,50,50,0.13);
-            object-fit: cover;
-        }
-        .profile h2 {
-            margin: 0 0 0.2rem 0;
-            color: #fff;
-            font-size: 1.1rem;
-            letter-spacing: 0.3px;
-        }
-        .profile p {
-            color: #eee;
-            margin: 0;
-        }
-        .content {
-            flex: 2 1 350px;
-            padding: 2rem 2rem 2rem 2rem;
-        }
-        .content h3 {
-            margin-top: 0;
-            font-size: 1.3rem;
-            color: #253669;
-        }
-        .services {
-            margin-bottom: 2rem;
-        }
-        .services ul {
-            padding: 0;
-            margin: 0.2rem 0 0 0;
-            list-style: none;
-        }
-        .services li {
-            padding: 0.15rem 0;
-            font-size: 1.07rem;
-            border-bottom: 1px solid #f3f3f3;
-        }
-        .cta {
-            background: #253669;
-            color: #fff;
-            padding: 1.1rem 1.5rem;
-            border-radius: 10px;
-            display: inline-block;
-            font-size: 1.16rem;
-            font-weight: 700;
-            margin: 0.8rem 0 0.5rem 0;
-            text-decoration: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.13);
-        }
-        .contact {
-            margin-top: 1.4rem;
-            font-size: 1.12rem;
-            color: #253669;
-        }
-        .contact strong {
-            color: #111;
-        }
-        @media (max-width: 800px) {
-            .container {
-                flex-direction: column;
-                margin: 1.2rem 0.4rem;
-            }
-            .profile {
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 1.5rem 1rem;
-            }
-        }
-        @media (max-width: 520px) {
-            .content {
-                padding: 1.2rem 0.7rem;
-            }
-            .profile {
-                padding: 1.1rem 0.4rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joseph Velasco - Mobile Notary Service</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1a2236;
+    }
+    .header {
+      background: #253669;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.5rem 1rem;
+      position: relative;
+    }
+    .header .seal {
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      object-fit: contain;
+    }
+    .header .headshot {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      object-fit: cover;
+      margin: 0.5rem auto 0.7rem auto;
+      display: block;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.2rem;
+      margin-top: 0.3rem;
+    }
+    .header .subtitle {
+      font-size: 1.07rem;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.2px;
+    }
+    .header .service-area {
+      color: #ffe082;
+      font-size: 1.14rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.1rem;
+      font-weight: 600;
+    }
+    .header .service-list {
+      font-size: 1.01rem;
+      margin-bottom: 0.3rem;
+    }
+    .container {
+      max-width: 950px;
+      margin: 2rem auto;
+      background: #fff;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.11);
+      border-radius: 18px;
+      padding: 2rem 1.5rem 2.5rem 1.5rem;
+    }
+    .pricing-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .pricing-section {
+      flex: 1 1 300px;
+      background: #f4f6fb;
+      border-radius: 13px;
+      box-shadow: 0 2px 8px rgba(37,54,105,0.08);
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      transition: transform 0.16s, box-shadow 0.16s;
+      margin-bottom: 1.1rem;
+      border-top: 5px solid #253669;
+    }
+    .pricing-section:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 28px rgba(37,54,105,0.18);
+    }
+    .pricing-section h3 {
+      display: flex;
+      align-items: center;
+      font-size: 1.18rem;
+      margin: 0 0 0.6rem 0;
+      color: #253669;
+      font-weight: 700;
+      gap: 0.6rem;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #253669;
+      margin: 0.5rem 0 0.7rem 0;
+      display: inline-block;
+    }
+    .pricing-section ul {
+      margin: 0 0 0 1.2rem;
+      padding: 0;
+      font-size: 1.06rem;
+      line-height: 1.65;
+    }
+    .cta {
+      background: #253669;
+      color: #fff;
+      padding: 1.1rem 1.5rem;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 1.16rem;
+      font-weight: 700;
+      margin: 1.3rem 0 0.7rem 0;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      transition: background 0.15s;
+    }
+    .cta:hover {
+      background: #304485;
+    }
+    .contact {
+      margin-top: 1.4rem;
+      font-size: 1.15rem;
+      color: #253669;
+    }
+    .contact strong {
+      color: #111;
+    }
+    /* Collapsible FAQ styles */
+    .faq-section {
+      margin-top: 2.6rem;
+    }
+    .faq-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #253669;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    details {
+      margin-bottom: 0.85rem;
+      background: #f9f9fc;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 1px 4px rgba(37,54,105,0.04);
+      cursor: pointer;
+      border-left: 4px solid #253669;
+    }
+    details[open] {
+      background: #f0f3fb;
+    }
+    summary {
+      font-weight: 600;
+      font-size: 1.07rem;
+      outline: none;
+      cursor: pointer;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pricing-row {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .container {
+        padding: 1.3rem 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Notary_seal_sample.png/240px-Notary_seal_sample.png" alt="Notary Seal" class="seal">
-        <div class="subtitle">
-            JOSEPH VELASCO, TEXAS NOTARY PUBLIC<br>
-            EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR
-        </div>
-        <div class="service-area" style="color:#ffe082;">
-            Serving the Greater Houston Area
-        </div>
-        <h1>MOBILE NOTARY SERVICE</h1>
-        <div class="service-list">
-            <span style="font-weight:700;">Our Service:</span>
-            Notary Public Services <span title="Included">&#x2714;</span> &nbsp; 
-            Mobile Notary Services <span title="Included">&#x2714;</span>
-        </div>
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TX_Notary_Public_Seal.png" alt="Notary Seal" class="seal">
+    <!-- Replace 'headshot.jpg' with your uploaded image's filename -->
+    <img src="headshot.jpg" alt="Joseph Velasco" class="headshot">
+    <h1>Joseph Velasco</h1>
+    <div class="subtitle">
+      TEXAS NOTARY PUBLIC<br>
+      EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR
     </div>
-    <div class="container">
-        <div class="profile">
-            <img src="headshot.jpg" alt="Joseph Velasco">
-            <h2>Joseph Velasco</h2>
-            <p>Texas Notary Public<br>Mobile Notary Expert</p>
-        </div>
-        <div class="content">
-            <h3>SERVICES</h3>
-            <div class="services">
-                <ul>
-                    <li><strong>$35</strong> Trip Fee</li>
-                    <li><strong>$7.99</strong> First 30 minutes at location</li>
-                    <li><strong>$1.49</strong> Per mile fee (if beyond 10-mile radius)</li>
-                    <li><strong>$10</strong> Per standard notary act</li>
-                    <li><strong>$4</strong> Certificate and seal to protest</li>
-                    <li><strong>$4</strong> Protesting a bill or note for non-acceptance or non-payment, register and seal</li>
-                    <li><strong>$1</strong> Per 100 words for witness dispositions</li>
-                    <li><strong>$10</strong> Swearing a witness to a disposition</li>
-                    <li><strong>$1</strong> For each notice of protest</li>
-                    <li><strong>$10</strong> For any notary act not listed above or contact us for a custom service package quote</li>
-                </ul>
-            </div>
-            <a href="mailto:Info@texaspublicnotary.us" class="cta">Contact Us Today</a>
-            <div class="contact">
-                <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
-                <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
-            </div>
-        </div>
+    <div class="service-area">
+      Serving the Greater Houston Area
     </div>
+    <div class="service-list">
+      <b>Our Service:</b> Notary Public Services &#x2714; &nbsp; Mobile Notary Services &#x2714;
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="pricing-row">
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-car"></i> Trip Fees</h3>
+        <div class="price">$35</div>
+        <ul>
+          <li><b>Flat trip fee</b> per visit, anywhere within Houston</li>
+          <li><b>First 30 minutes at location:</b> $7.99</li>
+          <li><b>Per mile (beyond 10-mile radius):</b> $1.49/mile</li>
+        </ul>
+      </div>
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-stamp"></i> Notary Services</h3>
+        <ul>
+          <li><b>$10</b> Standard notary act</li>
+          <li><b>$10</b> Swearing a witness to a disposition</li>
+          <li><b>$10</b> Any other notary act or custom service package</li>
+        </ul>
+      </div>
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-file-signature"></i> Protest & Certification</h3>
+        <ul>
+          <li><b>$4</b> Certificate and seal to protest</li>
+          <li><b>$4</b> Protesting a bill or note for non-acceptance/non-payment</li>
+          <li><b>$1</b> Per notice of protest</li>
+          <li><b>$1</b> Per 100 words for witness dispositions</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="mailto:Info@texaspublicnotary.us" class="cta"><i class="fa-solid fa-envelope"></i> Contact Us Today</a>
+    <div class="contact">
+      <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
+      <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
+    </div>
+
+    <!-- Interactive FAQ -->
+    <div class="faq-section">
+      <div class="faq-title"><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</div>
+      <details>
+        <summary>What areas do you serve?</summary>
+        <div>I serve the Greater Houston area, including surrounding suburbs. Contact me for special requests!</div>
+      </details>
+      <details>
+        <summary>What forms of payment do you accept?</summary>
+        <div>Cash, credit/debit cards, and most popular payment apps.</div>
+      </details>
+      <details>
+        <summary>Can you notarize documents outside regular business hours?</summary>
+        <div>Yes! Flexible scheduling is available. Just ask.</div>
+      </details>
+      <details>
+        <summary>How fast can you get to me?</summary>
+        <div>Usually within 1-2 hours in central Houston; suburban and rural travel times may vary. Call for real-time ETA.</div>
+      </details>
+    </div>
+  </div>
 </body>
 </html>
