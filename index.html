@@ -147,7 +147,7 @@
     .contact strong {
       color: #111;
     }
-    /* Testimonials */
+    /* Testimonials - Blue and Orange */
     .testimonial-section {
       margin-top: 3.2rem;
       margin-bottom: 1rem;
@@ -169,7 +169,10 @@
     }
     .testimonial {
       flex: 1 1 230px;
-      background: #f4f6fb;
+      background: #e3edfa;  /* Pale blue */
+      border-left: 5px solid #253669;
+      font-style: italic;
+      color: #222d3b;
       border-radius: 13px;
       box-shadow: 0 2px 8px rgba(37,54,105,0.07);
       padding: 1.3rem 1.1rem 1.1rem 1.1rem;
@@ -177,40 +180,30 @@
       font-size: 1.05rem;
       min-width: 220px;
     }
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 0.8rem;
-      color: #232b41;
-    }
     .testimonial-client {
-      font-size: 0.99rem;
-      color: #444;
+      color: #ff9800; /* Orange for names */
       text-align: right;
+      font-size: 0.99rem;
+      font-style: normal;
     }
-    /* Collapsible FAQ styles */
-    .faq-section {
-      margin-top: 2.6rem;
-    }
+    /* FAQ - Orange Theme */
     .faq-title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #253669;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      color: #ff9800 !important;  /* Orange title for FAQ */
+    }
+    .faq-title i {
+      color: #ff9800 !important;
     }
     details {
       margin-bottom: 0.85rem;
-      background: #f9f9fc;
+      background: #fdf6ee !important;  /* Pale orange */
       border-radius: 8px;
       padding: 0.8rem 1rem;
       box-shadow: 0 1px 4px rgba(37,54,105,0.04);
       cursor: pointer;
-      border-left: 4px solid #253669;
+      border-left: 4px solid #ff9800 !important;  /* Orange bar */
     }
     details[open] {
-      background: #f0f3fb;
+      background: #fff5e1 !important;
     }
     summary {
       font-weight: 600;
@@ -286,7 +279,7 @@
     <a href="mailto:Info@texaspublicnotary.us" class="cta"><i class="fa-solid fa-envelope"></i> Contact Us Today</a>
     <div class="contact">
       <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
-      <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
+      <div><strong>Text or Call:</strong> <a href="tel:8323560671">832-356-0671</a></div>
     </div>
 
     <!-- Testimonials Section -->
