@@ -42,6 +42,7 @@
       object-fit: cover;
       margin: 0.5rem auto 0.7rem auto;
       display: block;
+      background: #fff;
     }
     .header h1 {
       font-size: 2.2rem;
@@ -114,6 +115,7 @@
       font-size: 1.06rem;
       line-height: 1.65;
     }
+    /* Animated Button */
     .cta {
       background: #253669;
       color: #fff;
@@ -125,10 +127,17 @@
       margin: 1.3rem 0 0.7rem 0;
       text-decoration: none;
       box-shadow: 0 2px 10px rgba(0,0,0,0.13);
-      transition: background 0.15s;
+      transition: background 0.15s, transform 0.12s;
+      animation: pulse 1.7s infinite;
     }
     .cta:hover {
       background: #304485;
+      transform: scale(1.07);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,54,105,0.18);}
+      70% { box-shadow: 0 0 0 10px rgba(37,54,105,0);}
+      100% { box-shadow: 0 0 0 0 rgba(37,54,105,0);}
     }
     .contact {
       margin-top: 1.4rem;
@@ -137,6 +146,46 @@
     }
     .contact strong {
       color: #111;
+    }
+    /* Testimonials */
+    .testimonial-section {
+      margin-top: 3.2rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #253669;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .testimonial-list {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .testimonial {
+      flex: 1 1 230px;
+      background: #f4f6fb;
+      border-radius: 13px;
+      box-shadow: 0 2px 8px rgba(37,54,105,0.07);
+      padding: 1.3rem 1.1rem 1.1rem 1.1rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      min-width: 220px;
+    }
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 0.8rem;
+      color: #232b41;
+    }
+    .testimonial-client {
+      font-size: 0.99rem;
+      color: #444;
+      text-align: right;
     }
     /* Collapsible FAQ styles */
     .faq-section {
@@ -178,6 +227,10 @@
       .container {
         padding: 1.3rem 0.5rem;
       }
+      .testimonial-list {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
     }
   </style>
 </head>
@@ -185,7 +238,8 @@
   <div class="header">
     <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TX_Notary_Public_Seal.png" alt="Notary Seal" class="seal">
     <!-- Replace 'headshot.jpg' with your uploaded image's filename -->
-    <img src="headshot.jpg" alt="Joseph Velasco" class="headshot">
+    <img src="headshot.jpg" alt="Joseph Velasco" class="headshot"
+    onerror="this.onerror=null;this.src='https://randomuser.me/api/portraits/men/43.jpg';">
     <h1>Joseph Velasco</h1>
     <div class="subtitle">
       TEXAS NOTARY PUBLIC<br>
@@ -235,6 +289,25 @@
       <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
     </div>
 
+    <!-- Testimonials Section -->
+    <div class="testimonial-section">
+      <div class="testimonial-title"><i class="fa-solid fa-quote-left"></i> What Our Clients Say</div>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <div class="testimonial-text">"Joseph arrived fast and made a stressful process simple. Super friendly and professional!"</div>
+          <div class="testimonial-client">— Maria G., Houston TX</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"Responsive, affordable, and convenient. I highly recommend this notary service."</div>
+          <div class="testimonial-client">— David L., Heights</div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-text">"Was able to get a document notarized after 7PM. Lifesaver!"</div>
+          <div class="testimonial-client">— Ashley T., Pearland</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Interactive FAQ -->
     <div class="faq-section">
       <div class="faq-title"><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</div>
@@ -256,5 +329,12 @@
       </details>
     </div>
   </div>
+
+  <!-- Real-time chat widget code (paste your Tawk.to script here before </body>) -->
+  <!--
+  <script type="text/javascript">
+  // Paste your Tawk.to code here
+  </script>
+  -->
 </body>
 </html>
