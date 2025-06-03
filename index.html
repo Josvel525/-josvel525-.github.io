@@ -24,23 +24,24 @@
     .header .seal {
       position: absolute;
       left: 2rem;
-      top: 2rem;
-      width: 75px;
-      height: 75px;
+      top: 1.4rem;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       background: #fff;
       border: 2px solid #eee;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      object-fit: contain;
+      object-fit: cover;
+      z-index: 2;
     }
     .header .headshot {
-      width: 110px;
-      height: 110px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      border: 5px solid #fff;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.13);
       object-fit: cover;
-      margin: 0.5rem auto 0.7rem auto;
+      margin: 0.8rem auto 1rem auto;
       display: block;
       background: #fff;
     }
@@ -147,7 +148,7 @@
     .contact strong {
       color: #111;
     }
-    /* Testimonials */
+    /* Testimonials - Blue and Orange */
     .testimonial-section {
       margin-top: 3.2rem;
       margin-bottom: 1rem;
@@ -169,7 +170,10 @@
     }
     .testimonial {
       flex: 1 1 230px;
-      background: #f4f6fb;
+      background: #e3edfa;  /* Pale blue */
+      border-left: 5px solid #253669;
+      font-style: italic;
+      color: #222d3b;
       border-radius: 13px;
       box-shadow: 0 2px 8px rgba(37,54,105,0.07);
       padding: 1.3rem 1.1rem 1.1rem 1.1rem;
@@ -177,40 +181,30 @@
       font-size: 1.05rem;
       min-width: 220px;
     }
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 0.8rem;
-      color: #232b41;
-    }
     .testimonial-client {
-      font-size: 0.99rem;
-      color: #444;
+      color: #008080; /* Teal for names */
       text-align: right;
+      font-size: 0.99rem;
+      font-style: normal;
     }
-    /* Collapsible FAQ styles */
-    .faq-section {
-      margin-top: 2.6rem;
-    }
+    /* FAQ - Teal Theme */
     .faq-title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #253669;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      color: #008080 !important; /* Teal-blue for FAQ title */
+    }
+    .faq-title i {
+      color: #008080 !important;
     }
     details {
       margin-bottom: 0.85rem;
-      background: #f9f9fc;
+      background: #f5fbfc !important;  /* Soft blue */
       border-radius: 8px;
       padding: 0.8rem 1rem;
-      box-shadow: 0 1px 4px rgba(37,54,105,0.04);
+      box-shadow: 0 1px 4px rgba(0,70,70,0.04);
       cursor: pointer;
-      border-left: 4px solid #253669;
+      border-left: 4px solid #008080 !important;  /* Teal left bar */
     }
     details[open] {
-      background: #f0f3fb;
+      background: #e9f5fa !important; /* Lighter blue when open */
     }
     summary {
       font-weight: 600;
@@ -220,6 +214,16 @@
     }
     /* Responsive */
     @media (max-width: 900px) {
+      .header .seal {
+        left: 0.8rem;
+        width: 80px;
+        height: 80px;
+        top: 0.5rem;
+      }
+      .header .headshot {
+        width: 110px;
+        height: 110px;
+      }
       .pricing-row {
         flex-direction: column;
         gap: 1.2rem;
@@ -236,8 +240,9 @@
 </head>
 <body>
   <div class="header">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TX_Notary_Public_Seal.png" alt="Notary Seal" class="seal">
-    <!-- Replace 'headshot.jpg' with your uploaded image's filename -->
+    <!-- USE YOUR CUSTOM SEAL FILE: notaryseal.png -->
+    <img src="notaryseal.png" alt="Notary Seal" class="seal">
+    <!-- Your headshot image -->
     <img src="headshot.jpg" alt="Joseph Velasco" class="headshot"
     onerror="this.onerror=null;this.src='https://randomuser.me/api/portraits/men/43.jpg';">
     <h1>Joseph Velasco</h1>
@@ -286,7 +291,7 @@
     <a href="mailto:Info@texaspublicnotary.us" class="cta"><i class="fa-solid fa-envelope"></i> Contact Us Today</a>
     <div class="contact">
       <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
-      <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
+      <div><strong>Text or Call:</strong> <a href="tel:8323560671">832-356-0671</a></div>
     </div>
 
     <!-- Testimonials Section -->
@@ -329,6 +334,15 @@
       </details>
     </div>
   </div>
+  <div class="card booking">
+      <h2>Book an Appointment</h2>
+      <iframe src="https://calendly.com/joseph-velasco/mobile-notary-service" title="Online Appointment Booking"></iframe>
+    </div>
+  </div>
+</body>
+</html>
+
+
 
   <!-- Real-time chat widget code (paste your Tawk.to script here before </body>) -->
   <!--
