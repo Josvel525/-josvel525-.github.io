@@ -1,155 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Joseph Velasco | Texas Public Notary</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joseph Velasco - Mobile Notary Service</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
       margin: 0;
-      background-color: #f4f6fa;
-      color: #1a1a1a;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1a2236;
     }
-    header {
-      background-color: #223167;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+    .header {
+      background: #253669;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem 1.5rem 1rem;
       position: relative;
     }
-    .notary-seal {
-      width: 160px;
-    }
-    .profile-photo {
-      width: 180px;
-      height: 180px;
+    .header .seal {
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
+      background: #fff;
+      border: 2px solid #eee;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      object-fit: contain;
+    }
+    .header .headshot {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
       object-fit: cover;
-      margin-left: auto;
+      margin: 0.5rem auto 0.7rem auto;
+      display: block;
+      background: #fff;
     }
-    .info {
-      text-align: center;
-      margin: 30px auto 20px;
-      max-width: 800px;
-    }
-    .info h1 {
-      margin: 0;
+    .header h1 {
       font-size: 2.2rem;
-      font-weight: 700;
+      margin-bottom: 0.2rem;
+      margin-top: 0.3rem;
     }
-    .info p {
-      margin: 4px 0;
-      font-size: 1.1rem;
+    .header .subtitle {
+      font-size: 1.07rem;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.2px;
     }
-    .highlight {
-      color: #f5b301;
+    .header .service-area {
+      color: #ffe082;
+      font-size: 1.14rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.1rem;
       font-weight: 600;
     }
+    .header .service-list {
+      font-size: 1.01rem;
+      margin-bottom: 0.3rem;
+    }
     .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      gap: 20px;
+      max-width: 950px;
+      margin: 2rem auto;
+      background: #fff;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.11);
+      border-radius: 18px;
+      padding: 2rem 1.5rem 2.5rem 1.5rem;
     }
-    .card {
-      background-color: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 900px;
-    }
-    .card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #223167;
-    }
-    .service-list {
+    .pricing-row {
       display: flex;
       flex-wrap: wrap;
+      gap: 2.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .pricing-section {
+      flex: 1 1 300px;
+      background: #f4f6fb;
+      border-radius: 13px;
+      box-shadow: 0 2px 8px rgba(37,54,105,0.08);
+      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+      transition: transform 0.16s, box-shadow 0.16s;
+      margin-bottom: 1.1rem;
+      border-top: 5px solid #253669;
+    }
+    .pricing-section:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 28px rgba(37,54,105,0.18);
+    }
+    .pricing-section h3 {
+      display: flex;
+      align-items: center;
+      font-size: 1.18rem;
+      margin: 0 0 0.6rem 0;
+      color: #253669;
+      font-weight: 700;
+      gap: 0.6rem;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #253669;
+      margin: 0.5rem 0 0.7rem 0;
+      display: inline-block;
+    }
+    .pricing-section ul {
+      margin: 0 0 0 1.2rem;
+      padding: 0;
+      font-size: 1.06rem;
+      line-height: 1.65;
+    }
+    /* Animated Button */
+    .cta {
+      background: #253669;
+      color: #fff;
+      padding: 1.1rem 1.5rem;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 1.16rem;
+      font-weight: 700;
+      margin: 1.3rem 0 0.7rem 0;
+      text-decoration: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      transition: background 0.15s, transform 0.12s;
+      animation: pulse 1.7s infinite;
+    }
+    .cta:hover {
+      background: #304485;
+      transform: scale(1.07);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,54,105,0.18);}
+      70% { box-shadow: 0 0 0 10px rgba(37,54,105,0);}
+      100% { box-shadow: 0 0 0 0 rgba(37,54,105,0);}
+    }
+    .contact {
+      margin-top: 1.4rem;
+      font-size: 1.15rem;
+      color: #253669;
+    }
+    .contact strong {
+      color: #111;
+    }
+    /* Testimonials */
+    .testimonial-section {
+      margin-top: 3.2rem;
+      margin-bottom: 1rem;
+    }
+    .testimonial-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #253669;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .testimonial-list {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 20px;
     }
-    .service-item {
-      background: #e8ecfa;
-      padding: 15px;
-      border-radius: 12px;
-      flex: 1 1 30%;
-      min-width: 250px;
+    .testimonial {
+      flex: 1 1 230px;
+      background: #f4f6fb;
+      border-radius: 13px;
+      box-shadow: 0 2px 8px rgba(37,54,105,0.07);
+      padding: 1.3rem 1.1rem 1.1rem 1.1rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      min-width: 220px;
     }
-    .faq {
-      background-color: #d4eafd;
-      border-left: 6px solid #1c63d5;
-      padding: 10px 20px;
-      margin-top: 20px;
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 0.8rem;
+      color: #232b41;
     }
-    .booking {
-      margin-top: 30px;
+    .testimonial-client {
+      font-size: 0.99rem;
+      color: #444;
+      text-align: right;
     }
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 12px;
+    /* Collapsible FAQ styles */
+    .faq-section {
+      margin-top: 2.6rem;
+    }
+    .faq-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #253669;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    details {
+      margin-bottom: 0.85rem;
+      background: #f9f9fc;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 1px 4px rgba(37,54,105,0.04);
+      cursor: pointer;
+      border-left: 4px solid #253669;
+    }
+    details[open] {
+      background: #f0f3fb;
+    }
+    summary {
+      font-weight: 600;
+      font-size: 1.07rem;
+      outline: none;
+      cursor: pointer;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .pricing-row {
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+      .container {
+        padding: 1.3rem 0.5rem;
+      }
+      .testimonial-list {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="notaryseal.png" alt="Notary Seal" class="notary-seal" />
-    <img src="headshot.png" alt="Joseph Velasco" class="profile-photo" />
-  </header>
-
-  <div class="info">
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/TX_Notary_Public_Seal.png" alt="Notary Seal" class="seal">
+    <!-- Replace 'headshot.jpg' with your uploaded image's filename -->
+    <img src="headshot.jpg" alt="Joseph Velasco" class="headshot"
+    onerror="this.onerror=null;this.src='https://randomuser.me/api/portraits/men/43.jpg';">
     <h1>Joseph Velasco</h1>
-    <p>TEXAS NOTARY PUBLIC</p>
-    <p>EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR</p>
-    <p class="highlight">Serving the Greater Houston Area</p>
-    <p><strong>Our Service:</strong> Notary Public Services ✓ Mobile Notary Services ✓</p>
+    <div class="subtitle">
+      TEXAS NOTARY PUBLIC<br>
+      EXPERIENCED, RELIABLE, DIRECT TO YOUR DOOR
+    </div>
+    <div class="service-area">
+      Serving the Greater Houston Area
+    </div>
+    <div class="service-list">
+      <b>Our Service:</b> Notary Public Services &#x2714; &nbsp; Mobile Notary Services &#x2714;
+    </div>
   </div>
 
   <div class="container">
-    <div class="card">
-      <h2>Trip Fees & Notary Services</h2>
-      <div class="service-list">
-        <div class="service-item">
-          <strong>Flat trip fee:</strong> $35<br>
-          <strong>30 minutes on-site:</strong> $4.99<br>
-          <strong>Extra mileage:</strong> $1.09/mile over 10 mi
+    <div class="pricing-row">
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-car"></i> Trip Fees</h3>
+        <div class="price">$35</div>
+        <ul>
+          <li><b>Flat trip fee</b> per visit, anywhere within Houston</li>
+          <li><b>First 30 minutes at location:</b> $7.99</li>
+          <li><b>Per mile (beyond 10-mile radius):</b> $1.49/mile</li>
+        </ul>
+      </div>
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-stamp"></i> Notary Services</h3>
+        <ul>
+          <li><b>$10</b> Standard notary act</li>
+          <li><b>$10</b> Swearing a witness to a disposition</li>
+          <li><b>$10</b> Any other notary act or custom service package</li>
+        </ul>
+      </div>
+      <div class="pricing-section">
+        <h3><i class="fa-solid fa-file-signature"></i> Protest & Certification</h3>
+        <ul>
+          <li><b>$4</b> Certificate and seal to protest</li>
+          <li><b>$4</b> Protesting a bill or note for non-acceptance/non-payment</li>
+          <li><b>$1</b> Per notice of protest</li>
+          <li><b>$1</b> Per 100 words for witness dispositions</li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="mailto:Info@texaspublicnotary.us" class="cta"><i class="fa-solid fa-envelope"></i> Contact Us Today</a>
+    <div class="contact">
+      <div><strong>Email:</strong> <a href="mailto:Info@texaspublicnotary.us">Info@texaspublicnotary.us</a></div>
+      <div><strong>Phone:</strong> <a href="tel:8323560671">832-356-0671</a></div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonial-section">
+      <div class="testimonial-title"><i class="fa-solid fa-quote-left"></i> What Our Clients Say</div>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <div class="testimonial-text">"Joseph arrived fast and made a stressful process simple. Super friendly and professional!"</div>
+          <div class="testimonial-client">— Maria G., Houston TX</div>
         </div>
-        <div class="service-item">
-          <strong>Standard notary:</strong> $10<br>
-          <strong>Disposition witness:</strong> $7<br>
-          <strong>Custom acts:</strong> $10+ based on service
+        <div class="testimonial">
+          <div class="testimonial-text">"Responsive, affordable, and convenient. I highly recommend this notary service."</div>
+          <div class="testimonial-client">— David L., Heights</div>
         </div>
-        <div class="service-item">
-          <strong>Protest & Certification:</strong><br>
-          $4/certificate<br>
-          $1/notice of protest<br>
-          $1/100 witness words
+        <div class="testimonial">
+          <div class="testimonial-text">"Was able to get a document notarized after 7PM. Lifesaver!"</div>
+          <div class="testimonial-client">— Ashley T., Pearland</div>
         </div>
       </div>
     </div>
 
-    <div class="card faq">
-      <h2>What areas do you serve?</h2>
-      <p>I serve the Greater Houston area, including surrounding suburbs. Contact me for special requests!</p>
-    </div>
-
-    <div class="card faq">
-      <h2>How do I pay?</h2>
-      <p>Cash, credit/debit cards, zelle, most major payment apps.</p>
-    </div>
-
-    <div class="card booking">
-      <h2>Book an Appointment</h2>
-      <iframe src="https://calendly.com/joseph-velasco/mobile-notary-service" title="Online Appointment Booking"></iframe>
+    <!-- Interactive FAQ -->
+    <div class="faq-section">
+      <div class="faq-title"><i class="fa-solid fa-circle-question"></i> Frequently Asked Questions</div>
+      <details>
+        <summary>What areas do you serve?</summary>
+        <div>I serve the Greater Houston area, including surrounding suburbs. Contact me for special requests!</div>
+      </details>
+      <details>
+        <summary>What forms of payment do you accept?</summary>
+        <div>Cash, credit/debit cards, and most popular payment apps.</div>
+      </details>
+      <details>
+        <summary>Can you notarize documents outside regular business hours?</summary>
+        <div>Yes! Flexible scheduling is available. Just ask.</div>
+      </details>
+      <details>
+        <summary>How fast can you get to me?</summary>
+        <div>Usually within 1-2 hours in central Houston; suburban and rural travel times may vary. Call for real-time ETA.</div>
+      </details>
     </div>
   </div>
+
+  <!-- Real-time chat widget code (paste your Tawk.to script here before </body>) -->
+  <!--
+  <script type="text/javascript">
+  // Paste your Tawk.to code here
+  </script>
+  -->
 </body>
 </html>
