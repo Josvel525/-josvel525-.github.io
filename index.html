@@ -1,359 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Notary Services - Houston, TX</title>
-    <style>
-        /* Texas flag colors: Blue #0033A0, White #FFFFFF, Red #BF0A30 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(to right, #0033A0 33%, #FFFFFF 33%, #FFFFFF 66%, #BF0A30 66%);
-            padding: 20px 10px;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #000000;
-            min-height: 100px;
-        }
-        
-        header img.seal {
-            height: 80px;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-        
-        header img.headshot {
-            height: 80px;
-            border-radius: 50%;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-        
-        .header-content {
-            text-align: center;
-            flex: 1;
-            margin: 0 120px;
-        }
-        
-        .header-content h1 {
-            margin: 0;
-            font-size: 2em;
-            font-weight: bold;
-        }
-        
-        .header-content p {
-            margin: 5px 0;
-            font-size: 1.1em;
-        }
-        
-        .buttons {
-            margin-top: 15px;
-        }
-        
-        .button {
-            background-color: #0033A0;
-            color: #FFFFFF;
-            border: none;
-            padding: 12px 25px;
-            margin: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .button:hover {
-            background-color: #BF0A30;
-        }
-        
-        /* Services section */
-        .services {
-            padding: 40px 20px;
-            background-color: #f9f9f9;
-        }
-        
-        .services h2 {
-            text-align: center;
-            color: #0033A0;
-            margin-bottom: 30px;
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .service-item {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-item h3 {
-            margin: 0;
-            font-size: 1.1em;
-            flex: 1;
-        }
-        
-        .service-item .price {
-            color: #BF0A30;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-left: 15px;
-        }
-        
-        /* FAQ section */
-        .faq {
-            padding: 40px 20px;
-            background-color: #f9f9f9;
-        }
-        
-        .faq h2 {
-            text-align: center;
-            color: #0033A0;
-            margin-bottom: 30px;
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            margin-bottom: 25px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .faq-item h4 {
-            color: #0033A0;
-            margin: 0;
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 40px 20px;
-        }
-        
-        .testimonials h2 {
-            text-align: center;
-            color: #0033A0;
-            margin-bottom: 30px;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .testimonial {
-            background: white;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .testimonial:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .testimonial p:first-child {
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-        
-        .testimonial p:last-child {
-            font-weight: bold;
-            color: #0033A0;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #0033A0;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .header-content {
-                margin: 0 100px;
-            }
-            
-            .header-content h1 {
-                font-size: 1.5em;
-            }
-            
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Houston Mobile Notary Services</title>
+  <style>
+    :root {
+      --primary: #1a237e;
+      --accent: #e53935;
+      --bg: #f5f6fa;
+      --white: #fff;
+      --gray: #eee;
+      --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--bg);
+      color: #222;
+    }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 0 1.5rem 0;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      margin: 0 0 0.5rem 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    header p {
+      margin: 0 0 1rem 0;
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.9em 2em;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(229,57,53,0.12);
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #b71c1c; }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .service-card span {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+    @media (max-width: 700px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1rem;
+      font-size: 1rem;
+      font-style: italic;
+      position: relative;
+    }
+    .testimonial-card:before {
+      content: "“";
+      font-size: 2.5rem;
+      color: var(--accent);
+      position: absolute;
+      left: 12px;
+      top: 0;
+    }
+    .testimonial-card .author {
+      display: block;
+      margin-top: 0.7rem;
+      font-style: normal;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+    @media (max-width: 700px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+    .faq-list {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .faq-q {
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--primary);
+    }
+    .faq-a {
+      margin-bottom: 1.2rem;
+      color: #444;
+    }
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem 0;
+      margin-top: 2rem;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="notary-seal.png" alt="Notary Seal" class="seal">
-        <div class="header-content">
-            <h1>Professional Notary Services</h1>
-            <p>Licensed & Bonded | Houston, TX</p>
-            <p>Phone: (713) 555-0123 | Email: info@houstonnotary.com</p>
-            <div class="buttons">
-                <a href="tel:7135550123" class="button">Call Now</a>
-                <a href="mailto:info@houstonnotary.com" class="button">Email Us</a>
-            </div>
-        </div>
-        <img src="headshot.jpg" alt="Notary Photo" class="headshot">
-    </header>
+  <header>
+    <h1>Houston Mobile Notary Services</h1>
+    <p>Fast, Reliable, and Professional Notary Public in Houston, TX</p>
+    <a href="tel:7135550123" class="cta-btn">Call Now</a>
+  </header>
+  <main>
+    <div class="section-title">Our Services & Pricing</div>
+    <div class="services-grid">
+      <div class="service-card">Protesting nonacceptance or nonpayment <span>$4</span></div>
+      <div class="service-card">Notice of protest <span>$1</span></div>
+      <div class="service-card">Other protests <span>$4</span></div>
+      <div class="service-card">Certificate and seal to a protest <span>$4</span></div>
+      <div class="service-card">Acknowledgment for registration (first signature) <span>$10</span></div>
+      <div class="service-card">Each additional signature <span>$1</span></div>
+      <div class="service-card">Oath/affirmation with certificate and seal <span>$10</span></div>
+      <div class="service-card">Certificate under seal not otherwise provided <span>$10</span></div>
+      <div class="service-card">Copies per page <span>$1</span></div>
+      <div class="service-card">Deposition of a witness per 100 words <span>$1</span></div>
+      <div class="service-card">Swearing witness to deposition <span>$10</span></div>
+      <div class="service-card">Notarial acts not listed <span>$10</span></div>
+    </div>
 
-    <section class="services">
-        <h2>Our Services & Pricing</h2>
-        <div class="service-grid">
-            <div class="service-item">
-                <h3>Protesting nonacceptance or nonpayment</h3>
-                <div class="price">$4</div>
-            </div>
-            <div class="service-item">
-                <h3>Notice of protest</h3>
-                <div class="price">$1</div>
-            </div>
-            <div class="service-item">
-                <h3>Other protests</h3>
-                <div class="price">$4</div>
-            </div>
-            <div class="service-item">
-                <h3>Certificate and seal to a protest</h3>
-                <div class="price">$4</div>
-            </div>
-            <div class="service-item">
-                <h3>Acknowledgment for registration (first signature)</h3>
-                <div class="price">$10</div>
-            </div>
-            <div class="service-item">
-                <h3>Each additional signature</h3>
-                <div class="price">$1</div>
-            </div>
-            <div class="service-item">
-                <h3>Oath/affirmation with certificate and seal</h3>
-                <div class="price">$10</div>
-            </div>
-            <div class="service-item">
-                <h3>Certificate under seal not otherwise provided</h3>
-                <div class="price">$10</div>
-            </div>
-            <div class="service-item">
-                <h3>Copies per page</h3>
-                <div class="price">$1</div>
-            </div>
-            <div class="service-item">
-                <h3>Deposition of a witness per 100 words</h3>
-                <div class="price">$1</div>
-            </div>
-            <div class="service-item">
-                <h3>Swearing witness to deposition</h3>
-                <div class="price">$10</div>
-            </div>
-            <div class="service-item">
-                <h3>Notarial acts not listed</h3>
-                <div class="price">$10</div>
-            </div>
-        </div>
-    </section>
+    <div class="section-title">What Our Clients Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!
+        <span class="author">— Lisa M.</span>
+      </div>
+      <div class="testimonial-card">
+        Needed a notary on a Sunday morning. He was on time and made everything simple.
+        <span class="author">— Eric D.</span>
+      </div>
+      <div class="testimonial-card">
+        Clear communication and affordable pricing. Will definitely use again.
+        <span class="author">— Tanya S.</span>
+      </div>
+      <div class="testimonial-card">
+        I didn’t know what to expect but he explained everything and made it super easy.
+        <span class="author">— Mike H.</span>
+      </div>
+      <div class="testimonial-card">
+        Very professional. Even my lawyer was impressed with how organized he was.
+        <span class="author">— Rachel T.</span>
+      </div>
+      <div class="testimonial-card">
+        It felt like I was dealing with someone who genuinely cared. That’s rare.
+        <span class="author">— Bryan K.</span>
+      </div>
+    </div>
 
-    <section class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h4>Can a notary public give me legal advice?</h4>
-            </div>
-            <div class="faq-item">
-                <h4>Do you offer after hours services?</h4>
-            </div>
-            <div class="faq-item">
-                <h4>Can Texas notaries serve in all counties?</h4>
-            </div>
-            <div class="faq-item">
-                <h4>Do I need government-issued ID to be notarized?</h4>
-            </div>
-            <div class="faq-item">
-                <h4>Can you notarize documents already signed?</h4>
-            </div>
-            <div class="faq-item">
-                <h4>What else is required for notarization?</h4>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial">
-                <p>"Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!"</p>
-                <p>- Lisa M.</p>
-            </div>
-            <div class="testimonial">
-                <p>"Needed a notary on a Sunday morning. He was on time and made everything simple."</p>
-                <p>- Eric D.</p>
-            </div>
-            <div class="testimonial">
-                <p>"Clear communication and affordable pricing. Will definitely use again."</p>
-                <p>- Tanya S.</p>
-            </div>
-            <div class="testimonial">
-                <p>"I didn't know what to expect but he explained everything and made it super easy."</p>
-                <p>- Mike H.</p>
-            </div>
-            <div class="testimonial">
-                <p>"Very professional. Even my lawyer was impressed with how organized he was."</p>
-                <p>- Rachel T.</p>
-            </div>
-            <div class="testimonial">
-                <p>"It felt like I was dealing with someone who genuinely cared. That's rare."</p>
-                <p>- Bryan K.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Professional Notary Services | Licensed & Bonded in Texas</p>
-        <p>Serving Houston and Surrounding Areas</p>
-    </footer>
+    <div class="section-title">Frequently Asked Questions</div>
+    <div class="faq-list">
+      <div class="faq-q">Can a notary public give me legal advice?</div>
+      <div class="faq-q">Do you offer after hours services?</div>
+      <div class="faq-q">Can Texas notaries serve in all counties?</div>
+      <div class="faq-q">Do I need government-issued ID to be notarized?</div>
+      <div class="faq-q">Can you notarize documents already signed?</div>
+      <div class="faq-q">What else is required for notarization?</div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Houston Mobile Notary Services &mdash; Serving Houston and Surrounding Areas
+  </footer>
 </body>
 </html>
