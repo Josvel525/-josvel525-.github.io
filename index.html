@@ -13,11 +13,10 @@
     }
 
     header {
-      background: linear-gradient(to right, #002868 33%, #ffffff 33%, #ffffff 66%, #BF0A30 66%);
+      background: linear-gradient(to right, #002868, #BF0A30);
       color: #fff;
       padding: 20px;
       text-align: center;
-      position: relative;
     }
 
     header h1 {
@@ -26,10 +25,9 @@
     }
 
     .photo {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
+      float: right;
+      margin-top: -60px;
+      margin-right: 20px;
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -38,10 +36,9 @@
     }
 
     .seal {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
+      float: left;
+      margin-top: -60px;
+      margin-left: 20px;
       width: 60px;
       height: 60px;
     }
@@ -84,6 +81,7 @@
       font-size: 0.9em;
       color: #888;
       padding: 20px;
+      clear: both;
     }
   </style>
 </head>
