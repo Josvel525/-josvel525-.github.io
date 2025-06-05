@@ -2,135 +2,196 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mobile Notary Pricing - Houston</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joseph Velasco - Mobile Notary Service</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
+      padding: 0;
+      background: #f7f7f7;
       color: #333;
     }
-
-    header {
-      background: linear-gradient(to right, #002868 33%, #ffffff 33%, #ffffff 66%, #BF0A30 66%);
+    .header {
+      background: #004aad;
       color: #fff;
-      padding: 20px;
       text-align: center;
-      position: relative;
+      padding: 1.5rem;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
+    .header .contact-info {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
     }
-
-    .photo {
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
     }
-
-    .seal {
-      position: absolute;
-      top: 50%;
-      left: 20px;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 60px;
+    .feature-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 200px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .feature-card i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #004aad;
+    }
     .container {
+      padding: 2rem;
       max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: auto;
     }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 8px;
-      color: #002868;
-    }
-
-    .pricing-table {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      row-gap: 10px;
-      column-gap: 20px;
-      align-items: start;
-    }
-
-    .item {
-      padding: 4px 0;
-    }
-
-    .price {
-      text-align: right;
+    .cta {
+      display: inline-block;
+      padding: 0.75rem 1.25rem;
+      background: #004aad;
+      color: white;
+      border-radius: 5px;
+      margin-top: 1.5rem;
+      text-decoration: none;
       font-weight: bold;
     }
-
-    footer {
+    .contact {
+      margin-top: 2rem;
       text-align: center;
-      font-size: 0.9em;
-      color: #888;
-      padding: 20px;
+    }
+    .testimonial-section {
+      margin-top: 2rem;
+    }
+    .testimonial-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .testimonial {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .faq-title {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <img src="notaryseal.png" alt="Notary Seal" class="seal">
-    <h1>Houston Mobile Notary</h1>
-    <img src="headshot.jpg" alt="Your Photo" class="photo">
-  </header>
-
-  <div class="container">
-    <section>
-      <h2>🚗 Trip Fees</h2>
-      <div class="pricing-table">
-        <div class="item">Greater Houston</div><div class="price">$35</div>
-        <div class="item">Outside Greater Houston (Contact for quote)</div><div class="price">$50 - $75</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>🌙 After Hours Fees</h2>
-      <div class="pricing-table">
-        <div class="item">6:00 PM – 11:30 PM</div><div class="price">$25</div>
-        <div class="item">11:30 PM – 6:00 AM</div><div class="price">$50</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>📜 Service Pricing</h2>
-      <div class="pricing-table">
-        <div class="item">Protesting nonacceptance or nonpayment</div><div class="price">$4</div>
-        <div class="item">Notice of protest</div><div class="price">$1</div>
-        <div class="item">Other protests</div><div class="price">$4</div>
-        <div class="item">Certificate and seal to a protest</div><div class="price">$4</div>
-        <div class="item">Acknowledgment for registration (first signature)</div><div class="price">$10</div>
-        <div class="item">Each additional signature</div><div class="price">$1</div>
-        <div class="item">Oath/affirmation with certificate and seal</div><div class="price">$10</div>
-        <div class="item">Certificate under seal not otherwise provided</div><div class="price">$10</div>
-        <div class="item">Copies per page</div><div class="price">$1</div>
-        <div class="item">Deposition of a witness per 100 words</div><div class="price">$1</div>
-        <div class="item">Swearing witness to deposition</div><div class="price">$10</div>
-        <div class="item">Notarial acts not listed</div><div class="price">$10</div>
-      </div>
-    </section>
+  <div class="header">
+    <h1>Joseph Velasco</h1>
+    <div class="subtitle">Mobile Notary Services – Serving All of Texas</div>
+    <div class="contact-info">
+      <div>Email: <a href="mailto:info@texaspublicnotary.us" style="color: #fff; text-decoration: underline;">info@texaspublicnotary.us</a></div>
+      <div>Phone: <a href="tel:8323560671" style="color: #fff; text-decoration: underline;">832-356-0671</a></div>
+      <div>Available 24/7 Upon Request</div>
+    </div>
   </div>
 
-  <footer>
-    &copy; 2025 Texas Public Notary | Site by JosephVelasco.TXNotary
-  </footer>
+  <div class="features">
+    <div class="feature-card">
+      <i class="fas fa-file-signature"></i>
+      <div>Loan Signing Services</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-check-square"></i>
+      <div>Acknowledgments & Proofs</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-user-check"></i>
+      <div>Oaths & Affirmations</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-book"></i>
+      <div>Take Depositions</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-copy"></i>
+      <div>Certify Document Copies</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-gavel"></i>
+      <div>Protest Instruments</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-box-open"></i>
+      <div>Inventory Safe Deposit Boxes</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>Notary Pricing</h3>
+    <ul>
+      <li>Protest bill or note: $4</li>
+      <li>Notice of protest: $1 each</li>
+      <li>Certificate & seal to protest: $4</li>
+      <li>Acknowledgment or proof with seal: $10 (first signature), $1 each additional</li>
+      <li>Oath or affirmation with seal: $10</li>
+      <li>Certificate under seal (general): $10</li>
+      <li>Copies of documents: $1/page</li>
+      <li>Depositions: $1 per 100 words</li>
+      <li>Swearing witness, certificate/seal: $10</li>
+      <li>Other notarial acts not listed: $10</li>
+    </ul>
+
+    <a class="cta" href="tel:8323560671"><i class="fas fa-phone"></i> Call Now</a>
+
+    <div class="testimonial-section">
+      <div class="testimonial-title"><i class="fas fa-quote-left"></i> Testimonials</div>
+      <div class="testimonial">
+        "Joseph was prompt, professional, and made the process easy!"
+        <div class="testimonial-client">– Satisfied Client</div>
+      </div>
+      <div class="testimonial">
+        "Highly recommend for any notary needs. Fast and friendly service."
+        <div class="testimonial-client">– Happy Customer</div>
+      </div>
+    </div>
+
+    <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
+    <details>
+      <summary>Can a notary public give me legal advice?</summary>
+      I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN TEXAS AND MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE.
+    </details>
+    <details>
+      <summary>Do you offer after hours services?</summary>
+      Absolutely, please text us at 832-356-0671 or email info@texaspublicnotary.us for after-hours or other special requests.
+    </details>
+    <details>
+      <summary>Can Texas notaries serve in all counties?</summary>
+      Yes, all commissioned Texas notaries may perform notarial acts anywhere in the state of Texas.
+    </details>
+    <details>
+      <summary>Do I need government-issued ID to be notarized?</summary>
+      Yes. The ID must be valid and the name must match the document.
+    </details>
+    <details>
+      <summary>Can you notarize documents already signed?</summary>
+      Yes, as long as each signer is physically present with valid ID at the time of notarization.
+    </details>
+    <details>
+      <summary>What else is required for notarization?</summary>
+      <ol>
+        <li>The signer must be positively identified.</li>
+        <li>The signer must appear willingly before the notary.</li>
+        <li>The notarial act must occur on the date stated in the certificate.</li>
+      </ol>
+    </details>
+  </div>
+</body>
+</html>
