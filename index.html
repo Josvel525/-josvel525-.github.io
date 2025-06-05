@@ -8,283 +8,190 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
+      font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: #f5f7fb;
-      color: #1a2236;
+      background: #f7f7f7;
+      color: #333;
     }
     .header {
-      background: #4f6fad;
+      background: #004aad;
       color: #fff;
       text-align: center;
-      padding: 1rem 1rem 2.5rem 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 1.5rem;
     }
-    .header .seal {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: #fff;
-      border: 2px solid #eee;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      object-fit: cover;
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      z-index: 2;
-    }
-    .header .headshot {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.13);
-      object-fit: cover;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      background: #fff;
-      z-index: 3;
-    }
-    .header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.2rem;
-      margin-top: 0.3rem;
-    }
-    .header .subtitle {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.1px;
-    }
-    .header .service-area {
-      color: #ffe082;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-      letter-spacing: 0.1rem;
-      font-weight: 600;
-    }
-    .header .service-list {
+    .header .contact-info {
       font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .feature-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      width: 200px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .feature-card i {
+      font-size: 2rem;
       margin-bottom: 0.5rem;
+      color: #004aad;
     }
     .container {
-      max-width: 950px;
-      margin: 2rem auto;
-      background: #fff;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.11);
-      border-radius: 18px;
-      padding: 2rem 1.5rem 2.5rem 1.5rem;
-    }
-    .pricing-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-    .pricing-section {
-      flex: 1 1 300px;
-      background: #f4f6fb;
-      border-radius: 13px;
-      box-shadow: 0 2px 8px rgba(37,54,105,0.08);
-      padding: 1.5rem 1.2rem 1.2rem 1.2rem;
-      margin-bottom: 1.1rem;
-      border-top: 5px solid #4f6fad;
-    }
-    .pricing-section:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 28px rgba(37,54,105,0.18);
-    }
-    .pricing-section h3 {
-      display: flex;
-      align-items: center;
-      font-size: 1.18rem;
-      margin: 0 0 0.6rem 0;
-      color: #253669;
-      font-weight: 700;
-      gap: 0.6rem;
-    }
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #253669;
-      margin: 0.5rem 0 0.7rem 0;
-    }
-    .pricing-section ul {
-      margin: 0 0 0 1.2rem;
-      padding: 0;
-      font-size: 1.06rem;
-      line-height: 1.65;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
     }
     .cta {
-      background: #4f6fad;
-      color: #fff;
-      padding: 1.1rem 1.5rem;
-      border-radius: 10px;
       display: inline-block;
-      font-size: 1.16rem;
-      font-weight: 700;
-      margin: 1.3rem 0 0.7rem 0;
+      padding: 0.75rem 1.25rem;
+      background: #004aad;
+      color: white;
+      border-radius: 5px;
+      margin-top: 1.5rem;
       text-decoration: none;
-    }
-    .cta:hover {
-      background: #3e5fa6;
-      transform: scale(1.07);
+      font-weight: bold;
     }
     .contact {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #253669;
+      margin-top: 2rem;
       text-align: center;
-    }
-    .contact strong {
-      color: #111;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .contact a {
-      color: #253669;
-      text-decoration: none;
     }
     .testimonial-section {
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-    }
-    .testimonial-title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #253669;
-      margin-bottom: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .testimonial-list {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .testimonial {
-      flex: 1 1 230px;
-      background: #e3edfa;
-      border-left: 5px solid #253669;
-      font-style: italic;
-      color: #222d3b;
-      border-radius: 13px;
-      box-shadow: 0 2px 8px rgba(37,54,105,0.07);
-      padding: 1.3rem 1.1rem 1.1rem 1.1rem;
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    .testimonial-client {
-      color: #008080;
-      text-align: right;
-      font-size: 0.99rem;
-      font-style: normal;
-    }
-    .faq-title {
-      color: #008080;
-      font-weight: bold;
       margin-top: 2rem;
     }
-    details {
-      margin-bottom: 0.85rem;
-      background: #f5fbfc;
-      border-radius: 8px;
-      padding: 0.8rem 1rem;
-      border-left: 4px solid #008080;
+    .testimonial-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
-    details[open] {
-      background: #e9f5fa;
+    .testimonial {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .faq-title {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
     summary {
-      font-weight: 600;
-      font-size: 1.07rem;
       cursor: pointer;
-    }
-    .appointments {
-      text-align: center;
-      margin-top: 3rem;
-    }
-    .appointments a {
-      display: inline-block;
-      background: #008080;
-      color: #fff;
-      padding: 1rem 1.6rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .appointments a:hover {
-      background: #006d6d;
+      font-weight: bold;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="notaryseal.png" alt="Notary Seal" class="seal" />
-    <img src="headshot.png" alt="Joseph Velasco" class="headshot" />
     <h1>Joseph Velasco</h1>
-    <div class="subtitle">Mobile Notary Service</div>
-    <div class="service-area">Serving Houston, TX & surrounding</div>
-    <div class="service-list">Loan Signings, General Notary Work, Mobile Services</div>
+    <div class="subtitle">Mobile Notary Services – Serving All of Texas</div>
+    <div class="contact-info">
+      <div>Email: <a href="mailto:info@texaspublicnotary.us" style="color: #fff; text-decoration: underline;">info@texaspublicnotary.us</a></div>
+      <div>Phone: <a href="tel:8323560671" style="color: #fff; text-decoration: underline;">832-356-0671</a></div>
+      <div>Available 24/7 Upon Request</div>
+    </div>
   </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <i class="fas fa-file-signature"></i>
+      <div>Loan Signing Services</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-check-square"></i>
+      <div>Acknowledgments & Proofs</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-user-check"></i>
+      <div>Oaths & Affirmations</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-book"></i>
+      <div>Take Depositions</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-copy"></i>
+      <div>Certify Document Copies</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-gavel"></i>
+      <div>Protest Instruments</div>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-box-open"></i>
+      <div>Inventory Safe Deposit Boxes</div>
+    </div>
+  </div>
+
   <div class="container">
-    <div class="pricing-row">
-      <div class="pricing-section">
-        <h3><i class="fas fa-file-signature"></i> Loan Signing</h3>
-        <div class="price">$100</div>
-        <ul>
-          <li>Complete loan package</li>
-          <li>Includes travel</li>
-          <li>Evening & weekend availability</li>
-        </ul>
-      </div>
-      <div class="pricing-section">
-        <h3><i class="fas fa-stamp"></i> General Notary</h3>
-        <div class="price">$15/signature</div>
-        <ul>
-          <li>Power of Attorney, Deeds, etc.</li>
-          <li>Mobile to your location</li>
-          <li>Quick, professional service</li>
-        </ul>
-      </div>
-    </div>
-    <a class="cta" href="tel:555-555-5555"><i class="fas fa-phone"></i> Call Now</a>
-    <div class="contact">
-      <strong>Contact:</strong>
-      <a href="mailto:joseph@example.com">joseph@example.com</a><br>
-      <a href="tel:555-555-5555">555-555-5555</a>
-    </div>
+    <h3>Notary Pricing</h3>
+    <ul>
+      <li>Protest bill or note: $4</li>
+      <li>Notice of protest: $1 each</li>
+      <li>Certificate & seal to protest: $4</li>
+      <li>Acknowledgment or proof with seal: $10 (first signature), $1 each additional</li>
+      <li>Oath or affirmation with seal: $10</li>
+      <li>Certificate under seal (general): $10</li>
+      <li>Copies of documents: $1/page</li>
+      <li>Depositions: $1 per 100 words</li>
+      <li>Swearing witness, certificate/seal: $10</li>
+      <li>Other notarial acts not listed: $10</li>
+    </ul>
+
+    <a class="cta" href="tel:8323560671"><i class="fas fa-phone"></i> Call Now</a>
+
     <div class="testimonial-section">
       <div class="testimonial-title"><i class="fas fa-quote-left"></i> Testimonials</div>
-      <div class="testimonial-list">
-        <div class="testimonial">
-          "Joseph was prompt, professional, and made the process easy!"
-          <div class="testimonial-client">– Satisfied Client</div>
-        </div>
-        <div class="testimonial">
-          "Highly recommend for any notary needs. Fast and friendly service."
-          <div class="testimonial-client">– Happy Customer</div>
-        </div>
+      <div class="testimonial">
+        "Joseph was prompt, professional, and made the process easy!"
+        <div class="testimonial-client">– Satisfied Client</div>
+      </div>
+      <div class="testimonial">
+        "Highly recommend for any notary needs. Fast and friendly service."
+        <div class="testimonial-client">– Happy Customer</div>
       </div>
     </div>
+
     <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
     <details>
-      <summary>What do I need to bring for notarization?</summary>
-      A valid government-issued photo ID and all necessary documents.
+      <summary>Can a notary public give me legal advice?</summary>
+      I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN TEXAS AND MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE.
     </details>
     <details>
-      <summary>Do you travel to clients?</summary>
-      Yes, mobile service is available throughout Houston.
+      <summary>Do you offer after hours services?</summary>
+      Absolutely, please text us at 832-356-0671 or email info@texaspublicnotary.us for after-hours or other special requests.
     </details>
-    <div class="appointments">
-      <a href="/appointments.html">Book an Appointment</a>
-    </div>
+    <details>
+      <summary>Can Texas notaries serve in all counties?</summary>
+      Yes, all commissioned Texas notaries may perform notarial acts anywhere in the state of Texas.
+    </details>
+    <details>
+      <summary>Do I need government-issued ID to be notarized?</summary>
+      Yes. The ID must be valid and the name must match the document.
+    </details>
+    <details>
+      <summary>Can you notarize documents already signed?</summary>
+      Yes, as long as each signer is physically present with valid ID at the time of notarization.
+    </details>
+    <details>
+      <summary>What else is required for notarization?</summary>
+      <ol>
+        <li>The signer must be positively identified.</li>
+        <li>The signer must appear willingly before the notary.</li>
+        <li>The notarial act must occur on the date stated in the certificate.</li>
+      </ol>
+    </details>
   </div>
 </body>
 </html>
