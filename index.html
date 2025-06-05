@@ -1,193 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas Public Notary</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Houston Mobile Notary Pricing</title>
   <style>
     body {
-      font-family: 'Montserrat', sans-serif;
       margin: 0;
-      background: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
       color: #333;
     }
-    .header {
-      background: linear-gradient(to right, #bf0a30, #ffffff, #002868);
-      color: white;
+
+    header {
+      background: linear-gradient(to right, #002868 33%, #ffffff 33%, #ffffff 66%, #BF0A30 66%);
+      color: #fff;
+      padding: 20px;
       text-align: center;
-      padding: 2rem 1rem;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative;
     }
-    .header-content {
-      flex-grow: 1;
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
     }
-    .header .headshot {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
+
+    .photo {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      margin-left: 1rem;
-      border: 3px solid white;
+      object-fit: cover;
+      border: 2px solid white;
     }
-    .header .seal {
-      width: 80px;
-      height: auto;
-      margin-right: 1rem;
+
+    .seal {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
     }
-    .contact-info a {
-      color: white;
-    }
-    .cta-buttons {
-      margin-top: 1rem;
-    }
-    .cta-buttons a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 10px 20px;
-      background-color: #3b82f6;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-    .cta-buttons a:hover {
-      background-color: #2563eb;
-    }
+
     .container {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: 140px auto 2rem;
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
-    .section-boxes {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: space-between;
+
+    section {
+      margin-bottom: 40px;
     }
-    .section-box {
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      flex: 1 1 45%;
-      border-radius: 10px;
-      transition: transform 0.3s ease;
+
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 8px;
+      color: #002868;
     }
-    .section-box:hover {
-      transform: scale(1.02);
-    }
-    .pricing-grid {
+
+    .pricing-table {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
+      grid-template-columns: 1fr auto;
+      row-gap: 10px;
+      column-gap: 20px;
+      align-items: start;
     }
-    .pricing-grid div {
-      padding: 1rem;
-      border-bottom: 1px solid #eee;
+
+    .item {
+      padding: 4px 0;
     }
-    .pricing-grid div:nth-child(odd) {
-      background: #f9f9f9;
+
+    .price {
+      text-align: right;
+      font-weight: bold;
     }
-    .faq-title, .testimonial-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 2rem;
-    }
-    .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .testimonial {
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      flex: 1 1 calc(33% - 1rem);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .testimonial:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .testimonial strong {
-      display: block;
-      margin-top: 0.5rem;
-      font-weight: 600;
-    }
-    iframe.scheduler {
-      margin-top: 2rem;
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 10px;
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="header">
+
+  <header>
     <img src="notaryseal.png" alt="Notary Seal" class="seal" />
-    <div class="header-content">
-      <h1>Texas Public Notary</h1>
-      <div>Mobile Notary Services – Serving the Greater Houston and Surrounding Areas</div>
-      <div><strong>Joseph Velasco</strong></div>
-      <div class="contact-info">
-        Email: <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a><br>
-        Phone: <a href="tel:832-356-0671">832-356-0671</a><br>
-        Available 24/7 Upon Request
-      </div>
-      <div class="cta-buttons">
-        <a href="tel:832-356-0671"><i class="fas fa-phone"></i> Call/Text Us</a>
-        <a href="mailto:info@texaspublicnotary.us"><i class="fas fa-envelope"></i> Email Us</a>
-      </div>
-    </div>
-    <img src="headshot.png" alt="Joseph Velasco Headshot" class="headshot" />
-  </div>
+    <h1>Houston Mobile Notary</h1>
+    <img src="headshot.jpg" alt="Your Headshot" class="photo" />
+  </header>
 
   <div class="container">
-    <div class="section-boxes">
-      <div class="pricing-grid">
-        <div>Trip Fees – Greater Houston</div><div>$35</div>
-        <div>Trip Fees – Outside Greater Houston</div><div>$50–$75 (Contact for quote)</div>
-        <div>After Hours (6:00 PM – 11:30 PM)</div><div>$25</div>
-        <div>Late Night (11:30 PM – 6:00 AM)</div><div>$50</div>
-        <div>Protesting nonacceptance or nonpayment</div><div>$4</div>
-        <div>Notice of protest</div><div>$1</div>
-        <div>Other protests</div><div>$4</div>
-        <div>Certificate and seal to a protest</div><div>$4</div>
-        <div>Acknowledgment (first signature)</div><div>$10</div>
-        <div>Each additional signature</div><div>$1</div>
-        <div>Oath/affirmation with certificate and seal</div><div>$10</div>
-        <div>Certificate under seal not otherwise provided</div><div>$10</div>
-        <div>Copies per page</div><div>$1</div>
-        <div>Deposition of witness per 100 words</div><div>$1</div>
-        <div>Swearing witness to deposition</div><div>$10</div>
-        <div>Notarial acts not listed</div><div>$10</div>
-        <div>Loan Signing Services</div><div>Contact for pricing</div>
+    <section>
+      <h2>🚗 Trip Fees</h2>
+      <div class="pricing-table">
+        <div class="item">Greater Houston</div><div class="price">$35</div>
+        <div class="item">Outside Greater Houston (Contact for quote)</div><div class="price">$50 - $75</div>
       </div>
-    </div>
+    </section>
 
-    <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
+    <section>
+      <h2>🌙 After Hours Fees</h2>
+      <div class="pricing-table">
+        <div class="item">6:00 PM – 11:30 PM</div><div class="price">$25</div>
+        <div class="item">11:30 PM – 6:00 AM</div><div class="price">$50</div>
+      </div>
+    </section>
 
-    <div class="faq-title">Testimonials</div>
-    <div class="testimonials">
-      <div class="testimonial">"Quick, professional, and super friendly. Highly recommend!"<strong>– Maria T.</strong></div>
-      <div class="testimonial">"Showed up late night when no one else would. Lifesaver!"<strong>– David L.</strong></div>
-      <div class="testimonial">"Clear, knowledgeable, and a great communicator."<strong>– Sarah M.</strong></div>
-      <div class="testimonial">"My go-to notary for all my business documents."<strong>– Alex B.</strong></div>
-      <div class="testimonial">"Super professional and available even at weird hours."<strong>– Jasmine C.</strong></div>
-    </div>
+    <section>
+      <h2>📜 Service Pricing</h2>
+      <div class="pricing-table">
+        <div class="item">Protesting nonacceptance or nonpayment</div><div class="price">$4</div>
+        <div class="item">Notice of protest</div><div class="price">$1</div>
+        <div class="item">Other protests</div><div class="price">$4</div>
+        <div class="item">Certificate and seal to a protest</div><div class="price">$4</div>
+        <div class="item">Acknowledgment for registration (first signature)</div><div class="price">$10</div>
+        <div class="item">Each additional signature</div><div class="price">$1</div>
+        <div class="item">Oath/affirmation with certificate and seal</div><div class="price">$10</div>
+        <div class="item">Certificate under seal not otherwise provided</div><div class="price">$10</div>
+        <div class="item">Copies per page</div><div class="price">$1</div>
+        <div class="item">Deposition of a witness per 100 words</div><div class="price">$1</div>
+        <div class="item">Swearing witness to deposition</div><div class="price">$10</div>
+        <div class="item">Notarial acts not listed</div><div class="price">$10</div>
+      </div>
+    </section>
   </div>
+
+  <footer>
+    &copy; 2025 Houston Mobile Notary | Site by Chepino Notary Co.
+  </footer>
+
 </body>
 </html>
