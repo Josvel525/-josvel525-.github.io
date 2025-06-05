@@ -13,10 +13,11 @@
     }
 
     header {
-      background: linear-gradient(to right, #002868, #BF0A30);
-      color: #fff;
+      background-color: #002868;
+      color: white;
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
@@ -25,9 +26,10 @@
     }
 
     .photo {
-      float: right;
-      margin-top: -60px;
-      margin-right: 20px;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -36,9 +38,10 @@
     }
 
     .seal {
-      float: left;
-      margin-top: -60px;
-      margin-left: 20px;
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
       width: 60px;
       height: 60px;
     }
@@ -54,8 +57,10 @@
     }
 
     h2 {
+      font-size: 1.5em;
       border-bottom: 2px solid #ccc;
       padding-bottom: 8px;
+      margin-bottom: 16px;
       color: #002868;
     }
 
@@ -68,12 +73,41 @@
     }
 
     .item {
-      padding: 4px 0;
+      font-size: 1em;
     }
 
     .price {
       text-align: right;
       font-weight: bold;
+      font-size: 1em;
+    }
+
+    .testimonial {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-left: 4px solid #002868;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .appointment {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .appointment a {
+      display: inline-block;
+      background-color: #002868;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .appointment a:hover {
+      background-color: #00194d;
     }
 
     footer {
@@ -81,16 +115,16 @@
       font-size: 0.9em;
       color: #888;
       padding: 20px;
-      clear: both;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="notaryseal.png" alt="Notary Seal" class="seal" />
+    <img src="NotarySeal.png" alt="Notary Seal" class="seal">
     <h1>Houston Mobile Notary</h1>
-    <img src="headshot.jpg" alt="Your Headshot" class="photo" />
+    <img src="headshot.jpg" alt="Your Photo" class="photo">
   </header>
 
   <div class="container">
@@ -127,10 +161,21 @@
         <div class="item">Notarial acts not listed</div><div class="price">$10</div>
       </div>
     </section>
+
+    <section>
+      <h2>💬 Testimonials</h2>
+      <div class="testimonial">"Fast, professional, and super friendly. Chepino made my notarization stress-free!" – Maria L.</div>
+      <div class="testimonial">"She showed up at 1 AM with a smile. Life saver!" – James R.</div>
+      <div class="testimonial">"Efficient, affordable, and trustworthy. Highly recommend." – Crystal D.</div>
+    </section>
+
+    <section class="appointment">
+      <a href="https://calendly.com/josephvelasco/notary" target="_blank">📅 Book an Appointment</a>
+    </section>
   </div>
 
   <footer>
-    &copy; 2025 Houston Mobile Notary | Site by Chepino Notary Co.
+    &copy; 2025 Houston Mobile Notary | Site by josephvelasco
   </footer>
 
 </body>
