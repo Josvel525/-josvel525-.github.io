@@ -30,12 +30,13 @@
     header {
       background: var(--primary);
       color: var(--white);
-      padding: 4rem 0; /* Base padding, adjusted by content positioning */
+      padding: 2rem 0; /* Reduced overall header padding */
       text-align: center;
       box-shadow: var(--shadow);
       position: relative;
-      padding-top: 140px; /* Make space for top-left/right elements and new photo info */
-      padding-bottom: 3rem; /* Adjusted for overall header height */
+      /* Adjust top padding if needed, but flex items should handle spacing */
+      padding-top: 2.5rem; /* Adjusted for top elements within the new layout */
+      padding-bottom: 2.5rem;
     }
 
     /* Notary Seal Styling - Top Right */
@@ -49,15 +50,15 @@
       z-index: 1; /* Ensure it's above other elements if needed */
     }
 
-    /* Photo and Contact Info - Top Left */
+    /* Photo and Contact Info - Top Left - Now flex row */
     .photo-container {
       position: absolute;
       top: 15px; /* Distance from top */
       left: 15px; /* Distance from left */
       display: flex;
-      flex-direction: column; /* Stack name/title, then photo+contact */
-      align-items: flex-start; /* Align contents to the left */
-      gap: 10px; /* Space between photo and text */
+      flex-direction: row; /* Arranged side-by-side */
+      align-items: center; /* Align items vertically in the middle */
+      gap: 15px; /* Space between photo and text container */
       z-index: 2; /* Ensure it's on top */
     }
     .photo {
@@ -65,26 +66,30 @@
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      /* Removed gold border */
       box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
-      align-self: flex-start; /* Align photo itself to left */
+      flex-shrink: 0; /* Prevent photo from shrinking */
     }
-    .name-title {
+    .text-info {
+      display: flex;
+      flex-direction: column; /* Stack name, title, contact info */
+      align-items: flex-start; /* Align text to the left */
       color: var(--white);
       text-align: left;
-      margin-bottom: 5px; /* Space below title */
     }
     .name-title .name {
       font-family: 'Montserrat', sans-serif; /* New font for name */
       font-size: 1.2rem; /* Adjusted font size */
       font-weight: 700;
       margin-bottom: 2px;
+      white-space: nowrap; /* Prevent name from wrapping */
     }
     .name-title .title {
       font-family: 'Lato', sans-serif; /* New font for title */
       font-size: 0.9rem; /* Adjusted font size */
       font-weight: 400;
       color: #ccc; /* Slightly lighter color for title */
+      margin-bottom: 5px; /* Space below title */
+      white-space: nowrap; /* Prevent title from wrapping */
     }
     .contact-info {
       display: flex;
@@ -112,7 +117,8 @@
       font-weight: 800; /* Bolder */
       letter-spacing: 1.5px;
       color: var(--white); /* Ensure color is white */
-      padding-top: 20px; /* Push down slightly if content overlaps */
+      /* Push down slightly if content overlaps */
+      padding-top: 20px; /* Add some space from the top, considering photo */
     }
     header h2 {
       margin: 0.5rem 0;
@@ -273,22 +279,35 @@
     /* New styles for the "Notary Needs Banner" section */
     .notary-needs-banner {
       background-color: var(--secondary-blue); /* Changed to a deep blue */
-      /* Slanted line effect */
-      background-image: repeating-linear-gradient(
+      /* Updated slanted line effect for more pop and sparkle */
+      background-image: linear-gradient(
           -45deg,
-          rgba(255,255,255,0.05) 0px, /* Subtle white hint */
-          rgba(255,255,255,0.05) 4px,
-          transparent 4px,
-          transparent 8px,
-          rgba(255,0,0,0.02) 8px, /* Very subtle red hint */
-          rgba(255,0,0,0.02) 12px
+          rgba(255,255,255,0.2) 0%, /* Brighter white, more visible */
+          rgba(255,255,255,0.2) 10%,
+          rgba(255,0,0,0.1) 10%, /* Brighter red, more visible */
+          rgba(255,0,0,0.1) 20%,
+          transparent 20%,
+          transparent 100%
+      ),
+      linear-gradient(
+          45deg,
+          rgba(255,255,255,0.2) 0%, /* Mirror on the other side */
+          rgba(255,255,255,0.2) 10%,
+          rgba(255,0,0,0.1) 10%,
+          rgba(255,0,0,0.1) 20%,
+          transparent 20%,
+          transparent 100%
       );
-      background-size: 24px 24px; /* Adjust size for stripe density */
+      background-size: 150px 150px; /* Larger pattern for thick lines, adjust as needed */
+      background-repeat: repeat-x; /* Repeat horizontally */
+      background-position: left top, right top; /* Position the two gradients */
+
       color: var(--white);
       text-align: center;
       padding: 1.5rem 1rem; /* Decreased vertical padding */
       margin-bottom: 3rem; /* Space below this banner */
       box-shadow: var(--shadow); /* Added shadow for pop */
+      overflow: hidden; /* Hide excess pattern */
     }
 
     .notary-needs-banner h3 {
@@ -339,6 +358,15 @@
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
+    /* New: Specific styles for Trip & After Hours pricing to be side-by-side */
+    .pricing-two-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    /* Use this class for the "Trip & After Hours Fees" grids */
+
 
     .service-card {
       background: var(--white);
@@ -388,7 +416,7 @@
 
     /* Responsive for mobile */
     @media (max-width: 700px) {
-      .services-grid {
+      .services-grid, .pricing-two-columns { /* Apply to both grid types */
         grid-template-columns: 1fr;
       }
       /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
@@ -399,11 +427,11 @@
       }
       /* Adjust header for mobile */
       header {
-        padding-top: 160px; /* More space for top elements on smaller screens */
+        padding-top: 150px; /* More space for top elements on smaller screens */
         padding-bottom: 2rem;
       }
       .photo-container {
-        flex-direction: column; /* Stack name, title, photo, and info */
+        flex-direction: column; /* Stack photo, then text info */
         align-items: flex-start; /* Align photo and info to left */
         top: 10px;
         left: 10px;
@@ -413,11 +441,15 @@
         width: 100px; /* Slightly smaller photo on mobile */
         height: 100px;
       }
-      .name-title .name {
-        font-size: 1.1rem;
+      .text-info {
+        margin-left: 0; /* No left margin for text info when stacked */
+      }
+      .name-title .name, .name-title .title {
+        white-space: normal; /* Allow name/title to wrap if needed */
+        font-size: 1rem;
       }
       .name-title .title {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
       }
       .contact-info {
         font-size: 0.8rem; /* Smaller font on mobile */
@@ -709,21 +741,22 @@
 <body>
   <header>
     <div class="photo-container">
-      <div class="name-title">
-        <div class="name">Joseph Velasco</div>
-        <div class="title">Commissioned Texas Notary Public</div>
-      </div>
       <img src="headshot.jpg" alt="Your Photo" class="photo">
-      <div class="contact-info">
-        <a href="tel:8323560671">832-356-0671</a>
-        <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
+      <div class="text-info">
+        <div class="name-title">
+          <div class="name">Joseph Velasco</div>
+          <div class="title">Commissioned Texas Notary Public</div>
+        </div>
+        <div class="contact-info">
+          <a href="tel:8323560671">832-356-0671</a>
+          <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
+        </div>
       </div>
     </div>
 
     <img src="notaryseal.png" alt="Notary Seal" class="seal">
 
-    <h1>Texas Public Notary Services</h1>
-    <h2>Houston's Trusted Mobile Notary Service</h2>
+    <h1>Texas Public Notary</h1> <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
     <div class="cta-btn-container">
       <a href="tel:8323560671" class="cta-btn">Call Us</a>
@@ -915,14 +948,14 @@
   </div>
 
   <div class="section-title">Trip & After Hours Fees Service Pricing</div>
-  <div class="services-grid">
+  <div class="pricing-two-columns">
     <div class="service-card">
-      <div class="service-description">Greater Houston</div>
+      <div class="service-description">Trip Fee | Greater Houston</div>
       <hr class="card-divider">
       <div class="service-price">$34.95</div>
     </div>
     <div class="service-card">
-      <div class="service-description">Outside Greater Houston</div>
+      <div class="service-description">Trip Fee | Outside Greater Houston</div>
       <hr class="card-divider">
       <div class="service-price">$49.95-$69.95 (based on distance and appointment time)</div>
     </div>
