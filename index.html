@@ -7,11 +7,12 @@
   <style>
     :root {
       --primary: #1a237e;
-      --accent: #e53935;
+      --accent: #FFD700; /* Changed to gold */
       --bg: #f5f6fa;
       --white: #fff;
       --gray: #eee;
       --shadow: 0 2px 8px rgba(0,0,0,0.06);
+      --qabox-bg: #fce4ec; /* Light pink for Q&A boxes */
     }
     body {
       margin: 0;
@@ -19,78 +20,60 @@
       background: var(--bg);
       color: #222;
     }
-    .photo {
-      position: absolute;
-      top: 0%;
-      right: 0px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 10px;
-    }
     header {
       background: var(--primary);
       color: var(--white);
-      padding: 2rem 0 1.5rem 0;
+      padding: 3rem 0;
       text-align: center;
       box-shadow: var(--shadow);
-      margin-top: 40px;
+      position: relative;
+    }
+    header .seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      opacity: 0.2; /* Blended into background */
     }
     header h1 {
-      margin: 0 0 0.25rem 0;
-      font-size: 2.2rem;
+      margin: 0;
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
     }
     header h2 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .seal {
-      position: absolute;
-      top: 0%;
-      left: 0px;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid white;
-      margin: 10px;
+      margin: 0.5rem 0;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
     }
     header p {
-      margin: 0 0 1rem 0;
-      font-size: 1.15rem;
+      margin: 1rem 0;
+      font-size: 1.25rem;
       font-weight: 400;
     }
     .cta-btn-container {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .cta-btn {
       display: inline-block;
-      background: var(--accent);
-      color: var(--white);
+      background: var(--accent); /* Gold color */
+      color: var(--primary);
       padding: 0.9em 1.5em;
       border: none;
       border-radius: 30px;
       font-size: 1.1rem;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(229,57,53,0.12);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
       transition: background 0.2s;
     }
-    .cta-btn:hover { background: #b71c1c; }
-    .scheduler {
-      width: 100%;
-      height: 800px;
-      border: none;
-      margin-top: 2rem;
-    }
+    .cta-btn:hover { background: #DAA520; /* Darker gold */ }
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -99,7 +82,7 @@
     .section-title {
       font-size: 1.5rem;
       color: var(--primary);
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       margin-top: 2.5rem;
       text-align: center;
       font-weight: 700;
@@ -115,20 +98,17 @@
       border-radius: 10px;
       box-shadow: var(--shadow);
       padding: 1.2rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-left: 2px solid var(--primary); /* Vertical line */
     }
     .service-card span {
-      color: var(--accent);
+      color: var(--primary);
       font-weight: 700;
       font-size: 1.1rem;
       margin-left: 1rem;
-      white-space: nowrap;
-    }
-    @media (max-width: 700px) {
-      .services-grid { grid-template-columns: 1fr; }
     }
     .testimonials-grid {
       display: grid;
@@ -140,44 +120,16 @@
       background: var(--white);
       border-radius: 10px;
       box-shadow: var(--shadow);
-      padding: 1.2rem 1rem;
+      padding: 1.5rem 1rem;
       font-size: 1rem;
       font-style: italic;
-      position: relative;
-    }
-    .testimonial-card:before {
-      content: "“";
-      font-size: 2.5rem;
-      color: var(--accent);
-      position: absolute;
-      left: 12px;
-      top: 0;
-    }
-    .testimonial-card .author {
-      display: block;
-      margin-top: 0.7rem;
-      font-style: normal;
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 1rem;
-    }
-    @media (max-width: 700px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
-    }
-    .faq-title {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      margin-top: 2.5rem;
-      text-align: center;
-      font-weight: 700;
     }
     details {
-      margin-bottom: 1rem;
-      border: 1px solid var(--gray);
-      border-radius: 5px;
-      background: var(--white);
+      margin-bottom: 1.5rem;
+      background: var(--qabox-bg); /* Q&A box color */
+      border-radius: 8px;
       padding: 1rem;
+      box-shadow: var(--shadow);
     }
     summary {
       cursor: pointer;
@@ -187,6 +139,18 @@
     ol {
       margin-top: 0.5rem;
       padding-left: 1.5rem;
+    }
+    .scheduler {
+      width: 100%;
+      height: 800px;
+      border: none;
+      margin-top: 2rem;
+    }
+    .appointment-disclaimer {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1rem;
+      text-align: center;
     }
     footer {
       background: var(--primary);
@@ -201,69 +165,62 @@
 <body>
   <header>
     <img src="notaryseal.png" alt="Notary Seal" class="seal">
-    <h1>Texas Public Notary</h1>
-    <img src="headshot.jpg" alt="Your Photo" class="photo">
+    <h1>Texas Public Notary Services</h1>
     <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
     <div class="cta-btn-container">
-      <a href="tel:8323560671" class="cta-btn">Call</a>
-      <a href="sms:8323560671" class="cta-btn">Text</a>
-      <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email</a>
+      <a href="tel:8323560671" class="cta-btn">Call Us</a>
+      <a href="sms:8323560671" class="cta-btn">Text Us</a>
+      <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
     </div>
   </header>
   <main>
     <div class="section-title">Notarization Pricing</div>
     <div class="services-grid">
-      <div class="service-card">Protesting nonacceptance or nonpayment <span>$4</span></div>
-      <div class="service-card">Notice of protest <span>$1</span></div>
-      <div class="service-card">Other protests <span>$4</span></div>
-      <div class="service-card">Certificate and seal to a protest <span>$4</span></div>
-      <div class="service-card">Acknowledgment for registration (first signature) <span>$10</span></div>
-      <div class="service-card">Each additional signature <span>$1</span></div>
-      <div class="service-card">Oath/affirmation with certificate and seal <span>$10</span></div>
-      <div class="service-card">Certificate under seal not otherwise provided <span>$10</span></div>
-      <div class="service-card">Copies per page <span>$1</span></div>
-      <div class="service-card">Deposition of a witness per 100 words <span>$1</span></div>
-      <div class="service-card">Swearing witness to deposition <span>$10</span></div>
-      <div class="service-card">Notarial acts not listed <span>$10</span></div>
+      <div class="service-card">
+        <div>Protesting nonacceptance or nonpayment</div>
+        <span>$4</span>
+      </div>
+      <div class="service-card">
+        <div>Notice of protest</div>
+        <span>$1</span>
+      </div>
+      <div class="service-card">
+        <div>Other protests</div>
+        <span>$4</span>
+      </div>
+      <div class="service-card">
+        <div>Certificate and seal to a protest</div>
+        <span>$4</span>
+      </div>
     </div>
-    
-    <div class="section-title">Trip Charges & After Hours Fees (after hours fees are in addition to standard trip fees)</div>
+
+    <div class="section-title">Trip Charges & After Hours Fees</div>
     <div class="services-grid">
-      <div class="service-card">After Hours: 6:00 PM – 11:30 PM <span>$25</span></div>
-      <div class="service-card">After Hours: 11:30 PM – 6:00 AM <span>$65</span></div>
-      <div class="service-card">Trip Fee: Greater Houston <span>$35</span></div>
-      <div class="service-card">Trip Fee: Surrounding Area <span>$55—$75</span></div>
+      <div class="service-card">
+        <div>After Hours: 6:00 PM – 11:30 PM</div>
+        <span>$25</span>
+      </div>
+      <div class="service-card">
+        <div>After Hours: 11:30 PM – 6:00 AM</div>
+        <span>$65</span>
+      </div>
+      <div class="service-card">
+        <div>Trip Fee: Greater Houston</div>
+        <span>$35</span>
+      </div>
+      <div class="service-card">
+        <div>Trip Fee: Surrounding Area</div>
+        <span>$55—$75</span>
+      </div>
     </div>
-    
+
     <div class="section-title">What Our Clients Say</div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">
-        Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!
-        <span class="author">— Lisa M.</span>
-      </div>
-      <div class="testimonial-card">
-        Needed a notary on a Sunday morning. He was on time and made everything simple.
-        <span class="author">— Eric D.</span>
-      </div>
-      <div class="testimonial-card">
-        Clear communication and affordable pricing. Will definitely use again.
-        <span class="author">— Tanya S.</span>
-      </div>
-      <div class="testimonial-card">
-        I didn’t know what to expect but he explained everything and made it super easy.
-        <span class="author">— Mike H.</span>
-      </div>
-      <div class="testimonial-card">
-        Very professional. Even my lawyer was impressed with how well organized he was.
-        <span class="author">— Rachel T.</span>
-      </div>
-      <div class="testimonial-card">
-        It felt like I was dealing with someone who genuinely cared. That’s rare.
-        <span class="author">— Bryan K.</span>
-      </div>
+      <div class="testimonial-card">Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!</div>
+      <div class="testimonial-card">Needed a notary on a Sunday morning. He was on time and made everything simple.</div>
     </div>
-    
+
     <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
     <details>
       <summary>Can a notary public give me legal advice?</summary>
@@ -273,27 +230,10 @@
       <summary>Do you offer after hours services?</summary>
       Absolutely, please text us at 832-356-0671 or email us at info@texaspublicnotary.us for after hours or other special requests!
     </details>
-    <details>
-      <summary>Can notary publics in Texas perform notary acts in all counties in Texas?</summary>
-      Yes, all active Texas commissioned notary publics can perform notary acts anywhere in the state of Texas.
-    </details>
-    <details>
-      <summary>Will I need a government issued identification card to obtain notarization services?</summary>
-      Yes. You will need valid identification and the name on the identification card must match the name and signature of the document being notarized.
-    </details>
-    <details>
-      <summary>Can you notarize a document that is already signed?</summary>
-      Yes, but all individuals who’s name and signature are to be notarized must be there in person, with valid identification, at the time your document is notarized.
-    </details>
-    <details>
-      <summary>What are other requirements to obtain notarizations?</summary>
-      <ol>
-        <li>The signer has been positively identified by the Texas notary.</li>
-        <li>The signer has personally appeared before the Texas notary to sign the document willingly, without any coercion, and for the purpose stated on the document.</li>
-        <li>The Texas notary performed the notarial act on the date stated on the notarial certificate.</li>
-      </ol>
-    </details>
 
+    <p class="appointment-disclaimer">
+      Appointments are not finalized until you receive a booking confirmation from us by phone or email. Please call us for urgent requests or any questions.
+    </p>
     <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
   </main>
   <footer>
