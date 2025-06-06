@@ -42,6 +42,65 @@
       font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: 1px;
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FAQ Chatbot</title>
+  <style>
+    body { font-family: sans-serif; background: #f2f2f2; margin: 0; padding: 40px; }
+    #chat { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    #messages { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: #f9f9f9; margin-bottom: 10px; }
+    .message { margin-bottom: 10px; }
+    .user { color: blue; text-align: right; }
+    .bot { color: green; text-align: left; }
+    input, button { padding: 10px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div id="chat">
+    <div id="messages"></div>
+    <input id="userInput" type="text" placeholder="Ask a question..." />
+    <button onclick="handleInput()">Send</button>
+  </div>
+
+  <script>
+    const responses = {
+      "what are your hours": "We're open Monday through Saturday, 9am to 6pm.",
+      "how much do you charge": "Mobile notary services start at $25 plus travel.",
+      "where are you located": "We're based in Houston, TX, and travel to clients.",
+      "how can i book": "You can call, text, or use our online form to schedule a visit.",
+      "do you notarize titles": "Yes, we notarize vehicle titles and other legal documents.",
+      "do you charge a trip fee and if so, how much is it": "Yes, we do charge trip fees. Please refer to the trip fee pricing page.",
+      "do you offer after hours services": "Yes, we are happy to assist our clients 24/7 so long as we have enough advanced notice. Please note that after hours calls will incur an additional fee which varies based on the time and day service is requested for. Please refer to the after hours fees page for more information.",
+      "do i need to have my id to obtain notary services": "Yes, a valid Government issued ID is required and must match the name of the document being notarized."
+    };
+
+    function handleInput() {
+      const inputField = document.getElementById("userInput");
+      const userText = inputField.value.trim().toLowerCase();
+      if (!userText) return;
+
+      addMessage("user", userText);
+
+      const response = responses[userText] || "Sorry, I don't understand that. Try asking something else or check the FAQ page.";
+      addMessage("bot", response);
+
+      inputField.value = "";
+    }
+
+    function addMessage(role, text) {
+      const msgContainer = document.getElementById("messages");
+      const div = document.createElement("div");
+      div.className = `message ${role}`;
+      div.textContent = text;
+      msgContainer.appendChild(div);
+      msgContainer.scrollTop = msgContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
+
     }
     header h2 {
       margin: 0 0 0.5rem 0;
