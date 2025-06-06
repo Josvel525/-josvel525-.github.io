@@ -1,1168 +1,1110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texas Public Notary - Houston's Trusted Mobile Notary</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --primary: #1a237e; /* Darker blue, potentially for main header */
-            --secondary-blue: #1e3a8a; /* New dark blue for banner */
-            --accent: #DAA520; /* Bold gold color */
-            --bg: #f5f6fa;
-            --white: #fff;
-            --gray: #eee;
-            --light-gray-bg: #f2f2f2; /* New: Very light gray for pricing boxes */
-            --shadow: 0 2px 8px rgba(0,0,0,0.06);
-            --qabox-bg: #bbdefb; /* Light blue for Q&A boxes - CHANGED */
-            --chatbot-bg: #e0f2f7; /* Light blue for chatbot background */
-            --chatbot-header-bg: #007bb6; /* Darker blue for chatbot header */
-            --user-message-bg: #DCF8C6; /* Greenish for user messages */
-            --bot-message-bg: #EAEAEA; /* Light gray for bot messages */
-            --testimonial-bg: #fff8e1; /* Light yellow for testimonials - NEW COLOR */
-        }
-        body {
-            margin: 0;
-            font-family: 'Lato', Arial, sans-serif; /* Changed font */
-            background: var(--bg);
-            color: #222;
-        }
-        header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 2rem 0; /* Reduced overall header padding */
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            /* Adjust top padding if needed, but flex items should handle spacing */
-            padding-top: 2.5rem; /* Adjusted for top elements within the new layout */
-            padding-bottom: 2.5rem;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texas Public Notary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1a237e; /* Darker blue, potentially for main header */
+      --secondary-blue: #1e3a8a; /* New dark blue for banner */
+      --accent: #DAA520; /* Bold gold color */
+      --bg: #f5f6fa;
+      --white: #fff;
+      --gray: #eee;
+      --shadow: 0 2px 8px rgba(0,0,0,0.06);
+      --qabox-bg: #e1bee7; /* Light purple for Q&A boxes - NEW COLOR */
+      --chatbot-bg: #e0f2f7; /* Light blue for chatbot background */
+      --chatbot-header-bg: #007bb6; /* Darker blue for chatbot header */
+      --user-message-bg: #DCF8C6; /* Greenish for user messages */
+      --bot-message-bg: #EAEAEA; /* Light gray for bot messages */
+      --testimonial-bg: #fff8e1; /* Light yellow for testimonials - NEW COLOR */
+    }
+    body {
+      margin: 0;
+      font-family: 'Lato', Arial, sans-serif; /* Changed font */
+      background: var(--bg);
+      color: #222;
+    }
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 2rem 0; /* Reduced overall header padding */
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+      /* Adjust top padding if needed, but flex items should handle spacing */
+      padding-top: 2.5rem; /* Adjusted for top elements within the new layout */
+      padding-bottom: 2.5rem;
+    }
 
-        /* Notary Seal Styling - Top Right */
-        header .seal {
-            position: absolute;
-            top: 10px; /* Distance from top */
-            right: 15px; /* Distance from right */
-            width: 140px; /* Increased size slightly */
-            height: 140px; /* Increased size slightly */
-            opacity: 1; /* Removed transparency */
-            z-index: 1; /* Ensure it's above other elements if needed */
-        }
+    /* Notary Seal Styling - Top Right */
+    header .seal {
+      position: absolute;
+      top: 10px; /* Distance from top */
+      right: 15px; /* Distance from right */
+      width: 140px; /* Increased size slightly */
+      height: 140px; /* Increased size slightly */
+      opacity: 1; /* Removed transparency */
+      z-index: 1; /* Ensure it's above other elements if needed */
+    }
 
-        /* Photo and Contact Info - Top Left - Now flex row */
-        .photo-container {
-            position: absolute;
-            top: 15px; /* Distance from top */
-            left: 15px; /* Distance from left */
-            display: flex;
-            flex-direction: row; /* Arranged side-by-side */
-            align-items: center; /* Align items vertically in the middle */
-            gap: 15px; /* Space between photo and text container */
-            z-index: 2; /* Ensure it's on top */
-        }
-        .photo {
-            width: 120px; /* Larger photo */
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
-            flex-shrink: 0; /* Prevent photo from shrinking */
-        }
-        .text-info {
-            display: flex;
-            flex-direction: column; /* Stack name, title, contact info */
-            align-items: flex-start; /* Align text to the left */
-            color: var(--white);
-            text-align: left;
-        }
-        .name-title .name {
-            font-family: 'Montserrat', sans-serif; /* New font for name */
-            font-size: 1.2rem; /* Adjusted font size */
-            font-weight: 700;
-            margin-bottom: 2px;
-            white-space: nowrap; /* Prevent name from wrapping */
-        }
-        .name-title .title {
-            font-family: 'Lato', sans-serif; /* New font for title */
-            font-size: 0.9rem; /* Adjusted font size */
-            font-weight: 400;
-            color: #ccc; /* Slightly lighter color for title */
-            margin-bottom: 5px; /* Space below title */
-            white-space: nowrap; /* Prevent title from wrapping */
-        }
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            font-size: 0.9rem; /* Adjust font size */
-            color: var(--white);
-        }
-        .contact-info a {
-            color: var(--white);
-            text-decoration: none;
-            margin-bottom: 2px; /* Small space between lines */
-            font-size: 0.95rem; /* Make links slightly larger */
-            white-space: nowrap; /* Prevent breaking phone/email */
-            font-family: 'Lato', sans-serif; /* New font */
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
+    /* Photo and Contact Info - Top Left - Now flex row */
+    .photo-container {
+      position: absolute;
+      top: 15px; /* Distance from top */
+      left: 15px; /* Distance from left */
+      display: flex;
+      flex-direction: row; /* Arranged side-by-side */
+      align-items: center; /* Align items vertically in the middle */
+      gap: 15px; /* Space between photo and text container */
+      z-index: 2; /* Ensure it's on top */
+    }
+    .photo {
+      width: 120px; /* Larger photo */
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
+      flex-shrink: 0; /* Prevent photo from shrinking */
+    }
+    .text-info {
+      display: flex;
+      flex-direction: column; /* Stack name, title, contact info */
+      align-items: flex-start; /* Align text to the left */
+      color: var(--white);
+      text-align: left;
+    }
+    .name-title .name {
+      font-family: 'Montserrat', sans-serif; /* New font for name */
+      font-size: 1.2rem; /* Adjusted font size */
+      font-weight: 700;
+      margin-bottom: 2px;
+      white-space: nowrap; /* Prevent name from wrapping */
+    }
+    .name-title .title {
+      font-family: 'Lato', sans-serif; /* New font for title */
+      font-size: 0.9rem; /* Adjusted font size */
+      font-weight: 400;
+      color: #ccc; /* Slightly lighter color for title */
+      margin-bottom: 5px; /* Space below title */
+      white-space: nowrap; /* Prevent title from wrapping */
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      font-size: 0.9rem; /* Adjust font size */
+      color: var(--white);
+    }
+    .contact-info a {
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 2px; /* Small space between lines */
+      font-size: 0.95rem; /* Make links slightly larger */
+      white-space: nowrap; /* Prevent breaking phone/email */
+      font-family: 'Lato', sans-serif; /* New font */
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
 
-        header h1 {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif; /* Changed font */
-            font-size: 2.2rem; /* Adjusted font size */
-            font-weight: 800; /* Bolder */
-            letter-spacing: 1.5px;
-            color: var(--white); /* Ensure color is white */
-            /* Push down slightly if content overlaps */
-            padding-top: 20px; /* Add some space from the top, considering photo */
-        }
-        header h2 {
-            margin: 0.5rem 0;
-            font-family: 'Montserrat', sans-serif; /* Changed font */
-            font-size: 1.6rem; /* Adjusted font size */
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            color: var(--white); /* Ensure color is white */
-        }
-        header p {
-            margin: 1rem 0;
-            font-family: 'Lato', sans-serif; /* Changed font */
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: #e0e0e0; /* Slightly off-white for body text */
-        }
-        .cta-btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0; /* No bottom margin here, header padding handles it */
-        }
-        .cta-btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.8em 1.8em; /* Adjusted padding for pill shape */
-            border: none;
-            border-radius: 30px; /* More pronounced rounded corners for pill shape */
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-            transition: background 0.2s;
-            font-family: 'Montserrat', sans-serif; /* New font */
-        }
-        .cta-btn:hover { background: #B8860B; /* Darker gold */ }
+    header h1 {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif; /* Changed font */
+      font-size: 2.2rem; /* Adjusted font size */
+      font-weight: 800; /* Bolder */
+      letter-spacing: 1.5px;
+      color: var(--white); /* Ensure color is white */
+      /* Push down slightly if content overlaps */
+      padding-top: 20px; /* Add some space from the top, considering photo */
+    }
+    header h2 {
+      margin: 0.5rem 0;
+      font-family: 'Montserrat', sans-serif; /* Changed font */
+      font-size: 1.6rem; /* Adjusted font size */
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      color: var(--white); /* Ensure color is white */
+    }
+    header p {
+      margin: 1rem 0;
+      font-family: 'Lato', sans-serif; /* Changed font */
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #e0e0e0; /* Slightly off-white for body text */
+    }
+    .cta-btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0; /* No bottom margin here, header padding handles it */
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.8em 1.8em; /* Adjusted padding for pill shape */
+      border: none;
+      border-radius: 30px; /* More pronounced rounded corners for pill shape */
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      transition: background 0.2s;
+      font-family: 'Montserrat', sans-serif; /* New font */
+    }
+    .cta-btn:hover { background: #B8860B; /* Darker gold */ }
 
-        /* --- New styles for the "What We Do" section and pop-out buttons --- */
-        .what-we-do-section {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 0 1rem;
-            background: var(--bg); /* Match body background */
-            color: #222; /* Ensure text is visible */
-            padding-bottom: 3rem; /* Space below the section */
-        }
+    /* --- New styles for the "What We Do" section and pop-out buttons --- */
+    .what-we-do-section {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 0 1rem;
+        background: var(--bg); /* Match body background */
+        color: #222; /* Ensure text is visible */
+        padding-bottom: 3rem; /* Space below the section */
+    }
 
-        .what-we-do-section .subtitle {
-            font-family: 'Lato', sans-serif; /* New font */
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
+    .what-we-do-section .subtitle {
+        font-family: 'Lato', sans-serif; /* New font */
+        font-size: 1.1rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+    }
 
-        .what-we-do-section .main-title {
-            font-family: 'Montserrat', sans-serif; /* New font */
-            font-size: 2rem;
-            color: #222;
-            margin-top: 0;
-            margin-bottom: 2rem;
-            font-weight: 700;
-        }
+    .what-we-do-section .main-title {
+        font-family: 'Montserrat', sans-serif; /* New font */
+        font-size: 2rem;
+        color: #222;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
 
-        .new-services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns, min 200px wide */
-            gap: 1.5rem;
-            justify-content: center; /* Center grid items horizontally */
-            max-width: 1000px; /* Limit overall width */
-            margin: 0 auto; /* Center the grid container */
-        }
+    .new-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns, min 200px wide */
+        gap: 1.5rem;
+        justify-content: center; /* Center grid items horizontally */
+        max-width: 1000px; /* Limit overall width */
+        margin: 0 auto; /* Center the grid container */
+    }
 
-        .new-service-button {
-            background: var(--white);
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            padding: 1.5rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* Vertically center content */
-            text-align: center;
-            position: relative; /* For popup positioning */
-            cursor: pointer;
-            transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-            min-height: 150px; /* Ensure a consistent height for cards */
-            color: #222; /* Default text color */
-        }
+    .new-service-button {
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Vertically center content */
+        text-align: center;
+        position: relative; /* For popup positioning */
+        cursor: pointer;
+        transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
+        min-height: 150px; /* Ensure a consistent height for cards */
+        color: #222; /* Default text color */
+    }
 
-        .new-service-button:hover {
-            transform: scale(1.05) translateY(-5px); /* Slightly larger and lift on hover */
-            box-shadow: 0 8px 20px 4px rgba(26,35,126,0.18), 0 3px 10px rgba(0,0,0,0.08);
-            z-index: 2; /* Bring to front on hover */
-        }
+    .new-service-button:hover {
+        transform: scale(1.05) translateY(-5px); /* Slightly larger and lift on hover */
+        box-shadow: 0 8px 20px 4px rgba(26,35,126,0.18), 0 3px 10px rgba(0,0,0,0.08);
+        z-index: 2; /* Bring to front on hover */
+    }
 
-        .new-service-icon {
-            font-size: 3.5rem; /* Large icon size */
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+    .new-service-icon {
+        font-size: 3.5rem; /* Large icon size */
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
 
-        .new-service-title {
-            font-family: 'Montserrat', sans-serif; /* New font */
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--primary); /* Main title color */
-            margin-bottom: 0.5rem;
-        }
+    .new-service-title {
+        font-family: 'Montserrat', sans-serif; /* New font */
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--primary); /* Main title color */
+        margin-bottom: 0.5rem;
+    }
 
-        .service-popup {
-            position: absolute;
-            top: 100%; /* Position below the button */
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--white);
-            border: 1px solid var(--gray);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            padding: 1rem;
-            min-width: 250px;
-            max-width: 300px;
-            z-index: 10;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            text-align: left;
-            color: #333;
-            font-weight: 400;
-            margin-top: 10px; /* Space between button and popup */
-            font-family: 'Lato', sans-serif; /* New font */
-        }
+    .service-popup {
+        position: absolute;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--white);
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: 1rem;
+        min-width: 250px;
+        max-width: 300px;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        text-align: left;
+        color: #333;
+        font-weight: 400;
+        margin-top: 10px; /* Space between button and popup */
+        font-family: 'Lato', sans-serif; /* New font */
+    }
 
-        .new-service-button:hover .service-popup {
-            opacity: 1;
-            visibility: visible;
-        }
+    .new-service-button:hover .service-popup {
+        opacity: 1;
+        visibility: visible;
+    }
 
-        .service-popup ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .service-popup ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-        .service-popup ul li {
-            padding: 0.4rem 0;
-            border-bottom: 1px solid var(--gray);
-            font-size: 0.95rem; /* Slightly smaller text in popup */
-        }
-        .service-popup ul li:last-child {
-            border-bottom: none;
-        }
-        /* --- End new styles for "What We Do" section and pop-out buttons --- */
+    .service-popup ul li {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--gray);
+        font-size: 0.95rem; /* Slightly smaller text in popup */
+    }
+    .service-popup ul li:last-child {
+        border-bottom: none;
+    }
+    /* --- End new styles for "What We Do" section and pop-out buttons --- */
 
-        /* New styles for the "Notary Needs Banner" section */
-        .notary-needs-banner {
-            background-color: var(--secondary-blue); /* Changed to a deep blue */
-            /* Updated slanted line effect with brighter colors */
-            background-image: repeating-linear-gradient(
-                -45deg,
-                rgba(255,255,255,0.3) 0px, /* Brighter white */
-                rgba(255,255,255,0.3) 6px,
-                transparent 6px,
-                transparent 12px,
-                rgba(255,50,50,0.2) 12px, /* Brighter red */
-                rgba(255,50,50,0.2) 18px
-            ); /* Fixed the repeating linear gradient for red and white stripes */
-            background-size: 25px 25px; /* Adjust size for stripe density */
-            color: var(--white);
-            text-align: center;
-            padding: 1.5rem 1rem; /* Decreased vertical padding */
-            margin-bottom: 3rem; /* Space below this banner */
-            box-shadow: var(--shadow); /* Added shadow for pop */
-        }
+    /* New styles for the "Notary Needs Banner" section */
+    .notary-needs-banner {
+      background-color: var(--secondary-blue); /* Changed to a deep blue */
+      /* Updated slanted line effect with brighter colors */
+      background-image: repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.3) 0px, /* Brighter white */
+          rgba(255,255,255,0.3) 6px,
+          transparent 6px,
+          transparent 12px,
+          rgba(255,50,50,0.2) 12px, /* Brighter red */
+          rgba(255,50,50,0.2) 18px
+      ); /* Fixed the repeating linear gradient for red and white stripes */
+      background-size: 25px 25px; /* Adjust size for stripe density */
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem 1rem; /* Decreased vertical padding */
+      margin-bottom: 3rem; /* Space below this banner */
+      box-shadow: var(--shadow); /* Added shadow for pop */
+    }
 
-        .notary-needs-banner h3 {
-            font-family: 'Montserrat', sans-serif; /* New font */
-            font-size: 2.4rem; /* Adjusted font size */
-            margin: 0 0 0.8rem 0;
-            font-weight: 800; /* Bolder */
-            line-height: 1.2;
-        }
+    .notary-needs-banner h3 {
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 2.4rem; /* Adjusted font size */
+      margin: 0 0 0.8rem 0;
+      font-weight: 800; /* Bolder */
+      line-height: 1.2;
+    }
 
-        .notary-needs-banner p {
-            font-family: 'Lato', sans-serif; /* New font */
-            font-size: 1.1rem; /* Smaller text for sub-message */
-            margin: 0;
-            max-width: 700px; /* Limit line length for readability */
-            margin-left: auto;
-            margin-right: auto;
-            color: #e0e0e0; /* Slightly off-white */
-        }
-
-
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .section-title {
-            font-family: 'Montserrat', sans-serif; /* New font */
-            font-size: 1.8rem; /* Adjusted font size */
-            color: var(--primary); /* Main title color */
-            margin-bottom: 1.5rem;
-            margin-top: 2.5rem;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        /* NEW: Styling for the section containers with borders */
-        .pricing-section-container {
-            border: 1px solid var(--gray); /* Light gray border */
-            border-radius: 15px; /* Rounded corners */
-            padding: 1.5rem; /* Inner padding */
-            margin-bottom: 2rem; /* Space between sections */
-            background-color: var(--light-gray-bg); /* CHANGED: Light gray background inside border */
-            box-shadow: var(--shadow); /* Subtle shadow for depth */
-        }
-
-        .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
-            background-color: #0056b3;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            /* margin-bottom: 2rem; Removed as parent container now has it */
-        }
-        /* New: Styles for separate Trip and After Hours pricing */
-        .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            /* margin-bottom: 2rem; Removed as parent container now has it */
-        }
+    .notary-needs-banner p {
+      font-family: 'Lato', sans-serif; /* New font */
+      font-size: 1.1rem; /* Smaller text for sub-message */
+      margin: 0;
+      max-width: 700px; /* Limit line length for readability */
+      margin-left: auto;
+      margin-right: auto;
+      color: #e0e0e0; /* Slightly off-white */
+    }
 
 
-        .service-card {
-            background: var(--white);
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            padding: 1.5rem 1.2rem 1rem 1.2rem;
-            font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            border: none;
-            transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-            cursor: pointer;
-            font-family: 'Lato', sans-serif; /* New font */
-        }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 1.8rem; /* Adjusted font size */
+      color: var(--primary); /* Main title color */
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
 
-        .service-card:hover {
-            transform: scale(1.04) translateY(-4px);
-            box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
-            z-index: 2;
-        }
+    /* NEW: Styling for the section containers with borders */
+    .pricing-section-container {
+        border: 1px solid var(--gray); /* Light gray border */
+        border-radius: 15px; /* Rounded corners */
+        padding: 1.5rem; /* Inner padding */
+        margin-bottom: 2rem; /* Space between sections */
+        background-color: var(--white); /* White background inside border */
+        box-shadow: var(--shadow); /* Subtle shadow for depth */
+    }
 
-        .service-description {
-            color: #222;
-            font-weight: 500;
-            text-align: center;
-            margin-bottom: 1.2rem;
-        }
-
-        .card-divider {
-            width: 60%;
-            height: 1.5px;
-            background: var(--gray);
-            margin: 0 auto 1rem auto;
-            border: none;
-            opacity: 0.55;
-        }
-
-        .service-price {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.18rem;
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        /* Responsive for mobile */
-        @media (max-width: 700px) {
-            .services-grid, .trip-fees-grid, .after-hours-fees-grid { /* Apply to all pricing grids */
-                grid-template-columns: 1fr;
-            }
-            /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
-            .service-popup {
-                left: 50%;
-                transform: translateX(-50%);
-                max-width: 90%; /* Ensure it fits on smaller screens */
-            }
-            /* Adjust header for mobile */
-            header {
-                padding-top: 150px; /* More space for top elements on smaller screens */
-                padding-bottom: 2rem;
-            }
-            .photo-container {
-                flex-direction: column; /* Stack photo, then text info */
-                align-items: flex-start; /* Align photo and info to left */
-                top: 10px;
-                left: 10px;
-                gap: 5px; /* Smaller gap */
-            }
-            .photo {
-                width: 100px; /* Slightly smaller photo on mobile */
-                height: 100px;
-            }
-            .text-info {
-                margin-left: 0; /* No left margin for text info when stacked */
-            }
-            .name-title .name, .name-title .title {
-                white-space: normal; /* Allow name/title to wrap if needed */
-                font-size: 1rem;
-            }
-            .name-title .title {
-                font-size: 0.75rem;
-            }
-            .contact-info {
-                font-size: 0.8rem; /* Smaller font on mobile */
-                margin-top: 0px;
-            }
-            .seal {
-                width: 100px; /* Smaller seal on mobile */
-                height: 100px;
-                top: 10px;
-                right: 10px;
-            }
-            header h1 {
-                font-size: 1.8rem; /* Adjusted for mobile */
-            }
-            header h2 {
-                font-size: 1.2rem; /* Adjusted for mobile */
-            }
-            .notary-needs-banner h3 {
-                font-size: 2rem; /* Adjusted for mobile */
-            }
-            .notary-needs-banner p {
-                font-size: 1rem; /* Adjusted for mobile */
-            }
-            .section-title {
-                font-size: 1.4rem; /* Adjusted for mobile */
-            }
-            .pricing-section-container {
-                padding: 1rem; /* Reduce padding on mobile */
-            }
-        }
-        @media (max-width: 480px) {
-            .new-service-button {
-                padding: 1rem 0.5rem;
-                min-height: 120px;
-            }
-            .new-service-icon {
-                font-size: 3rem;
-            }
-            .new-service-title {
-                font-size: 1rem;
-            }
-            .service-popup {
-                min-width: unset; /* Remove min-width to allow shrinking */
-                width: 100%; /* Take full width of parent on small screens */
-                left: 0;
-                transform: none; /* No translateX to avoid pushing off screen */
-            }
-            .cta-btn {
-                padding: 0.7em 1.5em; /* Smaller padding for smaller buttons on mobile */
-                font-size: 0.9rem;
-            }
-            .notary-needs-banner h3 {
-                font-size: 1.8rem; /* Smaller font for small screens */
-            }
-            .notary-needs-banner p {
-                font-size: 0.95rem;
-            }
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .testimonial-card {
-            background: var(--testimonial-bg); /* NEW BACKGROUND COLOR */
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            padding: 1.5rem 1rem;
-            font-size: 1rem;
-            font-style: italic;
-            font-family: 'Lato', sans-serif; /* New font */
-            border-left: 5px solid var(--accent); /* Add a subtle accent line */
-        }
-        details {
-            margin-bottom: 1.5rem;
-            background: var(--qabox-bg); /* Q&A box color - CHANGED to light blue */
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: var(--shadow);
-            font-family: 'Lato', sans-serif; /* New font */
-        }
-        summary {
-            cursor: pointer;
-            font-weight: bold;
-            color: var(--primary);
-            font-family: 'Montserrat', sans-serif; /* New font */
-        }
-        ol {
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-        }
-        .scheduler {
-            width: 100%;
-            height: 800px;
-            border: none;
-            margin-top: 2rem;
-        }
-        .appointment-disclaimer {
-            font-size: 1rem;
-            color: #444;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-family: 'Lato', sans-serif; /* New font */
-        }
-        footer {
-            background: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 1.2rem 0;
-            margin-top: 2rem;
-            font-size: 1rem;
-            font-family: 'Lato', sans-serif; /* New font */
-        }
-        .faq-title {
-            font-family: 'Montserrat', sans-serif; /* New font */
-            font-size: 1.8rem; /* Adjusted size */
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            margin-top: 2.5rem;
-            text-align: center;
-            font-weight: 700;
-        }
-        .faq-title i {
-            margin-right: 10px;
-            color: var(--accent); /* Color the icon */
-        }
+    .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
+      background-color: #0056b3;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      /* margin-bottom: 2rem; Removed as parent container now has it */
+    }
+    /* New: Styles for separate Trip and After Hours pricing */
+    .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        /* margin-bottom: 2rem; Removed as parent container now has it */
+    }
 
 
-        /* Chatbot Styles */
-        #chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000; /* Ensure it's on top of everything */
-            display: flex; /* Added for aligning text next to icon */
-            align-items: center; /* Added for aligning text next to icon */
-            gap: 10px; /* Space between text and icon */
-        }
+    .service-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.2rem 1rem 1.2rem;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      border: none;
+      transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
+      cursor: pointer;
+      font-family: 'Lato', sans-serif; /* New font */
+    }
 
-        #chatbot-text { /* New style for the chatbot text */
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            background-color: var(--white);
-            padding: 8px 12px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            white-space: nowrap; /* Prevent text from wrapping */
-        }
+    .service-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
+      z-index: 2;
+    }
+
+    .service-description {
+      color: #222;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-divider {
+      width: 60%;
+      height: 1.5px;
+      background: var(--gray);
+      margin: 0 auto 1rem auto;
+      border: none;
+      opacity: 0.55;
+    }
+
+    .service-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.18rem;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 700px) {
+      .services-grid, .trip-fees-grid, .after-hours-fees-grid { /* Apply to all pricing grids */
+        grid-template-columns: 1fr;
+      }
+      /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
+      .service-popup {
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 90%; /* Ensure it fits on smaller screens */
+      }
+      /* Adjust header for mobile */
+      header {
+        padding-top: 150px; /* More space for top elements on smaller screens */
+        padding-bottom: 2rem;
+      }
+      .photo-container {
+        flex-direction: column; /* Stack photo, then text info */
+        align-items: flex-start; /* Align photo and info to left */
+        top: 10px;
+        left: 10px;
+        gap: 5px; /* Smaller gap */
+      }
+      .photo {
+        width: 100px; /* Slightly smaller photo on mobile */
+        height: 100px;
+      }
+      .text-info {
+        margin-left: 0; /* No left margin for text info when stacked */
+      }
+      .name-title .name, .name-title .title {
+        white-space: normal; /* Allow name/title to wrap if needed */
+        font-size: 1rem;
+      }
+      .name-title .title {
+        font-size: 0.75rem;
+      }
+      .contact-info {
+        font-size: 0.8rem; /* Smaller font on mobile */
+        margin-top: 0px;
+      }
+      .seal {
+        width: 100px; /* Smaller seal on mobile */
+        height: 100px;
+        top: 10px;
+        right: 10px;
+      }
+      header h1 {
+        font-size: 1.8rem; /* Adjusted for mobile */
+      }
+      header h2 {
+        font-size: 1.2rem; /* Adjusted for mobile */
+      }
+      .notary-needs-banner h3 {
+        font-size: 2rem; /* Adjusted for mobile */
+      }
+      .notary-needs-banner p {
+        font-size: 1rem; /* Adjusted for mobile */
+      }
+      .section-title {
+        font-size: 1.4rem; /* Adjusted for mobile */
+      }
+      .pricing-section-container {
+        padding: 1rem; /* Reduce padding on mobile */
+      }
+    }
+    @media (max-width: 480px) {
+        .new-service-button {
+            padding: 1rem 0.5rem;
+            min-height: 120px;
+        }
+        .new-service-icon {
+            font-size: 3rem;
+        }
+        .new-service-title {
+            font-size: 1rem;
+        }
+        .service-popup {
+            min-width: unset; /* Remove min-width to allow shrinking */
+            width: 100%; /* Take full width of parent on small screens */
+            left: 0;
+            transform: none; /* No translateX to avoid pushing off screen */
+        }
+        .cta-btn {
+          padding: 0.7em 1.5em; /* Smaller padding for smaller buttons on mobile */
+          font-size: 0.9rem;
+        }
+        .notary-needs-banner h3 {
+          font-size: 1.8rem; /* Smaller font for small screens */
+        }
+        .notary-needs-banner p {
+          font-size: 0.95rem;
+        }
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .testimonial-card {
+      background: var(--testimonial-bg); /* NEW BACKGROUND COLOR */
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1rem;
+      font-size: 1rem;
+      font-style: italic;
+      font-family: 'Lato', sans-serif; /* New font */
+      border-left: 5px solid var(--accent); /* Add a subtle accent line */
+    }
+    details {
+      margin-bottom: 1.5rem;
+      background: var(--qabox-bg); /* Q&A box color - CHANGED */
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: var(--shadow);
+      font-family: 'Lato', sans-serif; /* New font */
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif; /* New font */
+    }
+    ol {
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
+    }
+    .scheduler {
+      width: 100%;
+      height: 800px;
+      border: none;
+      margin-top: 2rem;
+    }
+    .appointment-disclaimer {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-family: 'Lato', sans-serif; /* New font */
+    }
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 1.2rem 0;
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-family: 'Lato', sans-serif; /* New font */
+    }
+    .faq-title {
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 1.8rem; /* Adjusted size */
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .faq-title i {
+      margin-right: 10px;
+      color: var(--accent); /* Color the icon */
+    }
 
 
-        #chat-icon {
-            width: 65px; /* Slightly larger icon */
-            height: 65px; /* Slightly larger icon */
-            background-color: var(--accent); /* Changed color to stand out */
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem; /* Larger icon size */
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
-            transition: transform 0.2s ease-in-out;
+    /* Chatbot Styles */
+    #chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000; /* Ensure it's on top of everything */
+    }
 
-            /* Pulse animation */
-            animation: pulse 2s infinite ease-in-out;
-        }
+    #chat-icon {
+        width: 65px; /* Slightly larger icon */
+        height: 65px; /* Slightly larger icon */
+        background-color: var(--accent); /* Changed color to stand out */
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem; /* Larger icon size */
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
+        transition: transform 0.2s ease-in-out;
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
+        /* Pulse animation */
+        animation: pulse 2s infinite ease-in-out;
+    }
 
-        #chat-icon:hover {
-            transform: scale(1.05);
-            animation: none; /* Stop pulse on hover */
-        }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
+    }
 
-        #chat-window {
-            width: 320px;
-            height: 400px;
-            background-color: var(--chatbot-bg);
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: absolute;
-            bottom: 80px; /* Position above the icon, adjusted for larger icon */
-            right: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            font-family: 'Lato', sans-serif; /* New font for chatbot text */
-        }
+    #chat-icon:hover {
+        transform: scale(1.05);
+        animation: none; /* Stop pulse on hover */
+    }
 
-        #chat-window.open {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+    #chat-window {
+        width: 320px;
+        height: 400px;
+        background-color: var(--chatbot-bg);
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: absolute;
+        bottom: 80px; /* Position above the icon, adjusted for larger icon */
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        font-family: 'Lato', sans-serif; /* New font for chatbot text */
+    }
 
-        #chat-header {
-            background-color: var(--chatbot-header-bg);
-            color: var(--white);
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif; /* New font for chatbot header */
-        }
+    #chat-window.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 
-        #close-chat {
-            font-size: 1.5rem;
-            cursor: pointer;
-            line-height: 1;
-        }
+    #chat-header {
+        background-color: var(--chatbot-header-bg);
+        color: var(--white);
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif; /* New font for chatbot header */
+    }
 
-        #chat-messages {
-            flex-grow: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    #close-chat {
+        font-size: 1.5rem;
+        cursor: pointer;
+        line-height: 1;
+    }
 
-        .message {
-            max-width: 80%;
-            padding: 8px 12px;
-            border-radius: 15px;
-            line-height: 1.4;
-            word-wrap: break-word;
-        }
+    #chat-messages {
+        flex-grow: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 
-        .bot-message {
-            background-color: var(--bot-message-bg);
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-        }
+    .message {
+        max-width: 80%;
+        padding: 8px 12px;
+        border-radius: 15px;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
 
-        .user-message {
-            background-color: var(--user-message-bg);
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-        }
+    .bot-message {
+        background-color: var(--bot-message-bg);
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+    }
 
-        #chat-input-area {
-            padding: 10px;
-            border-top: 1px solid #ccc;
-            display: flex;
-            flex-wrap: wrap; /* Allow buttons to wrap */
-            gap: 8px; /* Space between buttons */
-            justify-content: center; /* Center buttons */
-        }
+    .user-message {
+        background-color: var(--user-message-bg);
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+    }
 
-        .chat-question-btn {
-            background-color: var(--accent);
-            color: var(--white);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.2s;
-            flex-grow: 1; /* Allow buttons to grow and fill space */
-            min-width: 130px; /* Minimum width for buttons */
-            font-family: 'Lato', sans-serif; /* New font */
-        }
+    #chat-input-area {
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap */
+        gap: 8px; /* Space between buttons */
+        justify-content: center; /* Center buttons */
+    }
 
-        .chat-question-btn:hover {
-            background-color: #B8860B; /* Darker gold */
-        }
+    .chat-question-btn {
+        background-color: var(--accent);
+        color: var(--white);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.2s;
+        flex-grow: 1; /* Allow buttons to grow and fill space */
+        min-width: 130px; /* Minimum width for buttons */
+        font-family: 'Lato', sans-serif; /* New font */
+    }
 
-        /* Mobile adjustments for chatbot */
-        @media (max-width: 480px) {
-            #chatbot-container {
-                bottom: 10px;
-                right: 10px;
-                flex-direction: column; /* Stack text and icon on small screens */
-                align-items: flex-end; /* Align to the right */
-            }
-            #chatbot-text {
-                order: 2; /* Place text below the icon when stacked */
-                margin-top: 5px; /* Space between text and icon */
-                font-size: 0.9rem;
-            }
-            #chat-window {
-                width: calc(100% - 20px); /* Full width minus margin */
-                height: 70vh; /* Use percentage of viewport height */
-                right: 10px;
-                bottom: 70px;
-                left: 10px; /* Center it */
-            }
-            #chat-icon {
-                width: 55px; /* Smaller icon on mobile */
-                height: 55px;
-                font-size: 1.8rem;
-            }
-            .chat-question-btn {
-                min-width: 100px; /* Adjust button size for smaller screens */
-                padding: 6px 10px;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    .chat-question-btn:hover {
+        background-color: #B8860B; /* Darker gold */
+    }
+
+    /* Mobile adjustments for chatbot */
+    @media (max-width: 480px) {
+        #chatbot-container {
+            bottom: 10px;
+            right: 10px;
+        }
+        #chat-window {
+            width: calc(100% - 20px); /* Full width minus margin */
+            height: 70vh; /* Use percentage of viewport height */
+            right: 10px;
+            bottom: 70px;
+            left: 10px; /* Center it */
+        }
+        #chat-icon {
+            width: 55px; /* Smaller icon on mobile */
+            height: 55px;
+            font-size: 1.8rem;
+        }
+        .chat-question-btn {
+            min-width: 100px; /* Adjust button size for smaller screens */
+            padding: 6px 10px;
+            font-size: 0.85rem;
+        }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="photo-container">
-            <img src="headshot.png" alt="Your Photo" class="photo">
-            <div class="text-info">
-                <div class="name-title">
-                    <div class="name">Joseph Velasco</div>
-                    <div class="title">Commissioned Texas Notary Public</div>
-                </div>
-                <div class="contact-info">
-                    <a href="tel:8323560671">832-356-0671</a>
-                    <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
-                </div>
-            </div>
-        </div>
+  <header>
+    <div class="photo-container">
+      <img src="headshot.jpg" alt="Your Photo" class="photo">
+      <div class="text-info">
+        <div class="name-title">
+          <div class="name">Joseph Velasco</div>
+          <div class="title">Commissioned Texas Notary Public</div>
+        </div>
+        <div class="contact-info">
+          <a href="tel:8323560671">832-356-0671</a>
+          <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
+        </div>
+      </div>
+    </div>
 
-        <img src="notaryseal.png" alt="Notary Seal" class="seal">
+    <img src="notaryseal.png" alt="Notary Seal" class="seal">
 
-        <h1>Texas Public Notary</h1>
-        <h2>Houston's Trusted Mobile Notary Service</h2>
-        <p>Fast, Reliable, and Direct to Your Door</p>
-        <div class="cta-btn-container">
-            <a href="tel:8323560671" class="cta-btn">Call Us</a>
-            <a href="sms:8323560671" class="cta-btn">Text Us</a>
-            <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
-        </div>
-    </header>
+    <h1>Texas Public Notary</h1> <h2>Houston's Trusted Mobile Notary Service</h2>
+    <p>Fast, Reliable, and Direct to Your Door</p>
+    <div class="cta-btn-container">
+      <a href="tel:8323560671" class="cta-btn">Call Us</a>
+      <a href="sms:8323560671" class="cta-btn">Text Us</a>
+      <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
+    </div>
+  </header>
 
-    <section class="notary-needs-banner">
-        <h3>We Handle All Your Notary Needs 24/7</h3>
-        <p>No need to travel outside of your home or office to notarize your documents.</p>
-    </section>
+  <section class="notary-needs-banner">
+    <h3>We Handle All Your Notary Needs 24/7</h3>
+    <p>No need to travel outside of your home or office to notarize your documents.</p>
+  </section>
 
-    <section class="what-we-do-section">
-        <div class="subtitle">WHAT WE DO</div>
-        <div class="main-title">Providing Fast, Affordable and Quality Notary Services</div>
-        <div class="new-services-grid">
-            <div class="new-service-button">
-                <i class="fas fa-file-signature new-service-icon"></i>
-                <div class="new-service-title">Loan Signing Services</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Certified Loan Signing Agent</li>
-                        <li>Refinances</li>
-                        <li>Buyer/Seller Packages</li>
-                        <li>HELOCs</li>
-                        <li>Reverse Mortgages</li>
-                    </ul>
-                </div>
-            </div>
+  <section class="what-we-do-section">
+      <div class="subtitle">WHAT WE DO</div>
+      <div class="main-title">Providing Top-Notch Notary Services</div>
+      <div class="new-services-grid">
+          <div class="new-service-button">
+              <i class="fas fa-file-signature new-service-icon"></i>
+              <div class="new-service-title">Loan Signing Services</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Certified Loan Signing Agent</li>
+                      <li>Refinances</li>
+                      <li>Buyer/Seller Packages</li>
+                      <li>HELOCs</li>
+                      <li>Reverse Mortgages</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-scroll new-service-icon"></i>
-                <div class="new-service-title">Take Acknowledgments & Proofs</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Verifying Signer Identity</li>
-                        <li>Certifying Voluntary Signatures</li>
-                        <li>Acknowledging Deeds, Contracts, and other Documents</li>
-                        <li>Taking a "Proof" of Document Execution by a Witness</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-scroll new-service-icon"></i>
+              <div class="new-service-title">Take Acknowledgments & Proofs</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Verifying Signer Identity</li>
+                      <li>Certifying Voluntary Signatures</li>
+                      <li>Acknowledging Deeds, Contracts, and other Documents</li>
+                      <li>Taking a "Proof" of Document Execution by a Witness</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-gavel new-service-icon"></i>
-                <div class="new-service-title">Administer Oaths & Affirmations</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Administering Oaths for Affidavits</li>
-                        <li>Swearing in Witnesses for Depositions</li>
-                        <li>Administering Oaths for Verifications</li>
-                        <li>Administering Oaths of Office</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-gavel new-service-icon"></i>
+              <div class="new-service-title">Administer Oaths & Affirmations</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Administering Oaths for Affidavits</li>
+                      <li>Swearing in Witnesses for Depositions</li>
+                      <li>Administering Oaths for Verifications</li>
+                      <li>Administering Oaths of Office</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-microphone-alt new-service-icon"></i>
-                <div class="new-service-title">Take Depositions</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Administering Oaths to Witnesses</li>
-                        <li>Recording Oral Testimony</li>
-                        <li>Marking Exhibits</li>
-                        <li>Certifying Transcripts</li>
-                        <li>Ensuring Proper Procedure</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-microphone-alt new-service-icon"></i>
+              <div class="new-service-title">Take Depositions</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Administering Oaths to Witnesses</li>
+                      <li>Recording Oral Testimony</li>
+                      <li>Marking Exhibits</li>
+                      <li>Certifying Transcripts</li>
+                      <li>Ensuring Proper Procedure</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-copy new-service-icon"></i>
-                <div class="new-service-title">Certify Copies of Documents</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Certifying True Copies of Non-Recordable Documents (e.g., diplomas, personal letters)</li>
-                        <li>Requires Presentation of Original Document</li>
-                        <li>Cannot Certify Copies of Public Records (e.g., birth certificates, marriage licenses, court documents)</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-copy new-service-icon"></i>
+              <div class="new-service-title">Certify Copies of Documents</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Certifying True Copies of Non-Recordable Documents (e.g., diplomas, personal letters)</li>
+                      <li>Requires Presentation of Original Document</li>
+                      <li>Cannot Certify Copies of Public Records (e.g., birth certificates, marriage licenses, court documents)</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-money-bill-wave new-service-icon"></i>
-                <div class="new-service-title">Protest Negotiable Instruments</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Formal Demand for Payment or Acceptance of a Negotiable Instrument</li>
-                        <li>Certifying Dishonor Upon Non-Payment or Non-Acceptance</li>
-                        <li>Notifying Parties of Dishonor</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-money-bill-wave new-service-icon"></i>
+              <div class="new-service-title">Protest Negotiable Instruments</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Formal Demand for Payment or Acceptance of a Negotiable Instrument</li>
+                      <li>Certifying Dishonor Upon Non-Payment or Non-Acceptance</li>
+                      <li>Notifying Parties of Dishonor</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-lock-open new-service-icon"></i>
-                <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Opening Safe Deposit Box Upon Court Order or Legal Requirement</li>
-                        <li>Creating Detailed Inventory of Box Contents</li>
-                        <li>Sealing Contents and Delivering Inventory to Appropriate Parties</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="new-service-button">
+              <i class="fas fa-lock-open new-service-icon"></i>
+              <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Opening Safe Deposit Box Upon Court Order or Legal Requirement</li>
+                      <li>Creating Detailed Inventory of Box Contents</li>
+                      <li>Sealing Contents and Delivering Inventory to Appropriate Parties</li>
+                  </ul>
+              </div>
+          </div>
 
-            <div class="new-service-button">
-                <i class="fas fa-clipboard-list new-service-icon"></i>
-                <div class="new-service-title">Other General Notary Services</div>
-                <div class="service-popup">
-                    <ul>
-                        <li>Affidavits & Sworn Statements</li>
-                        <li>Power of Attorney Documents</li>
-                        <li>Medical Directives & Living Wills</li>
-                        <li>Travel Consent Forms for Minors</li>
-                        <li>Vehicle Title & Bill of Sale Documents</li>
-                        <li>I-9 Employment Eligibility Verification (Authorized Agent)</li>
-                        <li>General Document Notarizations</li>
-                        <li>Apostille & Authentication Document Preparation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div class="new-service-button">
+              <i class="fas fa-clipboard-list new-service-icon"></i>
+              <div class="new-service-title">Other General Notary Services</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Affidavits & Sworn Statements</li>
+                      <li>Power of Attorney Documents</li>
+                      <li>Medical Directives & Living Wills</li>
+                      <li>Travel Consent Forms for Minors</li>
+                      <li>Vehicle Title & Bill of Sale Documents</li>
+                      <li>I-9 Employment Eligibility Verification (Authorized Agent)</li>
+                      <li>General Document Notarizations</li>
+                      <li>Apostille & Authentication Document Preparation</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </section>
+  <main>
+    <div class="section-title">Notarization Service Pricing</div>
+    <div class="pricing-section-container">
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-description">Protesting nonacceptance or nonpayment</div>
+          <hr class="card-divider">
+          <div class="service-price">$4.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Loan Signing Services</div>
+          <hr class="card-divider">
+          <div class="service-price">Contact for pricing</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Certificate and seal to a protest</div>
+          <hr class="card-divider">
+          <div class="service-price">$4.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Acknowledgment for registration (first signature)</div>
+          <hr class="card-divider">
+          <div class="service-price">$10.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Each additional signature</div>
+          <hr class="card-divider">
+          <div class="service-price">$1.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Notice of protest</div>
+          <hr class="card-divider">
+          <div class="service-price">$1.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Other protests</div>
+          <hr class="card-divider">
+          <div class="service-price">$4.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Oath/affirmation with certificate and seal</div>
+          <hr class="card-divider">
+          <div class="service-price">$4.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Deposition of a witness per 100 words</div>
+          <hr class="card-divider">
+          <div class="service-price">$0.50</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Certificate and seal to a deposition</div>
+          <hr class="card-divider">
+          <div class="service-price">$4.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Administering an oath or affirmation with/without certificate</div>
+          <hr class="card-divider">
+          <div class="service-price">$6.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Swearing a witness for a deposition</div>
+          <hr class="card-divider">
+          <div class="service-price">$6.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Certifying a copy of a non-recordable document</div>
+          <hr class="card-divider">
+          <div class="service-price">$6.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">I-9 Employment Eligibility Verification</div>
+          <hr class="card-divider">
+          <div class="service-price">$25.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">Apostille & Authentication Document Preparation</div>
+          <hr class="card-divider">
+          <div class="service-price">Contact for pricing</div>
+        </div>
+      </div>
+    </div>
 
-    <main>
-        <div class="section-title">Notarization Pricing</div>
-        <div class="pricing-section-container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-description">Protesting nonacceptance or nonpayment</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$4.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Loan Signing Services</div>
-                    <hr class="card-divider">
-                    <div class="service-price">Contact for pricing</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Certificate and seal to a protest</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$4.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Acknowledgment for registration (first signature)</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$10.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Each additional signature</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$1.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Administering an oath or affirmation</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$10.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Swearing a witness for a deposition</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$10.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Taking a deposition</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$0.50 per 100 words</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Certifying a copy of a document</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$10.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Services rendered in connection with opening and inventorying a safe deposit box</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$10.00</div>
-                </div>
-            </div>
-        </div>
+    <div class="section-title">Trip & After Hours Fees</div>
+    <div class="pricing-section-container">
+      <div class="trip-fees-grid">
+        <div class="service-card">
+          <div class="service-description">Trip Fee (Standard Business Hours)</div>
+          <hr class="card-divider">
+          <div class="service-price">$30.00 - $60.00</div>
+        </div>
+        <div class="service-card">
+          <div class="service-description">After Hours Trip Fee (8 PM - 8 AM, Weekends, Holidays)</div>
+          <hr class="card-divider">
+          <div class="service-price">$75.00 - $150.00</div>
+        </div>
+      </div>
+    </div>
 
-        <div class="section-title">Trip Fees</div>
-        <div class="pricing-section-container">
-            <div class="trip-fees-grid">
-                <div class="service-card">
-                    <div class="service-description">Within 5 miles of 77057</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$20.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">5-10 miles from 77057</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$30.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">10-15 miles from 77057</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$40.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">15-20 miles from 77057</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$50.00</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Over 20 miles from 77057</div>
-                    <hr class="card-divider">
-                    <div class="service-price">Contact for pricing</div>
-                </div>
-                 <div class="service-card">
-                    <div class="service-description">Hospital, Nursing Home, Assisted Living Facility</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$40.00+</div>
-                </div>
-            </div>
-        </div>
+    <div class="section-title">What Our Clients Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">"Joseph was prompt, professional, and very helpful. He made the notarization process incredibly easy for me. Highly recommend!" - Jane D.</div>
+      <div class="testimonial-card">"Exceptional service! I needed a notary late at night, and Joseph was there within 30 minutes. A true lifesaver." - Robert L.</div>
+      <div class="testimonial-card">"Very knowledgeable and friendly. He answered all my questions clearly and completed the document quickly. Will definitely use again." - Emily R.</div>
+      <div class="testimonial-card">"The mobile service is a game-changer. Joseph came to my office, saving me so much time. Fantastic experience." - Mark S.</div>
+    </div>
 
-        <div class="section-title">After Hours Fees</div>
-        <div class="pricing-section-container">
-            <div class="after-hours-fees-grid">
-                <div class="service-card">
-                    <div class="service-description">Before 8 AM or After 7 PM</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$20.00 additional</div>
-                </div>
-                <div class="service-card">
-                    <div class="service-description">Holidays</div>
-                    <hr class="card-divider">
-                    <div class="service-price">$50.00 additional</div>
-                </div>
-            </div>
-        </div>
+    <div class="faq-title"><i class="fas fa-question-circle"></i>Frequently Asked Questions</div>
+    <details>
+      <summary>What is a notary public?</summary>
+      <p>A notary public is a public officer appointed by the state government to witness the signing of important documents and administer oaths and affirmations. The primary purpose of a notary is to deter fraud and ensure the authenticity of signatures.</p>
+    </details>
+    <details>
+      <summary>What do I need to bring for my notarization?</summary>
+      <p>You will need to bring the document(s) to be notarized and a valid, government-issued photo identification. Acceptable IDs include a driver's license, state ID card, or passport. The ID must be current and include a photo and signature.</p>
+    </details>
+    <details>
+      <summary>Can you notarize a document that is already signed?</summary>
+      <p>No, generally not. For most notarizations (like acknowledgments), the signer must appear in person before the notary and sign the document in the notary's presence, or acknowledge their signature at the time of notarization. For oaths/affirmations, the oath must be administered directly by the notary.</p>
+    </details>
+    <details>
+      <summary>What are your operating hours?</summary>
+      <p>We offer 24/7 mobile notary services by appointment to accommodate your schedule. Standard business hours are typically 8 AM to 8 PM, Monday to Friday. Appointments outside these hours, on weekends, or holidays may incur an additional after-hours fee.</p>
+    </details>
+    <details>
+      <summary>How far do you travel?</summary>
+      <p>We primarily serve the greater Houston area. Please contact us with your specific location, and we will confirm our availability and any applicable trip fees.</p>
+    </details>
+    <details>
+      <summary>What payment methods do you accept?</summary>
+      <p>We accept various payment methods, including cash, Venmo, Zelle, Cash App, and all major credit/debit cards (Visa, MasterCard, American Express, Discover).</p>
+    </details>
+    <details>
+      <summary>Can you provide legal advice?</summary>
+      <p>As notaries public, we are prohibited from providing legal advice or explaining the contents of any document. Our role is strictly limited to witnessing signatures and administering oaths/affirmations.</p>
+    </details>
 
+    <div class="section-title">Schedule Your Appointment</div>
+    <p class="appointment-disclaimer">Appointments are not finalized until you receive a confirmation either by email or phone. We may contact you if we have any questions before finalizing your booking.</p>
+    <iframe class="scheduler" src="https://app.squarespacescheduling.com/schedule.php?owner=28811802"></iframe>
+  </main>
 
-        <div class="faq-title"><i class="fas fa-question-circle"></i>Frequently Asked Questions</div>
-        <details>
-            <summary>What do I need for my document to be notarized?</summary>
-            <ol>
-                <li>All signers must be present.</li>
-                <li>All signers must have a valid, unexpired government-issued photo identification. Acceptable forms of ID include:
-                    <ul>
-                        <li>Texas Driver's License or ID Card</li>
-                        <li>Out-of-state Driver's License or ID Card (if valid in that state)</li>
-                        <li>U.S. Passport</li>
-                        <li>Foreign Passport (must be stamped by U.S. Customs and Immigration Services)</li>
-                        <li>U.S. Military ID</li>
-                        <li>Mexican or Canadian Driver's License</li>
-                    </ul>
-                </li>
-                <li>The document must be complete and ready for signature. Notaries cannot provide legal advice or prepare documents.</li>
-                <li>If the document requires witnesses, the witnesses must be present at the time of notarization and also have valid identification. Notaries cannot act as witnesses.</li>
-            </ol>
-        </details>
+  <footer>
+    © 2024 Texas Public Notary. All Rights Reserved.
+  </footer>
 
-        <details>
-            <summary>What is a mobile notary?</summary>
-            A mobile notary is a notary public who travels to a client's location (home, office, hospital, etc.) to perform notarization services. This offers convenience and flexibility, especially for individuals who cannot easily travel or need documents notarized outside of standard business hours.
-        </details>
+    <div id="chatbot-container">
+    <div id="chat-icon"><i class="fas fa-comments"></i></div>
+    <div id="chat-window">
+      <div id="chat-header">
+        <span>Notary Chat Assistant</span>
+        <span id="close-chat">&times;</span>
+      </div>
+      <div id="chat-messages">
+        <div class="bot-message message">Hello! How can I assist you with your notary needs today?</div>
+      </div>
+      <div id="chat-input-area">
+        <button class="chat-question-btn" data-question="fees">Notary Fees?</button>
+        <button class="chat-question-btn" data-question="hours">Operating Hours?</button>
+        <button class="chat-question-btn" data-question="id">What ID do I need?</button>
+        <button class="chat-question-btn" data-question="travel">Do you travel?</button>
+      </div>
+    </div>
+  </div>
 
-        <details>
-            <summary>What areas do you serve?</summary>
-            We primarily serve the Greater Houston area, including but not limited to Houston, Spring, Cypress, Katy, Sugar Land, and surrounding communities. Please contact us to confirm availability in your specific location.
-        </details>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatIcon = document.getElementById('chat-icon');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const questionButtons = document.querySelectorAll('.chat-question-btn');
 
-        <details>
-            <summary>What are your hours of operation?</summary>
-            We offer 24/7 mobile notary services by appointment. While we strive to accommodate all requests, after-hours fees may apply for services performed before 8 AM or after 7 PM, and on holidays.
-        </details>
-
-        <details>
-            <summary>Can you notarize a document that is in a foreign language?</summary>
-            As a Texas Notary Public, I can notarize a document written in a foreign language as long as I can identify the type of notarial act required (e.g., acknowledgment, oath/affirmation). However, I cannot translate the document or certify its contents. The signer must understand what they are signing.
-        </details>
-
-        <div class="section-title">Schedule Your Appointment</div>
-        <p class="appointment-disclaimer">Please use the scheduler below to book your appointment. For immediate service or if you have questions, please call or text us directly.</p>
-        <iframe class="scheduler" src="https://app.squarespacescheduling.com/schedule.php?owner=28821935" width="100%" height="800px" frameborder="0"></iframe>
-    </main>
-
-    <footer>
-        &copy; 2024 Texas Public Notary. All rights reserved.
-    </footer>
-
-    <div id="chatbot-container">
-        <div id="chatbot-text">Got a Question?</div>
-        <div id="chat-icon"><i class="fas fa-comments"></i></div>
-
-        <div id="chat-window">
-            <div id="chat-header">
-                Chat with Us!
-                <span id="close-chat">&times;</span>
-            </div>
-            <div id="chat-messages">
-                <div class="message bot-message">Hello! How can I assist you today?</div>
-            </div>
-            <div id="chat-input-area">
-                <button class="chat-question-btn" data-question="What services do you offer?">Services?</button>
-                <button class="chat-question-btn" data-question="What are your fees?">Fees?</button>
-                <button class="chat-question-btn" data-question="What do I need for notarization?">Requirements?</button>
-                <button class="chat-question-btn" data-question="What are your hours?">Hours?</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const chatIcon = document.getElementById('chat-icon');
-            const chatWindow = document.getElementById('chat-window');
-            const closeChatBtn = document.getElementById('close-chat');
-            const chatMessages = document.getElementById('chat-messages');
-            const chatInputArea = document.getElementById('chat-input-area');
-            const chatbotText = document.getElementById('chatbot-text');
-
-            // Toggle chat window visibility
-            chatIcon.addEventListener('click', () => {
-                chatWindow.classList.toggle('open');
-                chatbotText.style.display = chatWindow.classList.contains('open') ? 'none' : 'block';
-                scrollToBottom();
-            });
-
-            closeChatBtn.addEventListener('click', () => {
-                chatWindow.classList.remove('open');
-                chatbotText.style.display = 'block'; // Show text again when closed
-            });
-
-            // Handle pre-defined questions
-            chatInputArea.addEventListener('click', (event) => {
-                if (event.target.classList.contains('chat-question-btn')) {
-                    const question = event.target.dataset.question;
-                    addUserMessage(question);
-                    handleBotResponse(question);
-                }
-            });
-
-            function addUserMessage(text) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'user-message');
-                messageDiv.textContent = text;
-                chatMessages.appendChild(messageDiv);
-                scrollToBottom();
-            }
-
-            function addBotMessage(text) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('message', 'bot-message');
-                messageDiv.textContent = text;
-                chatMessages.appendChild(messageDiv);
-                scrollToBottom();
-            }
-
-            function scrollToBottom() {
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function handleBotResponse(question) {
-                let response = "I'm sorry, I don't have an answer to that specific question at the moment. Please call or email us for more detailed assistance!";
-
-                switch (question) {
-                    case "What services do you offer?":
-                        response = "We offer a wide range of mobile notary services including Loan Signings, Acknowledgments & Proofs, Oaths & Affirmations, Depositions, Certified Copies, Protest Negotiable Instruments, and Safe Deposit Box inventory. You can see more details in the 'What We Do' section above.";
-                        break;
-                    case "What are your fees?":
-                        response = "Our notarization fees are state-regulated (e.g., $10 for first signature). Trip fees are based on mileage from 77057. After-hours and holiday fees may apply. Please refer to our 'Notarization Pricing' section for a detailed breakdown.";
-                        break;
-                    case "What do I need for notarization?":
-                        response = "You'll need all signers present, valid government-issued photo ID for each signer, and the document must be complete and ready for signature. If witnesses are required, they must also be present with valid ID.";
-                        break;
-                    case "What are your hours?":
-                        response = "We offer 24/7 mobile notary services by appointment. After-hours fees apply before 8 AM or after 7 PM, and on holidays. You can schedule an appointment using the scheduler on our page.";
-                        break;
-                }
-                setTimeout(() => addBotMessage(response), 500); // Simulate typing delay
-            }
-
-            // Initially hide the text next to the chatbot icon
-            chatbotText.style.display = 'block';
-        });
-    </script>
+        const qa = {
+            fees: {
+                question: "What are your notary fees?",
+                answer: "Our fees are set by Texas law. The maximum fee for a notarization is $10 per signature for acknowledgments/oaths. Additional fees apply for loan signings, I-9 verifications, and travel. Please see our 'Notarization Service Pricing' section for a detailed breakdown."
+            },
+            hours: {
+                question: "What are your operating hours?",
+                answer: "We offer 24/7 mobile notary services by appointment. Standard business hours are 8 AM to 8 PM, Monday to Friday. After-hours fees apply for appointments outside these times, on weekends, or holidays."
+            },
+            id: {
+                question: "What type of ID do I need for notarization?",
+                answer: "You will need a valid, government-issued photo ID. This includes a driver's license, state ID card, or passport. The ID must be current and include both a photo and signature."
+            },
+            travel: {
+                question: "Do you travel to clients?",
+                answer: "Yes, we are a mobile notary service primarily serving the greater Houston area. A trip fee will apply based on your location. Please contact us directly to confirm availability and fees for your specific address."
+            },
+            schedule: {
+                question: "How do I schedule an appointment?",
+                answer: "You can schedule an appointment by using the scheduler iframe on our website. Please note that appointments are not finalized until you receive a confirmation either by email or phone. We may contact you if we have any questions before finalizing your booking."
+            }
+        };
+        chatIcon.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+            // Scroll to the bottom of messages when opening
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+        closeChat.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+        questionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const questionKey = button.dataset.question;
+                const data = qa[questionKey];
+                // Display user's question
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('user-message', 'message');
+                userMessageDiv.textContent = data.question;
+                chatMessages.appendChild(userMessageDiv);
+                // Display bot's answer
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('bot-message', 'message');
+                botMessageDiv.textContent = data.answer;
+                chatMessages.appendChild(botMessageDiv);
+                // Scroll to the latest message
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    });
+  </script>
 </body>
 </html>
