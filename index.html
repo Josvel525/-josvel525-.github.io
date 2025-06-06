@@ -21,10 +21,10 @@
     }
     .photo {
       position: absolute;
-      top:  0%;
+      top: 0%;
       right: 0px;
       width: 70px;
-      height:70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
       margin: 10px;
@@ -42,65 +42,6 @@
       font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: 1px;
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>FAQ Chatbot</title>
-  <style>
-    body { font-family: sans-serif; background: #f2f2f2; margin: 0; padding: 40px; }
-    #chat { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    #messages { height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background: #f9f9f9; margin-bottom: 10px; }
-    .message { margin-bottom: 10px; }
-    .user { color: blue; text-align: right; }
-    .bot { color: green; text-align: left; }
-    input, button { padding: 10px; font-size: 16px; }
-  </style>
-</head>
-<body>
-  <div id="chat">
-    <div id="messages"></div>
-    <input id="userInput" type="text" placeholder="Ask a question..." />
-    <button onclick="handleInput()">Send</button>
-  </div>
-
-  <script>
-    const responses = {
-      "what are your hours": "We're open Monday through Saturday, 9am to 6pm.",
-      "how much do you charge": "Mobile notary services start at $25 plus travel.",
-      "where are you located": "We're based in Houston, TX, and travel to clients.",
-      "how can i book": "You can call, text, or use our online form to schedule a visit.",
-      "do you notarize titles": "Yes, we notarize vehicle titles and other legal documents.",
-      "do you charge a trip fee and if so, how much is it": "Yes, we do charge trip fees. Please refer to the trip fee pricing page.",
-      "do you offer after hours services": "Yes, we are happy to assist our clients 24/7 so long as we have enough advanced notice. Please note that after hours calls will incur an additional fee which varies based on the time and day service is requested for. Please refer to the after hours fees page for more information.",
-      "do i need to have my id to obtain notary services": "Yes, a valid Government issued ID is required and must match the name of the document being notarized."
-    };
-
-    function handleInput() {
-      const inputField = document.getElementById("userInput");
-      const userText = inputField.value.trim().toLowerCase();
-      if (!userText) return;
-
-      addMessage("user", userText);
-
-      const response = responses[userText] || "Sorry, I don't understand that. Try asking something else or check the FAQ page.";
-      addMessage("bot", response);
-
-      inputField.value = "";
-    }
-
-    function addMessage(role, text) {
-      const msgContainer = document.getElementById("messages");
-      const div = document.createElement("div");
-      div.className = `message ${role}`;
-      div.textContent = text;
-      msgContainer.appendChild(div);
-      msgContainer.scrollTop = msgContainer.scrollHeight;
-    }
-  </script>
-</body>
-</html>
-
     }
     header h2 {
       margin: 0 0 0.5rem 0;
@@ -124,21 +65,32 @@
       font-size: 1.15rem;
       font-weight: 400;
     }
+    .cta-btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
     .cta-btn {
       display: inline-block;
       background: var(--accent);
       color: var(--white);
-      padding: 0.9em 2em;
+      padding: 0.9em 1.5em;
       border: none;
       border-radius: 30px;
       font-size: 1.1rem;
       font-weight: 600;
       text-decoration: none;
-      margin-top: 1rem;
       box-shadow: 0 2px 6px rgba(229,57,53,0.12);
       transition: background 0.2s;
     }
     .cta-btn:hover { background: #b71c1c; }
+    .scheduler {
+      width: 100%;
+      height: 800px;
+      border: none;
+      margin-top: 2rem;
+    }
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -212,21 +164,29 @@
     @media (max-width: 700px) {
       .testimonials-grid { grid-template-columns: 1fr; }
     }
-    .faq-list {
-      background: var(--white);
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1rem;
-      margin-bottom: 2rem;
+    .faq-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-weight: 700;
     }
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 0.7rem;
+    details {
+      margin-bottom: 1rem;
+      border: 1px solid var(--gray);
+      border-radius: 5px;
+      background: var(--white);
+      padding: 1rem;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
       color: var(--primary);
     }
-    .faq-a {
-      margin-bottom: 1.2rem;
-      color: #444;
+    ol {
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
     }
     footer {
       background: var(--primary);
@@ -245,7 +205,11 @@
     <img src="headshot.jpg" alt="Your Photo" class="photo">
     <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
-    <a href="tel:(832)356-0671" class="cta-btn">Call Now</a>
+    <div class="cta-btn-container">
+      <a href="tel:8323560671" class="cta-btn">Call</a>
+      <a href="sms:8323560671" class="cta-btn">Text</a>
+      <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email</a>
+    </div>
   </header>
   <main>
     <div class="section-title">Notarization Pricing</div>
@@ -270,16 +234,8 @@
       <div class="service-card">After Hours: 11:30 PM – 6:00 AM <span>$65</span></div>
       <div class="service-card">Trip Fee: Greater Houston <span>$35</span></div>
       <div class="service-card">Trip Fee: Surrounding Area <span>$55—$75</span></div>
-      <div class="service-card">Acknowledgment for registration (first signature) <span>$10</span></div>
-      <div class="service-card">Each additional signature <span>$1</span></div>
-      <div class="service-card">Oath/affirmation with certificate and seal <span>$10</span></div>
-      <div class="service-card">Certificate under seal not otherwise provided <span>$10</span></div>
-      <div class="service-card">Copies per page <span>$1</span></div>
-      <div class="service-card">Deposition of a witness per 100 words <span>$1</span></div>
-      <div class="service-card">Swearing witness to deposition <span>$10</span></div>
-      <div class="service-card">Notarial acts not listed <span>$10</span></div>
     </div>
-
+    
     <div class="section-title">What Our Clients Say</div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
@@ -307,19 +263,41 @@
         <span class="author">— Bryan K.</span>
       </div>
     </div>
+    
+    <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
+    <details>
+      <summary>Can a notary public give me legal advice?</summary>
+      I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN TEXAS AND MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE.
+    </details>
+    <details>
+      <summary>Do you offer after hours services?</summary>
+      Absolutely, please text us at 832-356-0671 or email us at info@texaspublicnotary.us for after hours or other special requests!
+    </details>
+    <details>
+      <summary>Can notary publics in Texas perform notary acts in all counties in Texas?</summary>
+      Yes, all active Texas commissioned notary publics can perform notary acts anywhere in the state of Texas.
+    </details>
+    <details>
+      <summary>Will I need a government issued identification card to obtain notarization services?</summary>
+      Yes. You will need valid identification and the name on the identification card must match the name and signature of the document being notarized.
+    </details>
+    <details>
+      <summary>Can you notarize a document that is already signed?</summary>
+      Yes, but all individuals who’s name and signature are to be notarized must be there in person, with valid identification, at the time your document is notarized.
+    </details>
+    <details>
+      <summary>What are other requirements to obtain notarizations?</summary>
+      <ol>
+        <li>The signer has been positively identified by the Texas notary.</li>
+        <li>The signer has personally appeared before the Texas notary to sign the document willingly, without any coercion, and for the purpose stated on the document.</li>
+        <li>The Texas notary performed the notarial act on the date stated on the notarial certificate.</li>
+      </ol>
+    </details>
 
-    <div class="section-title">Frequently Asked Questions</div>
-    <div class="faq-list">
-      <div class="faq-q">Can a notary public give me legal advice?</div>
-      <div class="faq-q">Do you offer after hours services?</div>
-      <div class="faq-q">Can Texas notaries serve in all counties?</div>
-      <div class="faq-q">Do I need government-issued ID to be notarized?</div>
-      <div class="faq-q">Can you notarize documents already signed?</div>
-      <div class="faq-q">What else is required for notarization?</div>
-    </div>
+    <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
   </main>
   <footer>
-    &copy; 2025 Houston Mobile Notary Services &mdash; Serving Houston and Surrounding Areas
+    &copy; 2025 Houston Mobile Notary Services — Serving Houston and Surrounding Areas
   </footer>
 </body>
 </html>
