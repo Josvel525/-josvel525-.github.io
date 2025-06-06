@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas Public Notary</title>
+  <title>Texas Public Notary - Houston's Trusted Mobile Notary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -15,11 +15,12 @@
       --white: #fff;
       --gray: #eee;
       --shadow: 0 2px 8px rgba(0,0,0,0.06);
-      --qabox-bg: #fce4ec; /* Light pink for Q&A boxes */
+      --qabox-bg: #e1bee7; /* Light purple for Q&A boxes - NEW COLOR */
       --chatbot-bg: #e0f2f7; /* Light blue for chatbot background */
       --chatbot-header-bg: #007bb6; /* Darker blue for chatbot header */
       --user-message-bg: #DCF8C6; /* Greenish for user messages */
       --bot-message-bg: #EAEAEA; /* Light gray for bot messages */
+      --testimonial-bg: #fff8e1; /* Light yellow for testimonials - NEW COLOR */
     }
     body {
       margin: 0;
@@ -279,35 +280,22 @@
     /* New styles for the "Notary Needs Banner" section */
     .notary-needs-banner {
       background-color: var(--secondary-blue); /* Changed to a deep blue */
-      /* Updated slanted line effect for more pop and sparkle */
-      background-image: linear-gradient(
+      /* Updated slanted line effect with brighter colors */
+      background-image: repeating-linear-gradient(
           -45deg,
-          rgba(255,255,255,0.2) 0%, /* Brighter white, more visible */
-          rgba(255,255,255,0.2) 10%,
-          rgba(255,0,0,0.1) 10%, /* Brighter red, more visible */
-          rgba(255,0,0,0.1) 20%,
-          transparent 20%,
-          transparent 100%
-      ),
-      linear-gradient(
-          45deg,
-          rgba(255,255,255,0.2) 0%, /* Mirror on the other side */
-          rgba(255,255,255,0.2) 10%,
-          rgba(255,0,0,0.1) 10%,
-          rgba(255,0,0,0.1) 20%,
-          transparent 20%,
-          transparent 100%
-      );
-      background-size: 150px 150px; /* Larger pattern for thick lines, adjust as needed */
-      background-repeat: repeat-x; /* Repeat horizontally */
-      background-position: left top, right top; /* Position the two gradients */
-
+          rgba(255,255,255,0.3) 0px, /* Brighter white */
+          rgba(255,255,255,0.3) 6px,
+          transparent 6px,
+          transparent 12px,
+          rgba(255,50,50,0.2) 12px, /* Brighter red */
+          rgba(255,50,50,0.2) 18px
+      ); /* Fixed the repeating linear gradient for red and white stripes */
+      background-size: 25px 25px; /* Adjust size for stripe density */
       color: var(--white);
       text-align: center;
       padding: 1.5rem 1rem; /* Decreased vertical padding */
       margin-bottom: 3rem; /* Space below this banner */
       box-shadow: var(--shadow); /* Added shadow for pop */
-      overflow: hidden; /* Hide excess pattern */
     }
 
     .notary-needs-banner h3 {
@@ -358,14 +346,13 @@
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
-    /* New: Specific styles for Trip & After Hours pricing to be side-by-side */
-    .pricing-two-columns {
+    /* New: Styles for separate Trip and After Hours pricing */
+    .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Two columns */
+        grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
         margin-bottom: 2rem;
     }
-    /* Use this class for the "Trip & After Hours Fees" grids */
 
 
     .service-card {
@@ -416,7 +403,7 @@
 
     /* Responsive for mobile */
     @media (max-width: 700px) {
-      .services-grid, .pricing-two-columns { /* Apply to both grid types */
+      .services-grid, .trip-fees-grid, .after-hours-fees-grid { /* Apply to all pricing grids */
         grid-template-columns: 1fr;
       }
       /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
@@ -513,17 +500,18 @@
       margin-bottom: 2rem;
     }
     .testimonial-card {
-      background: var(--white);
+      background: var(--testimonial-bg); /* NEW BACKGROUND COLOR */
       border-radius: 10px;
       box-shadow: var(--shadow);
       padding: 1.5rem 1rem;
       font-size: 1rem;
       font-style: italic;
       font-family: 'Lato', sans-serif; /* New font */
+      border-left: 5px solid var(--accent); /* Add a subtle accent line */
     }
     details {
       margin-bottom: 1.5rem;
-      background: var(--qabox-bg); /* Q&A box color */
+      background: var(--qabox-bg); /* Q&A box color - CHANGED */
       border-radius: 8px;
       padding: 1rem;
       box-shadow: var(--shadow);
@@ -741,14 +729,14 @@
 <body>
   <header>
     <div class="photo-container">
-      <img src="headshot.jpg" alt="Your Photo" class="photo">
+      <img src="headshot.png" alt="Your Photo" class="photo">
       <div class="text-info">
         <div class="name-title">
           <div class="name">Joseph Velasco</div>
           <div class="title">Commissioned Texas Notary Public</div>
         </div>
         <div class="contact-info">
-          <a href="tel:8323560671">832-356-0671</a>
+          <a href="tel:8323560671">(832)356-0671</a>
           <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
         </div>
       </div>
@@ -772,7 +760,7 @@
 
   <section class="what-we-do-section">
       <div class="subtitle">WHAT WE DO</div>
-      <div class="main-title">Providing Top-Notch Notary Services</div>
+      <div class="main-title">Providing Fast, Affordable and Quality Notary Services</div>
       <div class="new-services-grid">
           <div class="new-service-button">
               <i class="fas fa-file-signature new-service-icon"></i>
@@ -947,8 +935,8 @@
     </div>
   </div>
 
-  <div class="section-title">Trip & After Hours Fees Service Pricing</div>
-  <div class="pricing-two-columns">
+  <div class="section-title">Trip Fees</div>
+  <div class="trip-fees-grid">
     <div class="service-card">
       <div class="service-description">Trip Fee | Greater Houston</div>
       <hr class="card-divider">
@@ -959,6 +947,10 @@
       <hr class="card-divider">
       <div class="service-price">$49.95-$69.95 (based on distance and appointment time)</div>
     </div>
+  </div>
+
+  <div class="section-title">After Hours Fees</div>
+  <div class="after-hours-fees-grid">
     <div class="service-card">
       <div class="service-description">After Hours Fee | 6:00 PM – 11:30 PM</div>
       <hr class="card-divider">
