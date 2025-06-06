@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Texas Public Notary</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
       --primary: #1a237e;
@@ -85,34 +86,75 @@
     }
     .cta-btn:hover { background: #B8860B; /* Darker gold */ }
 
-    /* New styles for pop-out buttons */
-    .service-buttons-container {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
-        padding: 0 1rem; /* Padding for responsive design */
+    /* --- New styles for the "What We Do" section and pop-out buttons --- */
+    .what-we-do-section {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 0 1rem;
+        background: var(--bg); /* Match body background */
+        color: #222; /* Ensure text is visible */
+        padding-bottom: 3rem; /* Space below the section */
     }
 
-    .service-button {
-        position: relative;
-        background: var(--white);
+    .what-we-do-section .subtitle {
+        font-size: 1.1rem;
         color: var(--primary);
-        padding: 0.8em 1.3em;
-        border: 2px solid var(--primary);
-        border-radius: 30px;
-        font-size: 1rem;
         font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s, transform 0.2s;
-        box-shadow: var(--shadow);
-        white-space: nowrap; /* Prevents text from wrapping */
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
     }
 
-    .service-button:hover {
-        background: var(--primary);
-        color: var(--white);
-        transform: translateY(-3px); /* Slight lift on hover */
+    .what-we-do-section .main-title {
+        font-size: 2rem;
+        color: #222;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-weight: 700;
+    }
+
+    .new-services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns, min 200px wide */
+        gap: 1.5rem;
+        justify-content: center; /* Center grid items horizontally */
+        max-width: 1000px; /* Limit overall width */
+        margin: 0 auto; /* Center the grid container */
+    }
+
+    .new-service-button {
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Vertically center content */
+        text-align: center;
+        position: relative; /* For popup positioning */
+        cursor: pointer;
+        transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
+        min-height: 150px; /* Ensure a consistent height for cards */
+        color: #222; /* Default text color */
+    }
+
+    .new-service-button:hover {
+        transform: scale(1.05) translateY(-5px); /* Slightly larger and lift on hover */
+        box-shadow: 0 8px 20px 4px rgba(26,35,126,0.18), 0 3px 10px rgba(0,0,0,0.08);
+        z-index: 2; /* Bring to front on hover */
+    }
+
+    .new-service-icon {
+        font-size: 3.5rem; /* Large icon size */
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+
+    .new-service-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--primary); /* Main title color */
+        margin-bottom: 0.5rem;
     }
 
     .service-popup {
@@ -137,7 +179,7 @@
         margin-top: 10px; /* Space between button and popup */
     }
 
-    .service-button:hover .service-popup {
+    .new-service-button:hover .service-popup {
         opacity: 1;
         visibility: visible;
     }
@@ -151,10 +193,12 @@
     .service-popup ul li {
         padding: 0.4rem 0;
         border-bottom: 1px solid var(--gray);
+        font-size: 0.95rem; /* Slightly smaller text in popup */
     }
     .service-popup ul li:last-child {
         border-bottom: none;
     }
+    /* --- End new styles for "What We Do" section and pop-out buttons --- */
 
 
     main {
@@ -170,7 +214,7 @@
       text-align: center;
       font-weight: 700;
     }
-    .top-bar { /* This class seems misplaced or unused in your original CSS, but leaving it as is */
+    .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
       background-color: #0056b3;
       color: white;
       padding: 1rem 2rem;
@@ -236,13 +280,32 @@
       .services-grid {
         grid-template-columns: 1fr;
       }
-      /* Adjust pop-up positioning for smaller screens if needed, though translateX(-50%) helps */
+      /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
       .service-popup {
           left: 50%;
           transform: translateX(-50%);
           max-width: 90%; /* Ensure it fits on smaller screens */
       }
     }
+    @media (max-width: 480px) {
+        .new-service-button {
+            padding: 1rem 0.5rem;
+            min-height: 120px;
+        }
+        .new-service-icon {
+            font-size: 3rem;
+        }
+        .new-service-title {
+            font-size: 1rem;
+        }
+        .service-popup {
+            min-width: unset; /* Remove min-width to allow shrinking */
+            width: 100%; /* Take full width of parent on small screens */
+            left: 0;
+            transform: none; /* No translateX to avoid pushing off screen */
+        }
+    }
+
     .testimonials-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -307,35 +370,87 @@
       <a href="sms:8323560671" class="cta-btn">Text Us</a>
       <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
     </div>
+  </header>
 
-    <div class="service-buttons-container">
-        <div class="service-button">
-            Loan Signing Services
-            <div class="service-popup">
-                <ul>
-                    <li>Certified Loan Signing Agent</li>
-                    <li>Refinances</li>
-                    <li>Buyer/Seller Packages</li>
-                    <li>HELOCs</li>
-                    <li>Reverse Mortgages</li>
-                </ul>
-            </div>
-        </div>
-        <div class="service-button">
-            General Notary Work
-            <div class="service-popup">
-                <ul>
-                    <li>Take acknowledgments and proofs</li>
-                    <li>Administer oaths and affirmations</li>
-                    <li>Take depositions</li>
-                    <li>Certify copies of documents not recordable in the public record</li>
-                    <li>Protest negotiable instruments</li>
-                    <li>Open and inventory safe deposit boxes</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-    </header>
+  <section class="what-we-do-section">
+      <div class="subtitle">WHAT WE DO</div>
+      <div class="main-title">Providing Top-Notch Notary Services</div>
+      <div class="new-services-grid">
+          <div class="new-service-button">
+              <i class="fas fa-file-signature new-service-icon"></i>
+              <div class="new-service-title">Loan Signing Services</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>Certified Loan Signing Agent</li>
+                      <li>Refinances</li>
+                      <li>Buyer/Seller Packages</li>
+                      <li>HELOCs</li>
+                      <li>Reverse Mortgages</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-scroll new-service-icon"></i>
+              <div class="new-service-title">Take Acknowledgments & Proofs</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Acknowledgments & Proofs here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-gavel new-service-icon"></i>
+              <div class="new-service-title">Administer Oaths & Affirmations</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Oaths & Affirmations here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-microphone-alt new-service-icon"></i>
+              <div class="new-service-title">Take Depositions</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Depositions here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-copy new-service-icon"></i>
+              <div class="new-service-title">Certify Copies of Documents</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Certifying Copies here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-money-bill-wave new-service-icon"></i>
+              <div class="new-service-title">Protest Negotiable Instruments</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Protesting Instruments here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-lock-open new-service-icon"></i>
+              <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for Safe Deposit Boxes here]</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </section>
   <main>
     <div class="section-title">Notarization Service Pricing</div>
   <div class="services-grid">
