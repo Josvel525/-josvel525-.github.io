@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas Public Notary - Houston's Trusted Mobile Notary</title>
+  <title>Texas Public Notary - Houston's Trusted Mobile notary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -331,6 +331,17 @@
       text-align: center;
       font-weight: 700;
     }
+
+    /* NEW: Styling for the section containers with borders */
+    .pricing-section-container {
+        border: 1px solid var(--gray); /* Light gray border */
+        border-radius: 15px; /* Rounded corners */
+        padding: 1.5rem; /* Inner padding */
+        margin-bottom: 2rem; /* Space between sections */
+        background-color: var(--white); /* White background inside border */
+        box-shadow: var(--shadow); /* Subtle shadow for depth */
+    }
+
     .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
       background-color: #0056b3;
       color: white;
@@ -344,14 +355,14 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      margin-bottom: 2rem;
+      /* margin-bottom: 2rem; Removed as parent container now has it */
     }
     /* New: Styles for separate Trip and After Hours pricing */
     .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; Removed as parent container now has it */
     }
 
 
@@ -462,6 +473,9 @@
       }
       .section-title {
         font-size: 1.4rem; /* Adjusted for mobile */
+      }
+      .pricing-section-container {
+        padding: 1rem; /* Reduce padding on mobile */
       }
     }
     @media (max-width: 480px) {
@@ -736,7 +750,7 @@
           <div class="title">Commissioned Texas Notary Public</div>
         </div>
         <div class="contact-info">
-          <a href="tel:8323560671">(832)356-0671</a>
+          <a href="tel:8323560671">832-356-0671</a>
           <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
         </div>
       </div>
@@ -871,99 +885,96 @@
       </div>
   </section>
   <main>
-    <div class="section-title">Notarization Service Pricing</div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-description">Protesting nonacceptance or nonpayment</div>
-      <hr class="card-divider">
-      <div class="service-price">$4.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Loan Signing Services</div>
-      <hr class="card-divider">
-      <div class="service-price">Contact for pricing</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Certificate and seal to a protest</div>
-      <hr class="card-divider">
-      <div class="service-price">$4.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Acknowledgment for registration (first signature)</div>
-      <hr class="card-divider">
-      <div class="service-price">$10.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Each additional signature</div>
-      <hr class="card-divider">
-      <div class="service-price">$1.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Notice of protest</div>
-      <hr class="card-divider">
-      <div class="service-price">$1.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Other protests</div>
-      <hr class="card-divider">
-      <div class="service-price">$4.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Oath/affirmation with certificate and seal</div>
-      <hr class="card-divider">
-      <div class="service-price">$4.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Deposition of a witness per 100 words</div>
-      <hr class="card-divider">
-      <div class="service-price">$1.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Copies per page</div>
-      <hr class="card-divider">
-      <div class="service-price">$1.00</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Swearing witness to deposition</div>
-      <hr class="card-divider">
-      <div class="service-price">$10.00</div>
-    </div>
-      <div class="service-card">
-      <div class="service-description">Notarial acts not listed</div>
-      <hr class="card-divider">
-      <div class="service-price">$10.00</div>
-    </div>
-  </div>
-
-  <div class="section-title">Trip Fees</div>
-  <div class="trip-fees-grid">
-    <div class="service-card">
-      <div class="service-description">Trip Fee | Greater Houston</div>
-      <hr class="card-divider">
-      <div class="service-price">$34.95</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">Trip Fee | Outside Greater Houston</div>
-      <hr class="card-divider">
-      <div class="service-price">$49.95-$69.95 (based on distance and appointment time)</div>
-    </div>
-  </div>
-
-  <div class="section-title">After Hours Fees</div>
-  <div class="after-hours-fees-grid">
-    <div class="service-card">
-      <div class="service-description">After Hours Fee | 6:00 PM – 11:30 PM</div>
-      <hr class="card-divider">
-      <div class="service-price">$24.95</div>
-    </div>
-    <div class="service-card">
-      <div class="service-description">After Hours Fee | 11:30 PM – 6:00 AM</div>
-      <hr class="card-divider">
-      <div class="service-price">$49.95</div>
-    </div>
-  </div>
-
-    <div class="section-title">What Our Clients Say</div>
+    <div class="section-title">Notarization Pricing</div>
+    <div class="pricing-section-container"> <div class="services-grid">
+            <div class="service-card">
+            <div class="service-description">Protesting nonacceptance or nonpayment</div>
+            <hr class="card-divider">
+            <div class="service-price">$4.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Loan Signing Services</div>
+            <hr class="card-divider">
+            <div class="service-price">Contact for pricing</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Certificate and seal to a protest</div>
+            <hr class="card-divider">
+            <div class="service-price">$4.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Acknowledgment for registration (first signature)</div>
+            <hr class="card-divider">
+            <div class="service-price">$10.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Each additional signature</div>
+            <hr class="card-divider">
+            <div class="service-price">$1.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Notice of protest</div>
+            <hr class="card-divider">
+            <div class="service-price">$1.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Other protests</div>
+            <hr class="card-divider">
+            <div class="service-price">$4.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Oath/affirmation with certificate and seal</div>
+            <hr class="card-divider">
+            <div class="service-price">$4.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Deposition of a witness per 100 words</div>
+            <hr class="card-divider">
+            <div class="service-price">$1.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Copies per page</div>
+            <hr class="card-divider">
+            <div class="service-price">$1.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Swearing witness to deposition</div>
+            <hr class="card-divider">
+            <div class="service-price">$10.00</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Notarial acts not listed</div>
+            <hr class="card-divider">
+            <div class="service-price">$10.00</div>
+            </div>
+        </div>
+    </div> <div class="section-title">Mobile Notary Trip Fees</div>
+    <div class="pricing-section-container"> <div class="trip-fees-grid">
+            <div class="service-card">
+            <div class="service-description">Within Greater Houston</div>
+            <hr class="card-divider">
+            <div class="service-price">$34.95</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Outside Greater Houston</div>
+            <hr class="card-divider">
+            <div class="service-price">Call or Text For Pricing </div>
+            </div>
+        </div>
+    </div> <div class="section-title">After Hours Fees</div>
+    <div class="pricing-section-container"> <div class="after-hours-fees-grid">
+            <div class="service-card">
+            <div class="service-description">Appointments From 6:00 PM – 11:30 PM</div>
+            <hr class="card-divider">
+            <div class="service-price">$24.95</div>
+            </div>
+            <div class="service-card">
+            <div class="service-description">Appointments From 11:30 PM – 6:00 AM</div>
+            <hr class="card-divider">
+            <div class="service-price">$49.95</div>
+            </div>
+        </div>
+    </div> <div class="section-title">What Our Clients Say</div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!
