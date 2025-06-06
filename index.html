@@ -29,14 +29,15 @@
       box-shadow: var(--shadow);
       position: relative;
     }
+    /* Updated Notary Seal Styling */
     header .seal {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      opacity: 0.5; /* Increased visibility */
+      width: 180px; /* Increased size */
+      height: 180px; /* Increased size */
+      opacity: 0.5;
     }
     header h1 {
       margin: 0;
@@ -55,14 +56,17 @@
       font-size: 1.25rem;
       font-weight: 400;
     }
+    /* Updated Headshot Styling and Positioning */
     .photo {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 70px;
-      height: 70px;
+      top: 20px; /* Keep it near the top */
+      left: 20px; /* Move to the left */
+      width: 80px; /* Slightly larger than 70px, but still small */
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
+      border: 3px solid var(--accent); /* Added a border for prominence */
+      box-shadow: var(--shadow);
     }
     .cta-btn-container {
       display: flex;
@@ -200,6 +204,30 @@
     }
     /* --- End new styles for "What We Do" section and pop-out buttons --- */
 
+    /* New styles for the "Notary Needs Banner" section */
+    .notary-needs-banner {
+      background-color: #0056b3; /* Darker blue to match the example image */
+      color: var(--white);
+      text-align: center;
+      padding: 3rem 1rem; /* More vertical padding */
+      margin-bottom: 3rem; /* Space below this banner */
+    }
+
+    .notary-needs-banner h3 {
+      font-size: 2.2rem; /* Large and bold for main message */
+      margin: 0 0 0.8rem 0;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .notary-needs-banner p {
+      font-size: 1.1rem; /* Smaller text for sub-message */
+      margin: 0;
+      max-width: 700px; /* Limit line length for readability */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
 
     main {
       max-width: 900px;
@@ -304,6 +332,12 @@
             left: 0;
             transform: none; /* No translateX to avoid pushing off screen */
         }
+        .notary-needs-banner h3 {
+          font-size: 1.8rem; /* Smaller font for small screens */
+        }
+        .notary-needs-banner p {
+          font-size: 0.95rem;
+        }
     }
 
     .testimonials-grid {
@@ -371,6 +405,11 @@
       <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
     </div>
   </header>
+
+  <section class="notary-needs-banner">
+    <h3>We Handle All Your Notary Needs 24/7</h3>
+    <p>No need to travel outside of your home or office to notarize your documents.</p>
+  </section>
 
   <section class="what-we-do-section">
       <div class="subtitle">WHAT WE DO</div>
@@ -446,6 +485,16 @@
               <div class="service-popup">
                   <ul>
                       <li>[Add specific details for Safe Deposit Boxes here]</li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="new-service-button">
+              <i class="fas fa-clipboard-list new-service-icon"></i>
+              <div class="new-service-title">Other General Notary Services</div>
+              <div class="service-popup">
+                  <ul>
+                      <li>[Add specific details for other general notary services here]</li>
                   </ul>
               </div>
           </div>
