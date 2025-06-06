@@ -7,7 +7,7 @@
   <style>
     :root {
       --primary: #1a237e;
-      --accent: #FFD700; /* Changed to gold */
+      --accent: #DAA520; /* Bold gold color */
       --bg: #f5f6fa;
       --white: #fff;
       --gray: #eee;
@@ -23,7 +23,7 @@
     header {
       background: var(--primary);
       color: var(--white);
-      padding: 3rem 0;
+      padding: 4rem 0;
       text-align: center;
       box-shadow: var(--shadow);
       position: relative;
@@ -33,19 +33,19 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 150px;
-      height: 150px;
-      opacity: 0.2; /* Blended into background */
+      width: 120px;
+      height: 120px;
+      opacity: 0.5; /* Increased visibility */
     }
     header h1 {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 1.8rem; /* Reduced font size */
       font-weight: 700;
       letter-spacing: 1.5px;
     }
     header h2 {
       margin: 0.5rem 0;
-      font-size: 2rem;
+      font-size: 1.4rem; /* Reduced font size */
       font-weight: 600;
       letter-spacing: 1.2px;
     }
@@ -53,6 +53,16 @@
       margin: 1rem 0;
       font-size: 1.25rem;
       font-weight: 400;
+    }
+    .photo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--white);
+      object-fit: cover;
     }
     .cta-btn-container {
       display: flex;
@@ -62,18 +72,18 @@
     }
     .cta-btn {
       display: inline-block;
-      background: var(--accent); /* Gold color */
-      color: var(--primary);
-      padding: 0.9em 1.5em;
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.8em 1.3em;
       border: none;
       border-radius: 30px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
       transition: background 0.2s;
     }
-    .cta-btn:hover { background: #DAA520; /* Darker gold */ }
+    .cta-btn:hover { background: #B8860B; /* Darker gold */ }
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -168,6 +178,7 @@
     <h1>Texas Public Notary Services</h1>
     <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
+    <img src="headshot.jpg" alt="Your Photo" class="photo">
     <div class="cta-btn-container">
       <a href="tel:8323560671" class="cta-btn">Call Us</a>
       <a href="sms:8323560671" class="cta-btn">Text Us</a>
@@ -178,47 +189,57 @@
     <div class="section-title">Notarization Pricing</div>
     <div class="services-grid">
       <div class="service-card">
+        <div>Greater Houston</div>
+        <span>$35</span>
+      </div>
+      <div class="service-card">
+        <div>Outside Greater Houston</div>
+        <span>$50 - $75</span>
+      </div>
+      <div class="service-card">
+        <div>6:00 PM – 11:30 PM</div>
+        <span>$25</span>
+      </div>
+      <div class="service-card">
+        <div>11:30 PM – 6:00 AM</div>
+        <span>$50</span>
+      </div>
+      <div class="service-card">
         <div>Protesting nonacceptance or nonpayment</div>
         <span>$4</span>
       </div>
       <div class="service-card">
-        <div>Notice of protest</div>
-        <span>$1</span>
-      </div>
-      <div class="service-card">
-        <div>Other protests</div>
-        <span>$4</span>
-      </div>
-      <div class="service-card">
-        <div>Certificate and seal to a protest</div>
-        <span>$4</span>
-      </div>
-    </div>
-
-    <div class="section-title">Trip Charges & After Hours Fees</div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div>After Hours: 6:00 PM – 11:30 PM</div>
-        <span>$25</span>
-      </div>
-      <div class="service-card">
-        <div>After Hours: 11:30 PM – 6:00 AM</div>
-        <span>$65</span>
-      </div>
-      <div class="service-card">
-        <div>Trip Fee: Greater Houston</div>
-        <span>$35</span>
-      </div>
-      <div class="service-card">
-        <div>Trip Fee: Surrounding Area</div>
-        <span>$55—$75</span>
+        <div>Loan Signing Services</div>
+        <span>Contact for pricing</span>
       </div>
     </div>
 
     <div class="section-title">What Our Clients Say</div>
     <div class="testimonials-grid">
-      <div class="testimonial-card">Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!</div>
-      <div class="testimonial-card">Needed a notary on a Sunday morning. He was on time and made everything simple.</div>
+      <div class="testimonial-card">
+        Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!
+        <span class="author">— Lisa M.</span>
+      </div>
+      <div class="testimonial-card">
+        Needed a notary on a Sunday morning. He was on time and made everything simple.
+        <span class="author">— Eric D.</span>
+      </div>
+      <div class="testimonial-card">
+        Clear communication and affordable pricing. Will definitely use again.
+        <span class="author">— Tanya S.</span>
+      </div>
+      <div class="testimonial-card">
+        I didn’t know what to expect but he explained everything and made it super easy.
+        <span class="author">— Mike H.</span>
+      </div>
+      <div class="testimonial-card">
+        Very professional. Even my lawyer was impressed with how well organized he was.
+        <span class="author">— Rachel T.</span>
+      </div>
+      <div class="testimonial-card">
+        It felt like I was dealing with someone who genuinely cared. That’s rare.
+        <span class="author">— Bryan K.</span>
+      </div>
     </div>
 
     <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
@@ -229,6 +250,26 @@
     <details>
       <summary>Do you offer after hours services?</summary>
       Absolutely, please text us at 832-356-0671 or email us at info@texaspublicnotary.us for after hours or other special requests!
+    </details>
+    <details>
+      <summary>Can notary publics in Texas perform notary acts in all counties in Texas?</summary>
+      Yes, all active Texas commissioned notary publics can perform notary acts anywhere in the state of Texas.
+    </details>
+    <details>
+      <summary>Will I need a government issued identification card to obtain notarization services?</summary>
+      Yes. You will need valid identification and the name on the identification card must match the name and signature of the document being notarized.
+    </details>
+    <details>
+      <summary>Can you notarize a document that is already signed?</summary>
+      Yes, but all individuals who’s name and signature are to be notarized must be there in person, with valid identification, at the time your document is notarized.
+    </details>
+    <details>
+      <summary>What are other requirements to obtain notarizations?</summary>
+      <ol>
+        <li>The signer has been positively identified by the Texas notary.</li>
+        <li>The signer has personally appeared before the Texas notary to sign the document willingly, without any coercion, and for the purpose stated on the document.</li>
+        <li>The Texas notary performed the notarial act on the date stated on the notarial certificate.</li>
+      </ol>
     </details>
 
     <p class="appointment-disclaimer">
