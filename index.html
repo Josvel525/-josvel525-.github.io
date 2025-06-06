@@ -68,6 +68,7 @@
       justify-content: center;
       gap: 1rem;
       margin-top: 1.5rem;
+      margin-bottom: 2rem; /* Added margin for space below CTA buttons */
     }
     .cta-btn {
       display: inline-block;
@@ -83,6 +84,79 @@
       transition: background 0.2s;
     }
     .cta-btn:hover { background: #B8860B; /* Darker gold */ }
+
+    /* New styles for pop-out buttons */
+    .service-buttons-container {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+        padding: 0 1rem; /* Padding for responsive design */
+    }
+
+    .service-button {
+        position: relative;
+        background: var(--white);
+        color: var(--primary);
+        padding: 0.8em 1.3em;
+        border: 2px solid var(--primary);
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+        box-shadow: var(--shadow);
+        white-space: nowrap; /* Prevents text from wrapping */
+    }
+
+    .service-button:hover {
+        background: var(--primary);
+        color: var(--white);
+        transform: translateY(-3px); /* Slight lift on hover */
+    }
+
+    .service-popup {
+        position: absolute;
+        top: 100%; /* Position below the button */
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--white);
+        border: 1px solid var(--gray);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        padding: 1rem;
+        min-width: 250px;
+        max-width: 300px;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        text-align: left;
+        color: #333;
+        font-weight: 400;
+        margin-top: 10px; /* Space between button and popup */
+    }
+
+    .service-button:hover .service-popup {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .service-popup ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .service-popup ul li {
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--gray);
+    }
+    .service-popup ul li:last-child {
+        border-bottom: none;
+    }
+
+
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -95,7 +169,8 @@
       margin-top: 2.5rem;
       text-align: center;
       font-weight: 700;
-          .top-bar {
+    }
+    .top-bar { /* This class seems misplaced or unused in your original CSS, but leaving it as is */
       background-color: #0056b3;
       color: white;
       padding: 1rem 2rem;
@@ -105,62 +180,68 @@
       flex-wrap: wrap;
     }
     .services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
 
-.service-card {
-  background: var(--white);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 1.5rem 1.2rem 1rem 1.2rem;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  border: none;
-  transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-  cursor: pointer;
-}
+    .service-card {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1.2rem 1rem 1.2rem;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      border: none;
+      transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
+      cursor: pointer;
+    }
 
-.service-card:hover {
-  transform: scale(1.04) translateY(-4px);
-  box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
-  z-index: 2;
-}
+    .service-card:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
+      z-index: 2;
+    }
 
-.service-description {
-  color: #222;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 1.2rem;
-}
+    .service-description {
+      color: #222;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
 
-.card-divider {
-  width: 60%;
-  height: 1.5px;
-  background: var(--gray);
-  margin: 0 auto 1rem auto;
-  border: none;
-  opacity: 0.55;
-}
+    .card-divider {
+      width: 60%;
+      height: 1.5px;
+      background: var(--gray);
+      margin: 0 auto 1rem auto;
+      border: none;
+      opacity: 0.55;
+    }
 
-.service-price {
-  color: var(--primary);
-  font-weight: 700;
-  font-size: 1.18rem;
-  text-align: center;
-  margin-bottom: 0;
-}
+    .service-price {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.18rem;
+      text-align: center;
+      margin-bottom: 0;
+    }
 
-/* Responsive for mobile */
-@media (max-width: 700px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+    /* Responsive for mobile */
+    @media (max-width: 700px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      /* Adjust pop-up positioning for smaller screens if needed, though translateX(-50%) helps */
+      .service-popup {
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 90%; /* Ensure it fits on smaller screens */
+      }
     }
     .testimonials-grid {
       display: grid;
@@ -226,7 +307,35 @@
       <a href="sms:8323560671" class="cta-btn">Text Us</a>
       <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
     </div>
-  </header>
+
+    <div class="service-buttons-container">
+        <div class="service-button">
+            Loan Signing Services
+            <div class="service-popup">
+                <ul>
+                    <li>Certified Loan Signing Agent</li>
+                    <li>Refinances</li>
+                    <li>Buyer/Seller Packages</li>
+                    <li>HELOCs</li>
+                    <li>Reverse Mortgages</li>
+                </ul>
+            </div>
+        </div>
+        <div class="service-button">
+            General Notary Work
+            <div class="service-popup">
+                <ul>
+                    <li>Take acknowledgments and proofs</li>
+                    <li>Administer oaths and affirmations</li>
+                    <li>Take depositions</li>
+                    <li>Certify copies of documents not recordable in the public record</li>
+                    <li>Protest negotiable instruments</li>
+                    <li>Open and inventory safe deposit boxes</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </header>
   <main>
     <div class="section-title">Notarization Service Pricing</div>
   <div class="services-grid">
@@ -285,6 +394,7 @@
       <hr class="card-divider">
       <div class="service-price">$10.00</div>
     </div>
+      <div class="service-card">
       <div class="service-description">Notarial acts not listed</div>
       <hr class="card-divider">
       <div class="service-price">$10.00</div>
