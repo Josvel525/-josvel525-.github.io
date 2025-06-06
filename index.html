@@ -14,6 +14,10 @@
       --gray: #eee;
       --shadow: 0 2px 8px rgba(0,0,0,0.06);
       --qabox-bg: #fce4ec; /* Light pink for Q&A boxes */
+      --chatbot-bg: #e0f2f7; /* Light blue for chatbot background */
+      --chatbot-header-bg: #007bb6; /* Darker blue for chatbot header */
+      --user-message-bg: #DCF8C6; /* Greenish for user messages */
+      --bot-message-bg: #EAEAEA; /* Light gray for bot messages */
     }
     body {
       margin: 0;
@@ -24,30 +28,71 @@
     header {
       background: var(--primary);
       color: var(--white);
-      padding: 4rem 0;
+      padding: 4rem 0; /* Base padding, adjusted by content positioning */
       text-align: center;
       box-shadow: var(--shadow);
       position: relative;
+      padding-top: 100px; /* Make space for top-left/right elements */
+      padding-bottom: 3rem; /* Adjusted for overall header height */
     }
-    /* Updated Notary Seal Styling */
+
+    /* Notary Seal Styling - Top Right */
     header .seal {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 180px; /* Increased size */
-      height: 180px; /* Increased size */
-      opacity: 0.3;
+      top: 10px; /* Distance from top */
+      right: 10px; /* Distance from right */
+      width: 120px; /* Reduced size to fit corner better */
+      height: 120px;
+      opacity: 0.6; /* Slightly more visible */
+      z-index: 1; /* Ensure it's above other elements if needed */
     }
+
+    /* Photo and Contact Info - Top Left */
+    .photo-container {
+      position: absolute;
+      top: 15px; /* Distance from top */
+      left: 15px; /* Distance from left */
+      display: flex;
+      align-items: center;
+      gap: 10px; /* Space between photo and text */
+      z-index: 2; /* Ensure it's on top */
+    }
+    .photo {
+      width: 100px; /* Larger photo */
+      height: 100px;
+      border-radius: 50%; /* Keep circular */
+      object-fit: cover;
+      border: 3px solid var(--accent); /* Keep border */
+      box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      font-size: 0.9rem; /* Adjust font size */
+      color: var(--white);
+    }
+    .contact-info a {
+      color: var(--white);
+      text-decoration: none;
+      margin-bottom: 2px; /* Small space between lines */
+      font-size: 0.95rem; /* Make links slightly larger */
+      white-space: nowrap; /* Prevent breaking phone/email */
+    }
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
     header h1 {
       margin: 0;
-      font-size: 1.8rem; /* Reduced font size */
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: 1.5px;
+      padding-top: 20px; /* Push down slightly if content overlaps */
     }
     header h2 {
       margin: 0.5rem 0;
-      font-size: 1.4rem; /* Reduced font size */
+      font-size: 1.4rem;
       font-weight: 600;
       letter-spacing: 1.2px;
     }
@@ -56,24 +101,12 @@
       font-size: 1.25rem;
       font-weight: 400;
     }
-    /* Updated Headshot Styling and Positioning */
-    .photo {
-      position: absolute;
-      top: 20px; /* Keep it near the top */
-      left: 20px; /* Move to the left */
-      width: 80px; /* Slightly larger than 70px, but still small */
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent); /* Added a border for prominence */
-      box-shadow: var(--shadow);
-    }
     .cta-btn-container {
       display: flex;
       justify-content: center;
       gap: 1rem;
       margin-top: 1.5rem;
-      margin-bottom: 2rem; /* Added margin for space below CTA buttons */
+      margin-bottom: 0; /* No bottom margin here, header padding handles it */
     }
     .cta-btn {
       display: inline-block;
@@ -206,10 +239,10 @@
 
     /* New styles for the "Notary Needs Banner" section */
     .notary-needs-banner {
-      background-color: #0056b3; /* Darker blue to match the example image */
+      background-color: #2962FF; /* Changed to a deep blue */
       color: var(--white);
       text-align: center;
-      padding: 3rem 1rem; /* More vertical padding */
+      padding: 1.5rem 1rem; /* Decreased vertical padding */
       margin-bottom: 3rem; /* Space below this banner */
     }
 
@@ -314,6 +347,27 @@
           transform: translateX(-50%);
           max-width: 90%; /* Ensure it fits on smaller screens */
       }
+      /* Adjust header for mobile */
+      header {
+        padding-top: 120px; /* More space for top elements */
+        padding-bottom: 2rem;
+      }
+      .photo-container {
+        flex-direction: column; /* Stack photo and info */
+        align-items: flex-start; /* Align photo and info to left */
+        top: 10px;
+        left: 10px;
+      }
+      .contact-info {
+        font-size: 0.8rem; /* Smaller font on mobile */
+        margin-top: 5px;
+      }
+      .seal {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        right: 10px;
+      }
     }
     @media (max-width: 480px) {
         .new-service-button {
@@ -390,15 +444,171 @@
       margin-top: 2rem;
       font-size: 1rem;
     }
+
+    /* Chatbot Styles */
+    #chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000; /* Ensure it's on top of everything */
+    }
+
+    #chat-icon {
+        width: 60px;
+        height: 60px;
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.8rem;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    #chat-icon:hover {
+        transform: scale(1.05);
+    }
+
+    #chat-window {
+        width: 320px;
+        height: 400px;
+        background-color: var(--chatbot-bg);
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: absolute;
+        bottom: 70px; /* Position above the icon */
+        right: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    #chat-window.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    #chat-header {
+        background-color: var(--chatbot-header-bg);
+        color: var(--white);
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    #close-chat {
+        font-size: 1.5rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    #chat-messages {
+        flex-grow: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .message {
+        max-width: 80%;
+        padding: 8px 12px;
+        border-radius: 15px;
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+
+    .bot-message {
+        background-color: var(--bot-message-bg);
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+    }
+
+    .user-message {
+        background-color: var(--user-message-bg);
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+    }
+
+    #chat-input-area {
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap */
+        gap: 8px; /* Space between buttons */
+        justify-content: center; /* Center buttons */
+    }
+
+    .chat-question-btn {
+        background-color: var(--accent);
+        color: var(--white);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.2s;
+        flex-grow: 1; /* Allow buttons to grow and fill space */
+        min-width: 130px; /* Minimum width for buttons */
+    }
+
+    .chat-question-btn:hover {
+        background-color: #B8860B; /* Darker gold */
+    }
+
+    /* Mobile adjustments for chatbot */
+    @media (max-width: 480px) {
+        #chatbot-container {
+            bottom: 10px;
+            right: 10px;
+        }
+        #chat-window {
+            width: calc(100% - 20px); /* Full width minus margin */
+            height: 70vh; /* Use percentage of viewport height */
+            right: 10px;
+            bottom: 70px;
+            left: 10px; /* Center it */
+        }
+        #chat-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+        .chat-question-btn {
+            min-width: 100px; /* Adjust button size for smaller screens */
+            padding: 6px 10px;
+            font-size: 0.85rem;
+        }
+    }
   </style>
 </head>
 <body>
   <header>
+    <div class="photo-container">
+      <img src="headshot.jpg" alt="Your Photo" class="photo">
+      <div class="contact-info">
+        <a href="tel:8323560671">832-356-0671</a>
+        <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
+      </div>
+    </div>
+
     <img src="notaryseal.png" alt="Notary Seal" class="seal">
+
     <h1>Texas Public Notary Services</h1>
     <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
-    <img src="headshot.jpg" alt="Your Photo" class="photo">
     <div class="cta-btn-container">
       <a href="tel:8323560671" class="cta-btn">Call Us</a>
       <a href="sms:8323560671" class="cta-btn">Text Us</a>
@@ -678,5 +888,87 @@
   <footer>
     &copy; 2025 TexasPublicNotary.US — Serving Houston and Surrounding Areas
   </footer>
+
+  <div id="chatbot-container">
+      <div id="chat-icon">
+          <i class="fas fa-comments"></i>
+      </div>
+      <div id="chat-window">
+          <div id="chat-header">
+              <h3>Notary Bot</h3>
+              <span id="close-chat">&times;</span>
+          </div>
+          <div id="chat-messages">
+              <div class="bot-message message">Hello! How can I help you today?</div>
+          </div>
+          <div id="chat-input-area">
+              <button class="chat-question-btn" data-question="trip-fee">Trip Fee?</button>
+              <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
+              <button class="chat-question-btn" data-question="id-required">ID Required?</button>
+              <button class="chat-question-btn" data-question="after-booking">After Booking?</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatIcon = document.getElementById('chat-icon');
+        const chatWindow = document.getElementById('chat-window');
+        const closeChat = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const questionButtons = document.querySelectorAll('.chat-question-btn');
+
+        const qa = {
+            "trip-fee": {
+                question: "Do you charge a trip fee and if so, how much is it?",
+                answer: "Yes, we do charge trip fees. Please refer to the trip fee pricing page."
+            },
+            "after-hours": {
+                question: "Do you offer after hours services?",
+                answer: "Yes, we are happy to assist our clients 24/7 so long as we have enough advanced notice. Please note that after hours calls will incur an additional fee which varies based on the time and day service is requested for. Please refer to the after-hours fees page for more information."
+            },
+            "id-required": {
+                question: "Do I need to have my ID to obtain notary services?",
+                answer: "Yes, a valid Government issued ID is required and must match the name of the document being notarized."
+            },
+            "after-booking": {
+                question: "Do I need to do anything after booking an appointment online?",
+                answer: "Be on the lookout for a confirmation for your requested date and time. Appointments are not finalized until you receive a confirmation either by email or phone. We may contact you if we have any questions before finalizing your booking."
+            }
+        };
+
+        chatIcon.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+            // Scroll to the bottom of messages when opening
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+
+        closeChat.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+
+        questionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const questionKey = button.dataset.question;
+                const data = qa[questionKey];
+
+                // Display user's question
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('user-message', 'message');
+                userMessageDiv.textContent = data.question;
+                chatMessages.appendChild(userMessageDiv);
+
+                // Display bot's answer
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('bot-message', 'message');
+                botMessageDiv.textContent = data.answer;
+                chatMessages.appendChild(botMessageDiv);
+
+                // Scroll to the latest message
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    });
+  </script>
 </body>
 </html>
