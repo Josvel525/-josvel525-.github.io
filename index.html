@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Texas Public Notary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --primary: #1a237e;
+      --primary: #1a237e; /* Darker blue, potentially for main header */
+      --secondary-blue: #1e3a8a; /* New dark blue for banner */
       --accent: #DAA520; /* Bold gold color */
       --bg: #f5f6fa;
       --white: #fff;
@@ -21,7 +23,7 @@
     }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Lato', Arial, sans-serif; /* Changed font */
       background: var(--bg);
       color: #222;
     }
@@ -32,7 +34,7 @@
       text-align: center;
       box-shadow: var(--shadow);
       position: relative;
-      padding-top: 100px; /* Make space for top-left/right elements */
+      padding-top: 140px; /* Make space for top-left/right elements and new photo info */
       padding-bottom: 3rem; /* Adjusted for overall header height */
     }
 
@@ -40,10 +42,10 @@
     header .seal {
       position: absolute;
       top: 10px; /* Distance from top */
-      right: 10px; /* Distance from right */
-      width: 120px; /* Reduced size to fit corner better */
-      height: 120px;
-      opacity: 0.6; /* Slightly more visible */
+      right: 15px; /* Distance from right */
+      width: 140px; /* Increased size slightly */
+      height: 140px; /* Increased size slightly */
+      opacity: 1; /* Removed transparency */
       z-index: 1; /* Ensure it's above other elements if needed */
     }
 
@@ -53,17 +55,36 @@
       top: 15px; /* Distance from top */
       left: 15px; /* Distance from left */
       display: flex;
-      align-items: center;
+      flex-direction: column; /* Stack name/title, then photo+contact */
+      align-items: flex-start; /* Align contents to the left */
       gap: 10px; /* Space between photo and text */
       z-index: 2; /* Ensure it's on top */
     }
     .photo {
-      width: 100px; /* Larger photo */
-      height: 100px;
-      border-radius: 50%; /* Keep circular */
+      width: 120px; /* Larger photo */
+      height: 120px;
+      border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--accent); /* Keep border */
+      /* Removed gold border */
       box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
+      align-self: flex-start; /* Align photo itself to left */
+    }
+    .name-title {
+      color: var(--white);
+      text-align: left;
+      margin-bottom: 5px; /* Space below title */
+    }
+    .name-title .name {
+      font-family: 'Montserrat', sans-serif; /* New font for name */
+      font-size: 1.2rem; /* Adjusted font size */
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .name-title .title {
+      font-family: 'Lato', sans-serif; /* New font for title */
+      font-size: 0.9rem; /* Adjusted font size */
+      font-weight: 400;
+      color: #ccc; /* Slightly lighter color for title */
     }
     .contact-info {
       display: flex;
@@ -78,6 +99,7 @@
       margin-bottom: 2px; /* Small space between lines */
       font-size: 0.95rem; /* Make links slightly larger */
       white-space: nowrap; /* Prevent breaking phone/email */
+      font-family: 'Lato', sans-serif; /* New font */
     }
     .contact-info a:hover {
       text-decoration: underline;
@@ -85,21 +107,27 @@
 
     header h1 {
       margin: 0;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-family: 'Montserrat', sans-serif; /* Changed font */
+      font-size: 2.2rem; /* Adjusted font size */
+      font-weight: 800; /* Bolder */
       letter-spacing: 1.5px;
+      color: var(--white); /* Ensure color is white */
       padding-top: 20px; /* Push down slightly if content overlaps */
     }
     header h2 {
       margin: 0.5rem 0;
-      font-size: 1.4rem;
+      font-family: 'Montserrat', sans-serif; /* Changed font */
+      font-size: 1.6rem; /* Adjusted font size */
       font-weight: 600;
       letter-spacing: 1.2px;
+      color: var(--white); /* Ensure color is white */
     }
     header p {
       margin: 1rem 0;
+      font-family: 'Lato', sans-serif; /* Changed font */
       font-size: 1.25rem;
       font-weight: 400;
+      color: #e0e0e0; /* Slightly off-white for body text */
     }
     .cta-btn-container {
       display: flex;
@@ -112,14 +140,15 @@
       display: inline-block;
       background: var(--accent);
       color: var(--white);
-      padding: 0.8em 1.3em;
+      padding: 0.8em 1.8em; /* Adjusted padding for pill shape */
       border: none;
-      border-radius: 30px;
+      border-radius: 30px; /* More pronounced rounded corners for pill shape */
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
       transition: background 0.2s;
+      font-family: 'Montserrat', sans-serif; /* New font */
     }
     .cta-btn:hover { background: #B8860B; /* Darker gold */ }
 
@@ -134,6 +163,7 @@
     }
 
     .what-we-do-section .subtitle {
+        font-family: 'Lato', sans-serif; /* New font */
         font-size: 1.1rem;
         color: var(--primary);
         font-weight: 600;
@@ -142,6 +172,7 @@
     }
 
     .what-we-do-section .main-title {
+        font-family: 'Montserrat', sans-serif; /* New font */
         font-size: 2rem;
         color: #222;
         margin-top: 0;
@@ -188,6 +219,7 @@
     }
 
     .new-service-title {
+        font-family: 'Montserrat', sans-serif; /* New font */
         font-size: 1.15rem;
         font-weight: 600;
         color: var(--primary); /* Main title color */
@@ -214,6 +246,7 @@
         color: #333;
         font-weight: 400;
         margin-top: 10px; /* Space between button and popup */
+        font-family: 'Lato', sans-serif; /* New font */
     }
 
     .new-service-button:hover .service-popup {
@@ -239,26 +272,41 @@
 
     /* New styles for the "Notary Needs Banner" section */
     .notary-needs-banner {
-      background-color: #2962FF; /* Changed to a deep blue */
+      background-color: var(--secondary-blue); /* Changed to a deep blue */
+      /* Slanted line effect */
+      background-image: repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.05) 0px, /* Subtle white hint */
+          rgba(255,255,255,0.05) 4px,
+          transparent 4px,
+          transparent 8px,
+          rgba(255,0,0,0.02) 8px, /* Very subtle red hint */
+          rgba(255,0,0,0.02) 12px
+      );
+      background-size: 24px 24px; /* Adjust size for stripe density */
       color: var(--white);
       text-align: center;
       padding: 1.5rem 1rem; /* Decreased vertical padding */
       margin-bottom: 3rem; /* Space below this banner */
+      box-shadow: var(--shadow); /* Added shadow for pop */
     }
 
     .notary-needs-banner h3 {
-      font-size: 2.2rem; /* Large and bold for main message */
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 2.4rem; /* Adjusted font size */
       margin: 0 0 0.8rem 0;
-      font-weight: 700;
+      font-weight: 800; /* Bolder */
       line-height: 1.2;
     }
 
     .notary-needs-banner p {
+      font-family: 'Lato', sans-serif; /* New font */
       font-size: 1.1rem; /* Smaller text for sub-message */
       margin: 0;
       max-width: 700px; /* Limit line length for readability */
       margin-left: auto;
       margin-right: auto;
+      color: #e0e0e0; /* Slightly off-white */
     }
 
 
@@ -268,8 +316,9 @@
       padding: 0 1rem;
     }
     .section-title {
-      font-size: 1.5rem;
-      color: var(--primary);
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 1.8rem; /* Adjusted font size */
+      color: var(--primary); /* Main title color */
       margin-bottom: 1.5rem;
       margin-top: 2.5rem;
       text-align: center;
@@ -304,6 +353,7 @@
       border: none;
       transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
       cursor: pointer;
+      font-family: 'Lato', sans-serif; /* New font */
     }
 
     .service-card:hover {
@@ -349,24 +399,50 @@
       }
       /* Adjust header for mobile */
       header {
-        padding-top: 120px; /* More space for top elements */
+        padding-top: 160px; /* More space for top elements on smaller screens */
         padding-bottom: 2rem;
       }
       .photo-container {
-        flex-direction: column; /* Stack photo and info */
+        flex-direction: column; /* Stack name, title, photo, and info */
         align-items: flex-start; /* Align photo and info to left */
         top: 10px;
         left: 10px;
+        gap: 5px; /* Smaller gap */
+      }
+      .photo {
+        width: 100px; /* Slightly smaller photo on mobile */
+        height: 100px;
+      }
+      .name-title .name {
+        font-size: 1.1rem;
+      }
+      .name-title .title {
+        font-size: 0.8rem;
       }
       .contact-info {
         font-size: 0.8rem; /* Smaller font on mobile */
-        margin-top: 5px;
+        margin-top: 0px;
       }
       .seal {
-        width: 80px;
-        height: 80px;
+        width: 100px; /* Smaller seal on mobile */
+        height: 100px;
         top: 10px;
         right: 10px;
+      }
+      header h1 {
+        font-size: 1.8rem; /* Adjusted for mobile */
+      }
+      header h2 {
+        font-size: 1.2rem; /* Adjusted for mobile */
+      }
+      .notary-needs-banner h3 {
+        font-size: 2rem; /* Adjusted for mobile */
+      }
+      .notary-needs-banner p {
+        font-size: 1rem; /* Adjusted for mobile */
+      }
+      .section-title {
+        font-size: 1.4rem; /* Adjusted for mobile */
       }
     }
     @media (max-width: 480px) {
@@ -385,6 +461,10 @@
             width: 100%; /* Take full width of parent on small screens */
             left: 0;
             transform: none; /* No translateX to avoid pushing off screen */
+        }
+        .cta-btn {
+          padding: 0.7em 1.5em; /* Smaller padding for smaller buttons on mobile */
+          font-size: 0.9rem;
         }
         .notary-needs-banner h3 {
           font-size: 1.8rem; /* Smaller font for small screens */
@@ -407,6 +487,7 @@
       padding: 1.5rem 1rem;
       font-size: 1rem;
       font-style: italic;
+      font-family: 'Lato', sans-serif; /* New font */
     }
     details {
       margin-bottom: 1.5rem;
@@ -414,11 +495,13 @@
       border-radius: 8px;
       padding: 1rem;
       box-shadow: var(--shadow);
+      font-family: 'Lato', sans-serif; /* New font */
     }
     summary {
       cursor: pointer;
       font-weight: bold;
       color: var(--primary);
+      font-family: 'Montserrat', sans-serif; /* New font */
     }
     ol {
       margin-top: 0.5rem;
@@ -435,6 +518,7 @@
       color: #444;
       margin-bottom: 1rem;
       text-align: center;
+      font-family: 'Lato', sans-serif; /* New font */
     }
     footer {
       background: var(--primary);
@@ -443,7 +527,22 @@
       padding: 1.2rem 0;
       margin-top: 2rem;
       font-size: 1rem;
+      font-family: 'Lato', sans-serif; /* New font */
     }
+    .faq-title {
+      font-family: 'Montserrat', sans-serif; /* New font */
+      font-size: 1.8rem; /* Adjusted size */
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .faq-title i {
+      margin-right: 10px;
+      color: var(--accent); /* Color the icon */
+    }
+
 
     /* Chatbot Styles */
     #chatbot-container {
@@ -454,22 +553,32 @@
     }
 
     #chat-icon {
-        width: 60px;
-        height: 60px;
-        background-color: var(--primary);
+        width: 65px; /* Slightly larger icon */
+        height: 65px; /* Slightly larger icon */
+        background-color: var(--accent); /* Changed color to stand out */
         color: var(--white);
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 1.8rem;
+        font-size: 2rem; /* Larger icon size */
         cursor: pointer;
-        box-shadow: var(--shadow);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
         transition: transform 0.2s ease-in-out;
+
+        /* Pulse animation */
+        animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.08); }
+        100% { transform: scale(1); }
     }
 
     #chat-icon:hover {
         transform: scale(1.05);
+        animation: none; /* Stop pulse on hover */
     }
 
     #chat-window {
@@ -482,12 +591,13 @@
         flex-direction: column;
         overflow: hidden;
         position: absolute;
-        bottom: 70px; /* Position above the icon */
+        bottom: 80px; /* Position above the icon, adjusted for larger icon */
         right: 0;
         opacity: 0;
         visibility: hidden;
         transform: translateY(20px);
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        font-family: 'Lato', sans-serif; /* New font for chatbot text */
     }
 
     #chat-window.open {
@@ -505,6 +615,7 @@
         align-items: center;
         font-size: 1.1rem;
         font-weight: 600;
+        font-family: 'Montserrat', sans-serif; /* New font for chatbot header */
     }
 
     #close-chat {
@@ -562,6 +673,7 @@
         transition: background-color 0.2s;
         flex-grow: 1; /* Allow buttons to grow and fill space */
         min-width: 130px; /* Minimum width for buttons */
+        font-family: 'Lato', sans-serif; /* New font */
     }
 
     .chat-question-btn:hover {
@@ -582,9 +694,9 @@
             left: 10px; /* Center it */
         }
         #chat-icon {
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
+            width: 55px; /* Smaller icon on mobile */
+            height: 55px;
+            font-size: 1.8rem;
         }
         .chat-question-btn {
             min-width: 100px; /* Adjust button size for smaller screens */
@@ -597,6 +709,10 @@
 <body>
   <header>
     <div class="photo-container">
+      <div class="name-title">
+        <div class="name">Joseph Velasco</div>
+        <div class="title">Commissioned Texas Notary Public</div>
+      </div>
       <img src="headshot.jpg" alt="Your Photo" class="photo">
       <div class="contact-info">
         <a href="tel:8323560671">832-356-0671</a>
@@ -902,6 +1018,8 @@
               <div class="bot-message message">Hello! How can I help you today?</div>
           </div>
           <div id="chat-input-area">
+              <button class="chat-question-btn" data-question="contact-info">Contact Info?</button>
+              <button class="chat-question-btn" data-question="service-duration">Service Duration?</button>
               <button class="chat-question-btn" data-question="trip-fee">Trip Fee?</button>
               <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
               <button class="chat-question-btn" data-question="id-required">ID Required?</button>
@@ -919,6 +1037,14 @@
         const questionButtons = document.querySelectorAll('.chat-question-btn');
 
         const qa = {
+            "contact-info": {
+                question: "How can I contact you with questions about your services?",
+                answer: "You can call or text us at 832-356-0671 or email us at info@texaspublicnotary.us"
+            },
+            "service-duration": {
+                question: "How long does the notary service take?",
+                answer: "It can take anywhere from a few minutes to hours depending on the service requested. Every client will be different based on each client’s specific needs, but typically it should not take more than 30 minutes."
+            },
             "trip-fee": {
                 question: "Do you charge a trip fee and if so, how much is it?",
                 answer: "Yes, we do charge trip fees. Please refer to the trip fee pricing page."
