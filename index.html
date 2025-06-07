@@ -412,16 +412,16 @@
       margin-bottom: 0;
     }
 
-  /* Responsive for mobile */
+/* Responsive for mobile */
 @media (max-width: 700px) {
-  .services-grid, .trip-fees-grid, .after-hours-fees-grid { /* Apply to all pricing grids */
+  /* ... existing grid and popup styles ... */
+  .services-grid, .trip-fees-grid, .after-hours-fees-grid {
     grid-template-columns: 1fr;
   }
-  /* Adjust pop-up positioning for smaller screens if necessary, though translateX(-50%) helps */
   .service-popup {
       left: 50%;
       transform: translateX(-50%);
-      max-width: 90%; /* Ensure it fits on smaller screens */
+      max-width: 90%;
   }
 
   /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
@@ -573,6 +573,7 @@
     padding: 1rem;
   }
 }
+
 
 
     @media (max-width: 480px) {
