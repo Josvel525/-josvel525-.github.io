@@ -412,7 +412,7 @@
       margin-bottom: 0;
     }
 
-    /* Responsive for mobile */
+  /* Responsive for mobile */
 @media (max-width: 700px) {
   .services-grid, .trip-fees-grid, .after-hours-fees-grid { /* Apply to all pricing grids */
     grid-template-columns: 1fr;
@@ -424,40 +424,44 @@
       max-width: 90%; /* Ensure it fits on smaller screens */
   }
 
-  /* --- ADJUSTED HEADER FOR MOBILE --- */
+  /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
   header {
-    /* Removed padding-top: 150px; -- this was likely pushing content down too much
-       We'll manage spacing with flexbox and individual element margins */
-    padding-top: 20px; /* A reasonable starting top padding for the overall header */
+    /* RESET initial padding, we'll manage space with flexbox */
+    padding-top: 20px; /* A safe top padding for the overall header */
     padding-bottom: 2rem;
-    display: flex; /* Make the header a flex container to manage its children */
-    flex-direction: column; /* Stack its direct children vertically */
+    display: flex; /* Make the header a flex container */
+    flex-direction: column; /* Stack all direct children (photo-container, h1, h2, buttons) vertically */
     align-items: center; /* Horizontally center the stacked items within the header */
     text-align: center; /* Center any direct text content of the header */
-    position: relative; /* If seal is absolutely positioned, this makes it relative to header */
+    position: relative; /* Essential for positioning the seal relative to the header */
+    box-sizing: border-box; /* Include padding/border in width calculation */
+    width: 100%; /* Ensure header takes full available width */
   }
 
   .photo-container {
+    /* Critical: Force to stack and remove absolute positioning */
     flex-direction: column; /* Stack photo, then text info */
     align-items: center; /* Center photo and text info horizontally within this container */
-    /* top and left were likely absolute positioning that caused overlap. Remove for flex flow. */
-    position: static; /* Let flexbox control positioning, prevents overlap */
-    top: auto;
-    left: auto;
-    gap: 5px; /* Smaller gap */
-    margin-bottom: 20px; /* IMPORTANT: Add more space below the photo-container to push down H1/H2 */
+    position: static !important; /* Force to normal flow, overriding any absolute positioning */
+    top: auto !important; /* Remove specific top positioning */
+    left: auto !important; /* Remove specific left positioning */
+    margin-bottom: 25px; /* **INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
+    gap: 5px; /* Smaller gap between photo and text-info */
     width: 100%; /* Ensure it takes full width for centering */
-    box-sizing: border-box; /* Include padding/border in width calculation */
+    box-sizing: border-box;
+    padding: 0 10px; /* Add slight horizontal padding to prevent edge sticking */
   }
 
   .photo {
-    width: 100px; /* Slightly smaller photo on mobile */
+    width: 100px;
     height: 100px;
-    margin-bottom: 10px; /* Add space below the photo, before the text info */
+    margin-bottom: 10px; /* Space below the photo, before the text info */
+    border-radius: 50%; /* Ensure it's perfectly round if desired */
+    object-fit: cover; /* Ensures image covers the area without distortion */
   }
 
   .text-info {
-    margin-left: 0; /* No left margin for text info when stacked */
+    margin-left: 0 !important; /* Ensure no left margin pushes it */
     text-align: center; /* Center the text content within text-info */
     width: 100%; /* Ensure it takes full width to center text if needed */
   }
@@ -465,95 +469,111 @@
   .name-title .name, .name-title .title {
     white-space: normal; /* Allow name/title to wrap if needed */
     font-size: 1rem;
-    line-height: 1.2; /* Improve readability for smaller fonts */
+    line-height: 1.2;
+    margin: 0; /* Remove any default margins that might interfere */
   }
   .name-title .title {
     font-size: 0.75rem;
   }
 
   .contact-info {
-    font-size: 0.8rem; /* Smaller font on mobile */
-    margin-top: 5px; /* Add a small margin to separate from name/title */
-    line-height: 1.4; /* Improve readability for smaller fonts */
-    white-space: normal; /* CRITICAL: Allow contact info to wrap */
+    font-size: 0.8rem;
+    margin-top: 5px; /* Space below name/title */
+    line-height: 1.4;
+    white-space: normal !important; /* CRITICAL: Ensure text wraps */
+    overflow-wrap: break-word; /* Additional safety for long words */
+    word-break: break-word; /* For older browsers */
+    padding: 0 5px; /* Small horizontal padding to prevent overflow */
   }
 
   .seal {
-    width: 100px; /* Smaller seal on mobile */
+    width: 100px;
     height: 100px;
-    /* Similar to photo-container, top/right likely caused absolute positioning issues */
-    position: absolute; /* Keep absolute if it's meant to be visually distinct from flow */
-    top: 10px; /* Relative to the header */
-    right: 10px; /* Relative to the header */
-    /* If seal is part of the main flow, change to position: static and use margin.
-       But given the image, it seems it's a corner element. */
-    z-index: 10; /* Ensure it stays above other content if overlapping */
+    /* Keeping absolute positioning for the seal as it seems to be an emblem */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100; /* Increased z-index to ensure it's always on top */
+    /* Add any other specific styles if needed, like a margin around it */
+    margin: 5px;
   }
 
   header h1 {
-    font-size: 1.8rem; /* Adjusted for mobile */
-    margin-top: 15px; /* Add some space above the main header from photo-container */
-    margin-bottom: 5px; /* Space below the main header */
-    width: 100%; /* Ensure it takes full width for centering */
+    font-size: 1.8rem;
+    margin-top: 20px; /* **INCREASED SPACE:** More space above the main header from photo-container */
+    margin-bottom: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px; /* Add horizontal padding to prevent text from touching edges */
   }
 
   header h2 {
-    font-size: 1.2rem; /* Adjusted for mobile */
-    margin-top: 0; /* Keep close to h1 */
-    margin-bottom: 25px; /* Add more space below the sub-header, pushing buttons down */
-    width: 100%; /* Ensure it takes full width for centering */
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 30px; /* **INCREASED SPACE:** More space below the sub-header, pushing buttons/banner down */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px; /* Add horizontal padding */
   }
 
-  /* Assuming these are your buttons (Call Us, Text Us, Email Us) */
-  .header-buttons { /* You might need to wrap your buttons in a div with this class */
+  /* Assuming these are your buttons */
+  .header-buttons { /* Ensure your buttons are wrapped in a div with this class in HTML */
       display: flex;
       flex-direction: column; /* Stack the buttons vertically */
       align-items: center; /* Center the buttons */
-      width: 100%; /* Ensure the container takes full width */
+      width: 100%;
+      margin-bottom: 25px; /* Space below the buttons, before the banner */
   }
-  .call-button, .text-button, .email-button { /* Apply styles to your actual button classes */
-      width: 80%; /* Make buttons wider for easier tapping */
-      max-width: 280px; /* Prevent them from becoming too wide on larger mobiles */
-      margin-bottom: 10px; /* Add space between stacked buttons */
-      padding: 12px 0; /* Adjust padding for button size */
-      font-size: 1rem; /* Adjust font size */
+  /* Apply styles to your actual button classes, e.g., .your-button-class */
+  .call-button, .text-button, .email-button {
+      width: 85%; /* Make buttons wider for easier tapping */
+      max-width: 300px; /* Limit max width on larger mobiles */
+      margin-bottom: 15px; /* Add space between stacked buttons */
+      padding: 12px 0;
+      font-size: 1rem;
+      border-radius: 8px; /* Consistent styling */
   }
-  /* Remove margin-bottom from the last button to prevent extra space */
   .header-buttons :last-child {
-      margin-bottom: 0;
+      margin-bottom: 0; /* No margin after the last button */
   }
 
+
+  /* --- CONTENT BELOW HEADER --- */
+  .notary-needs-banner { /* Assuming this is the section with "We Handle All..." */
+      padding: 20px; /* Add overall padding to the banner */
+      margin-bottom: 30px; /* Space below the banner */
+      box-sizing: border-box;
+      width: 100%;
+  }
   .notary-needs-banner h3 {
-    font-size: 2rem; /* Adjusted for mobile */
-    margin-top: 30px; /* Add more space from the elements above it (buttons) */
+    font-size: 2rem;
+    margin-top: 0; /* Reset */
     margin-bottom: 15px;
-    padding: 0 15px; /* Add horizontal padding to prevent text from touching edges */
     text-align: center;
   }
-
   .notary-needs-banner p {
-    font-size: 1rem; /* Adjusted for mobile */
-    padding: 0 15px; /* Add some horizontal padding */
+    font-size: 1rem;
+    padding: 0 10px; /* Horizontal padding for text content */
     text-align: center;
   }
 
   .section-title { /* For "WHAT WE DO" */
-    font-size: 1.4rem; /* Adjusted for mobile */
-    margin-top: 35px; /* Add more space before the section title from the banner */
+    font-size: 1.4rem;
+    margin-top: 35px; /* Ample space before the section title from the banner */
     margin-bottom: 20px;
     text-align: center;
   }
 
-  /* Adjustments for the service grid items (Loan Signing, Acknowlegments, etc.) */
-  .service-item { /* Assuming each service box has this class */
-      margin-bottom: 15px; /* Add space between items when they stack */
-      padding: 15px; /* Adjust padding if needed */
+  .service-item {
+      margin-bottom: 15px; /* Space between stacked service items */
+      padding: 15px;
   }
 
   .pricing-section-container {
-    padding: 1rem; /* Reduce padding on mobile */
+    padding: 1rem;
   }
 }
+
 
     @media (max-width: 480px) {
         .new-service-button {
