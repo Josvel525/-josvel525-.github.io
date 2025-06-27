@@ -49,9 +49,9 @@
       z-index: 2;
     }
     .photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 10%;
+      width: 150px;
+      height: 150px;
+      border-radius: 8%;
       object-fit: cover;
       box-shadow: 0 0 12px rgba(0,0,0,0.15);
       background: var(--white);
@@ -60,7 +60,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      color: 	#daa520;
+      color: 	 #daa520;
       text-align: left;
     }
     .name-title .name {
@@ -131,7 +131,7 @@
     }
     .cta-btn {
       background: #c9a84f;
-      color: 	#000000;
+      color: 	 #000000;
       padding: 0.7em 1.7em;
       border: none;
       border-radius: 30px;
@@ -152,7 +152,7 @@
     }
     .notary-needs-banner {
       background: #faf2e1;
-      color: 	#1c1c1e;
+      color: 	 #1c1c1e;
       text-align: center;
       padding: 2.2rem 1rem 1.5rem 1rem;
       margin-bottom: 2.5rem;
@@ -166,14 +166,14 @@
       margin: 0 0 0.7rem 0;
       font-weight: 800;
       line-height: 1.2;
-      color: 	#1c1c1e;
+      color: 	 #1c1c1e;
       Shadow: 1px 2px 8px rgba(26,35,126,0.10);
     }
     .notary-needs-banner p {
       font-family: 'Lato', sans-serif;
       font-size: 1.1rem;
       margin: 0;
-      color: 	#1c1c1e;
+      color: 	 #1c1c1e;
       text-shadow: 1px 1px 4px rgba(26,35,126,0.09);
     }
     main {
@@ -182,25 +182,31 @@
       padding: 0 1rem;
     }
     .section-title {
-      font-family: 'Montserrat', sans-serif; /* New font */
-      font-size: 1.8rem; /* Adjusted font size */
-      color: 	#1c1c1e;
+      font-family: 'Montserrat', sans-serif;
+      /* New font */
+      font-size: 1.8rem;
+      /* Adjusted font size */
+      color: 	 #1c1c1e;
       margin-bottom: 1.5rem;
       margin-top: 2.5rem;
       text-align: center;
       font-weight: 700;
     }
-
     /* NEW: Styling for the section containers with borders */
     .pricing-section-container {
-        border: 1px solid var(--gray); /* Light gray border */
-        border-radius: 15px; /* Rounded corners */
-        padding: 1.5rem; /* Inner padding */
-        margin-bottom: 2rem; /* Space between sections */
-        background-color: var(--white); /* White background inside border */
-        box-shadow: var(--shadow); /* Subtle shadow for depth */
+        border: 1px solid var(--gray);
+        /* Light gray border */
+        border-radius: 15px;
+        /* Rounded corners */
+        padding: 1.5rem;
+        /* Inner padding */
+        margin-bottom: 2rem;
+        /* Space between sections */
+        background-color: var(--white);
+        /* White background inside border */
+        box-shadow: var(--shadow);
+        /* Subtle shadow for depth */
     }
-
     .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
       background-color: #0056b3;
       color: white;
@@ -223,8 +229,6 @@
         gap: 1.5rem;
         /* margin-bottom: 2rem; Removed as parent container now has it */
     }
-
-
     .service-card {
       background: var(--white);
       border-radius: 14px;
@@ -238,22 +242,20 @@
       border: none;
       transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
       cursor: pointer;
-      font-family: 'Lato', sans-serif; /* New font */
+      font-family: 'Lato', sans-serif;
+      /* New font */
     }
-
     .service-card:hover {
       transform: scale(1.04) translateY(-4px);
       box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
       z-index: 2;
     }
-
     .service-description {
       color: 222;
       font-weight: 500;
       text-align: center;
       margin-bottom: 1.2rem;
     }
-
     .card-divider {
       width: 60%;
       height: 1.5px;
@@ -262,7 +264,6 @@
       border: none;
       opacity: 0.55;
     }
-
     .service-price {
       color: var(--primary);
       font-weight: 700;
@@ -270,16 +271,15 @@
       text-align: center;
       margin-bottom: 0;
     }
-
     /* Styles for the "WHAT WE DO" section */
     .new-services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
       margin-bottom: 2rem;
-      margin-top: 2rem; /* Added margin-top to separate from previous section */
+      margin-top: 2rem;
+      /* Added margin-top to separate from previous section */
     }
-
     .new-service-button {
       background: var(--white);
       border-radius: 12px;
@@ -294,25 +294,24 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      min-height: 150px; /* Ensure consistent height */
+      min-height: 150px;
+      /* Ensure consistent height */
     }
-
     .new-service-button:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
-
     .new-service-icon {
-      font-size: 3.5rem; /* Larger icons */
+      font-size: 3.5rem;
+      /* Larger icons */
       color: #364d82;
       margin-bottom: 0.8rem;
       transition: color 0.2s ease-in-out;
     }
-
     .new-service-button:hover .new-service-icon {
-      color: var(--primary); /* Icon color change on hover */
+      color: var(--primary);
+      /* Icon color change on hover */
     }
-
     .new-service-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 1.1rem;
@@ -320,7 +319,6 @@
       color: #000000;
       margin-bottom: 0.5rem;
     }
-
     .service-popup {
       position: absolute;
       bottom: 0;
@@ -337,26 +335,20 @@
       border-radius: 0 0 12px 12px;
       z-index: 10;
     }
-
     .new-service-button:hover .service-popup {
       transform: translateY(0);
     }
-
     .service-popup ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
     .service-popup li {
       margin-bottom: 0.4rem;
     }
-
     .service-popup li:last-child {
       margin-bottom: 0;
     }
-
-
 /* Responsive for mobile */
 @media (max-width: 700px) {
   /* ... existing grid and popup styles ... */
@@ -373,80 +365,104 @@
     gap: 1rem;
   }
   .new-service-button { /* Mobile adjustment for "WHAT WE DO" buttons */
-    min-height: 100px; /* Smaller height for mobile */
+    min-height: 100px;
+    /* Smaller height for mobile */
     padding: 1rem;
   }
   .new-service-icon {
-    font-size: 2.5rem; /* Smaller icons on mobile */
+    font-size: 2.5rem;
+    /* Smaller icons on mobile */
     margin-bottom: 0.5rem;
   }
   .new-service-title {
-    font-size: 1rem; /* Smaller title font on mobile */
+    font-size: 1rem;
+    /* Smaller title font on mobile */
   }
-
-
   /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
   header {
     /* RESET initial padding, we'll manage space with flexbox */
-    padding-top: 20px; /* A safe top padding for the overall header */
+    padding-top: 20px;
+    /* A safe top padding for the overall header */
     padding-bottom: 2rem;
-    display: flex; /* Make the header a flex container */
-    flex-direction: column; /* Stack all direct children (photo-container, h1, h2, buttons) vertically */
-    align-items: center; /* Horizontally center the stacked items within the header */
-    text-align: center; /* Center any direct text content of the header */
-    position: relative; /* Essential for positioning the seal relative to the header */
-    box-sizing: border-box; /* Include padding/border in width calculation */
-    width: 100%; /* Ensure header takes full available width */
+    display: flex;
+    /* Make the header a flex container */
+    flex-direction: column;
+    /* Stack all direct children (photo-container, h1, h2, buttons) vertically */
+    align-items: center;
+    /* Horizontally center the stacked items within the header */
+    text-align: center;
+    /* Center any direct text content of the header */
+    position: relative;
+    /* Essential for positioning the seal relative to the header */
+    box-sizing: border-box;
+    /* Include padding/border in width calculation */
+    width: 100%;
+    /* Ensure header takes full available width */
   }
-
   .photo-container {
     /* Critical: Force to stack and remove absolute positioning */
-    flex-direction: column; /* Stack photo, then text info */
-    align-items: center; /* Center photo and text info horizontally within this container */
-    position: static !important; /* Force to normal flow, overriding any absolute positioning */
-    top: auto !important; /* Remove specific top positioning */
-    left: auto !important; /* Remove specific left positioning */
-    margin-bottom: 25px; /* **INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
-    gap: 5px; /* Smaller gap between photo and text-info */
-    width: 100%; /* Ensure it takes full width for centering */
+    flex-direction: column;
+    /* Stack photo, then text info */
+    align-items: center;
+    /* Center photo and text info horizontally within this container */
+    position: static !important;
+    /* Force to normal flow, overriding any absolute positioning */
+    top: auto !important;
+    /* Remove specific top positioning */
+    left: auto !important;
+    /* Remove specific left positioning */
+    margin-bottom: 25px;
+    /* **INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
+    gap: 5px;
+    /* Smaller gap between photo and text-info */
+    width: 100%;
+    /* Ensure it takes full width for centering */
     box-sizing: border-box;
-    padding: 0 10px; /* Add slight horizontal padding to prevent edge sticking */
+    padding: 0 10px;
+    /* Add slight horizontal padding to prevent edge sticking */
   }
-
   .photo {
     width: 100px;
     height: 100px;
     margin-bottom: 10px; /* Space below the photo, before the text info */
-    border-radius: 50%; /* Ensure it's perfectly round if desired */
-    object-fit: cover; /* Ensures image covers the area without distortion */
+    border-radius: 50%;
+    /* Ensure it's perfectly round if desired */
+    object-fit: cover;
+    /* Ensures image covers the area without distortion */
   }
-
   .text-info {
-    margin-left: 0 !important; /* Ensure no left margin pushes it */
-    text-align: center; /* Center the text content within text-info */
-    width: 100%; /* Ensure it takes full width to center text if needed */
+    margin-left: 0 !important;
+    /* Ensure no left margin pushes it */
+    text-align: center;
+    /* Center the text content within text-info */
+    width: 100%;
+    /* Ensure it takes full width to center text if needed */
   }
-
   .name-title .name, .name-title .title {
-    white-space: normal; /* Allow name/title to wrap if needed */
+    white-space: normal;
+    /* Allow name/title to wrap if needed */
     font-size: 1rem;
     line-height: 1.2;
-    margin: 0; /* Remove any default margins that might interfere */
+    margin: 0;
+    /* Remove any default margins that might interfere */
   }
   .name-title .title {
     font-size: 0.75rem;
   }
-
   .contact-info {
     font-size: 0.8rem;
-    margin-top: 5px; /* Space below name/title */
+    margin-top: 5px;
+    /* Space below name/title */
     line-height: 1.4;
-    white-space: normal !important; /* CRITICAL: Ensure text wraps */
-    overflow-wrap: break-word; /* Additional safety for long words */
-    word-break: break-word; /* For older browsers */
-    padding: 0 5px; /* Small horizontal padding to prevent overflow */
+    white-space: normal !important;
+    /* CRITICAL: Ensure text wraps */
+    overflow-wrap: break-word;
+    /* Additional safety for long words */
+    word-break: break-word;
+    /* For older browsers */
+    padding: 0 5px;
+    /* Small horizontal padding to prevent overflow */
   }
-
   .seal {
     width: 100px;
     height: 100px;
@@ -458,16 +474,15 @@
     /* Add any other specific styles if needed, like a margin around it */
     margin: 5px;
   }
-
   header h1 {
     font-size: 1.8rem;
-    margin-top: 20px; /* **INCREASED SPACE:** More space above the main header from photo-container */
+    margin-top: 20px;
+    /* **INCREASED SPACE:** More space above the main header from photo-container */
     margin-bottom: 5px;
     width: 100%;
     box-sizing: border-box;
     padding: 0 10px; /* Add horizontal padding to prevent text from touching edges */
   }
-
   header h2 {
     font-size: 1.2rem;
     margin-top: 0;
@@ -476,33 +491,39 @@
     box-sizing: border-box;
     padding: 0 10px; /* Add horizontal padding */
   }
-
   /* Assuming these are your buttons */
   .header-buttons { /* Ensure your buttons are wrapped in a div with this class in HTML */
       display: flex;
       flex-direction: column; /* Stack the buttons vertically */
-      align-items: center; /* Center the buttons */
+      align-items: center;
+      /* Center the buttons */
       width: 100%;
-      margin-bottom: 25px; /* Space below the buttons, before the banner */
+      margin-bottom: 25px;
+      /* Space below the buttons, before the banner */
   }
   /* Apply styles to your actual button classes, e.g., .your-button-class */
-  .call-button, .text-button, .email-button {
-      width: 85%; /* Make buttons wider for easier tapping */
-      max-width: 300px; /* Limit max width on larger mobiles */
-      margin-bottom: 15px; /* Add space between stacked buttons */
+  .cta-btn {
+      width: 85%;
+      /* Make buttons wider for easier tapping */
+      max-width: 300px;
+      /* Limit max width on larger mobiles */
+      margin-bottom: 15px;
+      /* Add space between stacked buttons */
       padding: 12px 0;
       font-size: 1rem;
-      border-radius: 8px; /* Consistent styling */
+      border-radius: 8px;
+      /* Consistent styling */
   }
-  .header-buttons :last-child {
-      margin-bottom: 0; /* No margin after the last button */
+  .cta-btn-container :last-child {
+      margin-bottom: 0;
+      /* No margin after the last button */
   }
-
-
   /* --- CONTENT BELOW HEADER --- */
   .notary-needs-banner { /* Assuming this is the section with "We Handle All..." */
-      padding: 20px; /* Add overall padding to the banner */
-      margin-bottom: 30px; /* Space below the banner */
+      padding: 20px;
+      /* Add overall padding to the banner */
+      margin-bottom: 30px;
+      /* Space below the banner */
       box-sizing: border-box;
       width: 100%;
   }
@@ -514,29 +535,48 @@
   }
   .notary-needs-banner p {
     font-size: 1rem;
-    padding: 0 10px; /* Horizontal padding for text content */
+    padding: 0 10px;
+    /* Horizontal padding for text content */
     text-align: center;
   }
-
   .section-title { /* For "WHAT WE DO" */
     font-size: 1.4rem;
-    margin-top: 35px; /* Ample space before the section title from the banner */
+    margin-top: 35px;
+    /* Ample space before the section title from the banner */
     margin-bottom: 20px;
     text-align: center;
   }
-
   .service-item {
-      margin-bottom: 15px; /* Space between stacked service items */
+      margin-bottom: 15px;
+      /* Space between stacked service items */
       padding: 15px;
   }
-
   .pricing-section-container {
     padding: 1rem;
   }
+
+  /* NEW: What We Do - Mobile Click Functionality */
+  .new-service-button .service-popup {
+      display: none; /* Hide by default on mobile */
+      position: static; /* Remove absolute positioning */
+      transform: translateY(0); /* Reset transform */
+      background: none; /* No black background overlay */
+      color: #000; /* Default text color */
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+      font-size: 0.9rem;
+      margin-top: 10px;
+  }
+
+  .new-service-button.active .service-popup {
+      display: block; /* Show when active */
+  }
+
+  .new-service-button:hover .service-popup {
+    transform: translateY(0); /* Override hover effect for mobile */
+  }
 }
-
-
-
     @media (max-width: 480px) {
         .new-service-button {
             padding: 1rem 0.5rem;
@@ -549,23 +589,26 @@
             font-size: 1rem;
         }
         .service-popup {
-            min-width: unset; /* Remove min-width to allow shrinking */
-            width: 100%; /* Take full width of parent on small screens */
+            min-width: unset;
+            /* Remove min-width to allow shrinking */
+            width: 100%;
+            /* Take full width of parent on small screens */
             left: 0;
             transform: none; /* No translateX to avoid pushing off screen */
         }
         .cta-btn {
-          padding: 0.7em 1.5em; /* Smaller padding for smaller buttons on mobile */
+          padding: 0.7em 1.5em;
+          /* Smaller padding for smaller buttons on mobile */
           font-size: 0.9rem;
         }
         .notary-needs-banner h3 {
-          font-size: 1.8rem; /* Smaller font for small screens */
+          font-size: 1.8rem;
+          /* Smaller font for small screens */
         }
         .notary-needs-banner p {
           font-size: 0.95rem;
         }
     }
-
     .testimonials-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -573,14 +616,16 @@
       margin-bottom: 2rem;
     }
     .testimonial-card {
-      background: var(--testimonial-bg); /* NEW BACKGROUND COLOR */
+      background: var(--testimonial-bg);
+      /* NEW BACKGROUND COLOR */
       border-radius: 10px;
       box-shadow: var(--shadow);
       padding: 1.5rem 1rem;
       font-size: 1rem;
       font-style: italic;
       font-family: 'Lato', sans-serif; /* New font */
-      border-left: 5px solid var(--accent); /* Add a subtle accent line */
+      border-left: 5px solid var(--accent);
+      /* Add a subtle accent line */
     }
     details {
       margin-bottom: 1.5rem;
@@ -620,11 +665,14 @@
       padding: 1.2rem 0;
       margin-top: 2rem;
       font-size: 1rem;
-      font-family: 'Lato', sans-serif; /* New font */
+      font-family: 'Lato', sans-serif;
+      /* New font */
     }
     .faq-title {
-      font-family: 'Montserrat', sans-serif; /* New font */
-      font-size: 1.8rem; /* Adjusted size */
+      font-family: 'Montserrat', sans-serif;
+      /* New font */
+      font-size: 1.8rem;
+      /* Adjusted size */
       color: #000000;
       margin-bottom: 1.5rem;
       margin-top: 2.5rem;
@@ -634,10 +682,7 @@
     .faq-title i {
       margin-right: 10px;
       color: #f4d473;
-
     }
-
-
     /* Chatbot Styles */
     #chatbot-container {
         position: fixed;
@@ -645,10 +690,11 @@
         right: 20px;
         z-index: 1000; /* Ensure it's on top of everything */
     }
-
     #chat-icon {
-        width: 65px; /* Slightly larger icon */
-        height: 65px; /* Slightly larger icon */
+        width: 65px;
+        /* Slightly larger icon */
+        height: 65px;
+        /* Slightly larger icon */
         background-color: #f1c232;
         color: var(--white);
         border-radius: 50%;
@@ -659,22 +705,21 @@
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
         transition: transform 0.2s ease-in-out;
-
         /* Pulse animation */
         animation: pulse 2s infinite ease-in-out;
     }
-
     @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
+        0% { transform: scale(1);
+        }
+        50% { transform: scale(1.08);
+        }
+        100% { transform: scale(1);
+        }
     }
-
     #chat-icon:hover {
         transform: scale(1.05);
         animation: none; /* Stop pulse on hover */
     }
-
     #chat-window {
         width: 320px;
         height: 400px;
@@ -691,15 +736,14 @@
         visibility: hidden;
         transform: translateY(20px);
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        font-family: 'Lato', sans-serif; /* New font for chatbot text */
+        font-family: 'Lato', sans-serif;
+        /* New font for chatbot text */
     }
-
     #chat-window.open {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
     }
-
     #chat-header {
         background-color: var(--chatbot-header-bg);
         color: var(--white);
@@ -709,15 +753,14 @@
         align-items: center;
         font-size: 1.1rem;
         font-weight: 600;
-        font-family: 'Montserrat', sans-serif; /* New font for chatbot header */
+        font-family: 'Montserrat', sans-serif;
+        /* New font for chatbot header */
     }
-
     #close-chat {
         font-size: 1.5rem;
         cursor: pointer;
         line-height: 1;
     }
-
     #chat-messages {
         flex-grow: 1;
         padding: 15px;
@@ -726,7 +769,6 @@
         flex-direction: column;
         gap: 10px;
     }
-
     .message {
         max-width: 80%;
         padding: 8px 12px;
@@ -734,28 +776,26 @@
         line-height: 1.4;
         word-wrap: break-word;
     }
-
     .bot-message {
         background-color: var(--bot-message-bg);
         align-self: flex-start;
         border-bottom-left-radius: 2px;
     }
-
     .user-message {
         background-color: var(--user-message-bg);
         align-self: flex-end;
         border-bottom-right-radius: 2px;
     }
-
     #chat-input-area {
         padding: 10px;
         border-top: 1px solid #ccc;
         display: flex;
         flex-wrap: wrap; /* Allow buttons to wrap */
-        gap: 8px; /* Space between buttons */
-        justify-content: center; /* Center buttons */
+        gap: 8px;
+        /* Space between buttons */
+        justify-content: center;
+        /* Center buttons */
     }
-
     .chat-question-btn {
         background-color: var(--accent);
         color: var(--white);
@@ -765,15 +805,17 @@
         cursor: pointer;
         font-size: 0.9rem;
         transition: background-color 0.2s;
-        flex-grow: 1; /* Allow buttons to grow and fill space */
-        min-width: 130px; /* Minimum width for buttons */
-        font-family: 'Lato', sans-serif; /* New font */
+        flex-grow: 1;
+        /* Allow buttons to grow and fill space */
+        min-width: 130px;
+        /* Minimum width for buttons */
+        font-family: 'Lato', sans-serif;
+        /* New font */
     }
-
     .chat-question-btn:hover {
-        background-color: #B8860B; /* Darker gold */
+        background-color: #B8860B;
+        /* Darker gold */
     }
-
     /* Mobile adjustments for chatbot */
     @media (max-width: 480px) {
         #chatbot-container {
@@ -781,19 +823,23 @@
             right: 10px;
         }
         #chat-window {
-            width: calc(100% - 20px); /* Full width minus margin */
-            height: 70vh; /* Use percentage of viewport height */
+            width: calc(100% - 20px);
+            /* Full width minus margin */
+            height: 70vh;
+            /* Use percentage of viewport height */
             right: 10px;
             bottom: 70px;
             left: 10px; /* Center it */
         }
         #chat-icon {
-            width: 55px; /* Smaller icon on mobile */
+            width: 55px;
+            /* Smaller icon on mobile */
             height: 55px;
             font-size: 1.8rem;
         }
         .chat-question-btn {
-            min-width: 100px; /* Adjust button size for smaller screens */
+            min-width: 100px;
+            /* Adjust button size for smaller screens */
             padding: 6px 10px;
             font-size: 0.85rem;
         }
@@ -816,9 +862,9 @@
       </div>
     </div>
     <img src="notaryseal.png" alt="Notary Seal" class="seal">
-    <h1>Texas Public Notary</h1>
-    <h2>Houston's Trusted Mobile Notary Service</h2>
-    <p>Fast, Reliable, and Direct to Your Door</p>
+    <h1>Houston Mobile Notary</h1>
+    <h2>Texas Public Notary</h2>
+    <p>Fast, Reliable, Affordable, and Direct to Your Door</p>
     <div class="cta-btn-container">
       <a href="tel:8323560671" class="cta-btn"><i class="fas fa-phone"></i> Call Us</a>
       <a href="sms:8323560671" class="cta-btn"><i class="fas fa-sms"></i> Text Us</a>
@@ -845,7 +891,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-scroll new-service-icon"></i>
             <div class="new-service-title">Take Acknowledgments & Proofs</div>
@@ -858,7 +903,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-gavel new-service-icon"></i>
             <div class="new-service-title">Administer Oaths & Affirmations</div>
@@ -871,7 +915,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-microphone-alt new-service-icon"></i>
             <div class="new-service-title">Take Depositions</div>
@@ -885,7 +928,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-copy new-service-icon"></i>
             <div class="new-service-title">Certify Copies of Documents</div>
@@ -897,7 +939,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-money-bill-wave new-service-icon"></i>
             <div class="new-service-title">Protest Negotiable Instruments</div>
@@ -909,7 +950,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-lock-open new-service-icon"></i>
             <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
@@ -921,7 +961,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="new-service-button">
             <i class="fas fa-clipboard-list new-service-icon"></i>
             <div class="new-service-title">Other General Notary Services</div>
@@ -939,8 +978,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="section-title">Notarization Pricing</div>
     <div class="pricing-section-container"> <div class="services-grid">
             <div class="service-card">
@@ -1070,7 +1107,6 @@
         <span class="author">— Bryan K.</span>
       </div>
     </div>
-
     <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
     <details>
       <summary>Can a notary public give me legal advice?</summary>
@@ -1100,16 +1136,14 @@
         <li>The Texas notary performed the notarial act on the date stated on the notarial certificate.</li>
       </ol>
     </details>
-
     <p class="appointment-disclaimer">
-      <Strong>Appointments booked online are not finalized until you receive an appointment confirmation from us by phone or email. Please call us for urgent requests or any questions.<strong/>
+      <strong>Appointments booked online are not finalized until you receive an appointment confirmation from us by phone or email. Please call us for urgent requests or any questions.</strong>
     </p>
     <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
   </main>
   <footer>
     &copy; 2025 TexasPublicNotary.US — Serving Houston and Surrounding Areas
   </footer>
-
   <div id="chatbot-container">
       <div id="chat-icon">
           <i class="fas fa-comments"></i>
@@ -1132,7 +1166,6 @@
           </div>
       </div>
   </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         const chatIcon = document.getElementById('chat-icon');
@@ -1140,6 +1173,7 @@
         const closeChat = document.getElementById('close-chat');
         const chatMessages = document.getElementById('chat-messages');
         const questionButtons = document.querySelectorAll('.chat-question-btn');
+        const newServiceButtons = document.querySelectorAll('.new-service-button'); // Select all "WHAT WE DO" buttons
 
         const qa = {
             "contact-info": {
@@ -1182,22 +1216,40 @@
             button.addEventListener('click', () => {
                 const questionKey = button.dataset.question;
                 const data = qa[questionKey];
-
                 // Display user's question
                 const userMessageDiv = document.createElement('div');
                 userMessageDiv.classList.add('user-message', 'message');
                 userMessageDiv.textContent = data.question;
                 chatMessages.appendChild(userMessageDiv);
-
                 // Display bot's answer
                 const botMessageDiv = document.createElement('div');
                 botMessageDiv.classList.add('bot-message', 'message');
                 botMessageDiv.textContent = data.answer;
                 chatMessages.appendChild(botMessageDiv);
-
                 // Scroll to the latest message
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             });
+        });
+
+        // Toggle service popup on click for mobile
+        newServiceButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Check if it's a mobile view (adjust breakpoint as needed)
+                if (window.innerWidth <= 700) {
+                    this.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close service popup if clicked outside
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 700) {
+                newServiceButtons.forEach(button => {
+                    if (button.classList.contains('active') && !button.contains(event.target)) {
+                        button.classList.remove('active');
+                    }
+                });
+            }
         });
     });
   </script>
