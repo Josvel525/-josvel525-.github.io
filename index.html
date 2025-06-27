@@ -360,23 +360,28 @@
             text-align: center; /* Center any direct text content */
             padding-top: 20px; /* Safe top padding */
         }
-        .photo-container {
-            /* Force to normal flow, remove absolute positioning */
-            position: static !important;
-            flex-direction: column; /* Stack photo and text-info vertically */
-            align-items: center; /* Center items within photo-container */
-            gap: 10px; /* Adjust gap */
-            margin-bottom: 25px; /* More space below */
-            width: calc(100% - 20px); /* Account for padding */
-            padding: 0 10px; /* Add slight horizontal padding */
-            box-sizing: border-box; /* Crucial for width calc */
-        }
-        .photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%; /* Make it round */
-            margin-bottom: 0; /* No margin as gap handles spacing */
-        }
+      •photo-container {
+* Critical: Force to stack and remove absolute positioning */
+flex-direction: row;
+/* Stack photo, then text info */ align-items: left;
+/* Center photo and text info horizontally within this container */
+position: static !important;
+/* Force to normal flow, overriding any absolute positioning */ top: auto !important;
+/* Remove specific top positioning */ left: auto !important;
+/* Remove specific left positioning */ margin-bottom: 25px;
+/***INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
+gap: 5px;
+/* Smaller gap between photo and text-info */ width: 100%;
+/* Ensure it takes full width for centering */ box-sizing: border-box;
+padding: 0 10px;
+/* Add slight horizontal padding to prevent edge sticking */
+}
+•photo i width: 100px; height: 100px;
+margin-bottom: 10px;
+border-radius: 50%;/* Ensure it's perfectly round if desired */ 
+object-fit: cover;
+/* Ensures image covers the area without distortion */
+}
         .text-info {
             align-items: center; /* Center text within text-info */
             text-align: center; /* Center text */
