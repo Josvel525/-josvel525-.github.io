@@ -6,845 +6,701 @@
   <title>Texas Public Notary</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
+  <<style>
+    /* --- CSS Variables --- */
     :root {
-      --primary: #1a237e;
-      --secondary: #38b6ff;
-      --accent: #FFD700;
-      --bg: #f4f7fd;
-      --white: #fff;
-      --gray: #e0e0e0;
-      --shadow: 0 2px 12px rgba(0,0,0,0.07);
-      --testimonial-bg: #fff8e1;
-      --qabox-bg: #cfe2f3;
-      --chatbot-bg: #e0f2f7;
-      --chatbot-header-bg: #007bb6;
-      --user-message-bg: #DCF8C6;
-      --bot-message-bg: #EAEAEA;
+        --primary: #1a237e;
+        --secondary: #38b6ff;
+        --accent: #FFD700;
+        --bg: #f4f7fd;
+        --white: #fff;
+        --gray: #e0e0e0;
+        --shadow: 0 2px 12px rgba(0,0,0,0.07);
+        --testimonial-bg: #fff8e1;
+        --qabox-bg: #cfe2f3;
+        /* Chatbot colors - adjusted to better match your existing palette or be more distinct */
+        --chatbot-bg: #eaf6fa; /* Lighter blue-grey for chat background */
+        --chatbot-header-bg: #004d7a; /* Darker blue for header */
+        --user-message-bg: var(--accent); /* Your accent for user messages */
+        --bot-message-bg: #e0f0f5; /* Light blue-grey for bot messages */
     }
+
+    /* --- Global Box Sizing (Crucial for consistent layouts) --- */
+    html {
+        box-sizing: border-box;
+    }
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Lato', Arial, sans-serif;
-      background: var(--bg);
-      color: #003a7a;
+        margin: 0;
+        font-family: 'Lato', Arial, sans-serif;
+        background: var(--bg);
+        color: #003a7a;
     }
+
+    /* --- Header Styles --- */
     header {
-      background: #1a3f73;
-      color: #daa520;
-      padding: 2.5rem 0 2rem 0;
-      text-align: center;
-      position: relative;
-      box-shadow: var(--shadow);
-      border-bottom-left-radius: 32px;
-      border-bottom-right-radius: 32px;
+        background: #1a3f73;
+        color: #daa520;
+        padding: 2.5rem 0 2rem 0;
+        text-align: center;
+        position: relative;
+        box-shadow: var(--shadow);
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+        /* Added for mobile responsiveness */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px; /* A safe top padding for the overall header */
+        padding-bottom: 2rem;
     }
     .photo-container {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 14px;
-      z-index: 2;
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        z-index: 2;
     }
     .photo {
-      width: 170px;
-      height: 170px;
-      border-radius: 8%;
-      object-fit: cover;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
-      background: var(--white);
+        width: 170px;
+        height: 170px;
+        border-radius: 8%;
+        object-fit: cover;
+        box-shadow: 0 0 12px rgba(0,0,0,0.15);
+        background: var(--white);
     }
     .text-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: 	 #daa520;
-      text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #daa520;
+        text-align: left;
     }
     .name-title .name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 2px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 2px;
     }
     .name-title .title {
-      font-size: 0.9rem;
-      color: #e0e0e0;
-      font-weight: 400;
-      margin-bottom: 2px;
+        font-size: 0.9rem;
+        color: #e0e0e0;
+        font-weight: 400;
+        margin-bottom: 2px;
     }
     .contact-info a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.93rem;
-      margin-bottom: 2px;
-      transition: color 0.18s;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+        color: var(--white);
+        text-decoration: none;
+        font-size: 0.93rem;
+        margin-bottom: 2px;
+        transition: color 0.18s;
+        display: flex;
+        align-items: center;
+        gap: 4px;
     }
     .contact-info a:hover { color: var(--accent); }
     header .seal {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: var(--white);
-      box-shadow: 0 0 8px rgba(0,0,0,0.10);
-      border: 2.5px solid var(--accent);
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: var(--white);
+        box-shadow: 0 0 8px rgba(0,0,0,0.10);
+        border: 2.5px solid var(--accent);
     }
     header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.3rem;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      color: var(--white);
-      margin: 0 0 0.3rem 0;
-      text-shadow: 0 2px 10px rgba(50,120,255,0.09);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.3rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        color: var(--white);
+        margin: 0 0 0.3rem 0;
+        text-shadow: 0 2px 10px rgba(50,120,255,0.09);
     }
     header h2 {
-      font-size: 1.3rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      color: #daa520;
-      margin: 0 0 0.7rem 0;
-      letter-spacing: 1px;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.07);
+        font-size: 1.3rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        color: #daa520;
+        margin: 0 0 0.7rem 0;
+        letter-spacing: 1px;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.07);
     }
     header p {
-      margin: 0.6rem 0 1.5rem 0;
-      font-family: 'Lato', sans-serif;
-      font-size: 1.18rem;
-      color: #f9f9f9;
+        margin: 0.6rem 0 1.5rem 0;
+        font-family: 'Lato', sans-serif;
+        font-size: 1.18rem;
+        color: #f9f9f9;
     }
     .cta-btn-container {
-      display: flex;
-      justify-content: center;
-      gap: 0.7rem;
-      margin-top: 1.2rem;
-      flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+        flex-wrap: wrap;
     }
     .cta-btn {
-      background: #c9a84f;
-      color: 	 #000000;
-      padding: 0.7em 1.7em;
-      border: none;
-      border-radius: 30px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 2px 12px rgba(250,207,90,0.13);
-      transition: background 0.18s, color 0.18s;
-      margin-bottom: 7px;
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+        background: #c9a84f;
+        color: #000000;
+        padding: 0.7em 1.7em;
+        border: none;
+        border-radius: 30px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 2px 12px rgba(250,207,90,0.13);
+        transition: background 0.18s, color 0.18s;
+        margin-bottom: 7px;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     .cta-btn:hover {
-      background: #ffe082;
-      color: #1a237e;
+        background: #ffe082;
+        color: #1a237e;
     }
     .notary-needs-banner {
-      background: #faf2e1;
-      color: 	 #1c1c1e;
-      text-align: center;
-      padding: 2.2rem 1rem 1.5rem 1rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 2px 12px rgba(26,35,126,0.10);
-      border-radius: 18px;
-      position: relative;
+        background: #faf2e1;
+        color: #1c1c1e;
+        text-align: center;
+        padding: 2.2rem 1rem 1.5rem 1rem;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 2px 12px rgba(26,35,126,0.10);
+        border-radius: 18px;
+        position: relative;
     }
     .notary-needs-banner h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
-      margin: 0 0 0.7rem 0;
-      font-weight: 800;
-      line-height: 1.2;
-      color: 	 #1c1c1e;
-      Shadow: 1px 2px 8px rgba(26,35,126,0.10);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.2rem;
+        margin: 0 0 0.7rem 0;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #1c1c1e;
+        text-shadow: 1px 2px 8px rgba(26,35,126,0.10); /* Corrected `Shadow` to `text-shadow` */
     }
     .notary-needs-banner p {
-      font-family: 'Lato', sans-serif;
-      font-size: 1.1rem;
-      margin: 0;
-      color: 	 #1c1c1e;
-      text-shadow: 1px 1px 4px rgba(26,35,126,0.09);
+        font-family: 'Lato', sans-serif;
+        font-size: 1.1rem;
+        margin: 0;
+        color: #1c1c1e;
+        text-shadow: 1px 1px 4px rgba(26,35,126,0.09);
     }
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
     }
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      /* New font */
-      font-size: 1.8rem;
-      /* Adjusted font size */
-      color: 	 #1c1c1e;
-      margin-bottom: 1.5rem;
-      margin-top: 2.5rem;
-      text-align: center;
-      font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        color: #1c1c1e;
+        margin-bottom: 1.5rem;
+        margin-top: 2.5rem;
+        text-align: center;
+        font-weight: 700;
     }
-    /* NEW: Styling for the section containers with borders */
     .pricing-section-container {
         border: 1px solid var(--gray);
-        /* Light gray border */
         border-radius: 15px;
-        /* Rounded corners */
         padding: 1.5rem;
-        /* Inner padding */
         margin-bottom: 2rem;
-        /* Space between sections */
         background-color: var(--white);
-        /* White background inside border */
         box-shadow: var(--shadow);
-        /* Subtle shadow for depth */
     }
     .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
-      background-color: #0056b3;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+        background-color: #0056b3;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      /* margin-bottom: 2rem; Removed as parent container now has it */
-    }
-    /* New: Styles for separate Trip and After Hours pricing */
-    .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
+    .services-grid, .trip-fees-grid, .after-hours-fees-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
-        /* margin-bottom: 2rem; Removed as parent container now has it */
     }
     .service-card {
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1.2rem 1rem 1.2rem;
-      font-size: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      border: none;
-      transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      /* New font */
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem 1.2rem 1rem 1.2rem;
+        font-size: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        border: none;
+        transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
     }
     .service-card:hover {
-      transform: scale(1.04) translateY(-4px);
-      box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
-      z-index: 2;
+        transform: scale(1.04) translateY(-4px);
+        box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
+        z-index: 2;
     }
     .service-description {
-      color: 222;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 1.2rem;
+        color: #222; /* Changed `222` to `#222` for valid color */
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 1.2rem;
     }
     .card-divider {
-      width: 60%;
-      height: 1.5px;
-      background: var(--gray);
-      margin: 0 auto 1rem auto;
-      border: none;
-      opacity: 0.55;
+        width: 60%;
+        height: 1.5px;
+        background: var(--gray);
+        margin: 0 auto 1rem auto;
+        border: none;
+        opacity: 0.55;
     }
     .service-price {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.18rem;
-      text-align: center;
-      margin-bottom: 0;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.18rem;
+        text-align: center;
+        margin-bottom: 0;
     }
-    /* Styles for the "WHAT WE DO" section */
     .new-services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      margin-top: 2rem;
-      /* Added margin-top to separate from previous section */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
     }
     .new-service-button {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      min-height: 150px;
-      /* Ensure consistent height */
+        background: var(--white);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        min-height: 150px;
     }
     .new-service-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     }
     .new-service-icon {
-      font-size: 3.5rem;
-      /* Larger icons */
-      color: #364d82;
-      margin-bottom: 0.8rem;
-      transition: color 0.2s ease-in-out;
+        font-size: 3.5rem;
+        color: #364d82;
+        margin-bottom: 0.8rem;
+        transition: color 0.2s ease-in-out;
     }
     .new-service-button:hover .new-service-icon {
-      color: var(--primary);
-      /* Icon color change on hover */
+        color: var(--primary);
     }
     .new-service-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 0.5rem;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #000000;
+        margin-bottom: 0.5rem;
     }
     .service-popup {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85); /* Dark overlay */
-      color: var(--white);
-      padding: 1rem;
-      box-sizing: border-box;
-      transform: translateY(100%);
-      transition: transform 0.3s ease-out;
-      font-size: 0.9rem;
-      text-align: left;
-      border-radius: 0 0 12px 12px;
-      z-index: 10;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.85); /* Dark overlay */
+        color: var(--white);
+        padding: 1rem;
+        box-sizing: border-box;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-out;
+        font-size: 0.9rem;
+        text-align: left;
+        border-radius: 0 0 12px 12px;
+        z-index: 10;
     }
     .new-service-button:hover .service-popup {
-      transform: translateY(0);
+        transform: translateY(0);
     }
     .service-popup ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
     .service-popup li {
-      margin-bottom: 0.4rem;
+        margin-bottom: 0.4rem;
     }
     .service-popup li:last-child {
-      margin-bottom: 0;
+        margin-bottom: 0;
     }
-/* Responsive for mobile */
-@media (max-width: 700px) {
-  /* ... existing grid and popup styles ... */
-  .services-grid, .trip-fees-grid, .after-hours-fees-grid {
-    grid-template-columns: 1fr;
-  }
-  .service-popup {
-      left: 50%;
-      transform: translateX(-50%);
-      max-width: 90%;
-  }
-  .new-services-grid { /* Mobile adjustment for "WHAT WE DO" grid */
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .new-service-button { /* Mobile adjustment for "WHAT WE DO" buttons */
-    min-height: 100px;
-    /* Smaller height for mobile */
-    padding: 1rem;
-  }
-  .new-service-icon {
-    font-size: 2.5rem;
-    /* Smaller icons on mobile */
-    margin-bottom: 0.5rem;
-  }
-  .new-service-title {
-    font-size: 1rem;
-    /* Smaller title font on mobile */
-  }
-  /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
-  header {
-    /* RESET initial padding, we'll manage space with flexbox */
-    padding-top: 20px;
-    /* A safe top padding for the overall header */
-    padding-bottom: 2rem;
-    display: flex;
-    /* Make the header a flex container */
-    flex-direction: column;
-    /* Stack all direct children (photo-container, h1, h2, buttons) vertically */
-    align-items: center;
-    /* Horizontally center the stacked items within the header */
-    text-align: center;
-    /* Center any direct text content of the header */
-    position: relative;
-    /* Essential for positioning the seal relative to the header */
-    box-sizing: border-box;
-    /* Include padding/border in width calculation */
-    width: 100%;
-    /* Ensure header takes full available width */
-  }
-  .photo-container {
-    /* Critical: Force to stack and remove absolute positioning */
-    flex-direction: row;
-    /* Stack photo, then text info */
-    align-items: left;
-    /* Center photo and text info horizontally within this container */
-    position: static !important;
-    /* Force to normal flow, overriding any absolute positioning */
-    top: auto !important;
-    /* Remove specific top positioning */
-    left: auto !important;
-    /* Remove specific left positioning */
-    margin-bottom: 25px;
-    /* **INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
-    gap: 5px;
-    /* Smaller gap between photo and text-info */
-    width: 100%;
-    /* Ensure it takes full width for centering */
-    box-sizing: border-box;
-    padding: 0 10px;
-    /* Add slight horizontal padding to prevent edge sticking */
-  }
-  .photo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px; /* Space below the photo, before the text info */
-    border-radius: 50%;
-    /* Ensure it's perfectly round if desired */
-    object-fit: cover;
-    /* Ensures image covers the area without distortion */
-  }
-  .text-info {
-    margin-left: 0 !important;
-    /* Ensure no left margin pushes it */
-    text-align: left;
-    /* Center the text content within text-info */
-    width: 100%;
-    /* Ensure it takes full width to center text if needed */
-  }
-  .name-title .name, .name-title .title {
-    white-space: normal;
-    /* Allow name/title to wrap if needed */
-    font-size: 1rem;
-    line-height: 1.2;
-    margin: 0;
-    /* Remove any default margins that might interfere */
-  }
-  .name-title .title {
-    font-size: 0.75rem;
-  }
-  .contact-info {
-    font-size: 0.8rem;
-    margin-top: 5px;
-    /* Space below name/title */
-    line-height: 1.4;
-    white-space: normal !important;
-    /* CRITICAL: Ensure text wraps */
-    overflow-wrap: break-word;
-    /* Additional safety for long words */
-    word-break: break-word;
-    /* For older browsers */
-    padding: 0 5px;
-    /* Small horizontal padding to prevent overflow */
-  }
-  .seal {
-    width: 80px !important;
-    height: 80px !important;
-    /* Keeping absolute positioning for the seal as it seems to be an emblem */
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 100; /* Increased z-index to ensure it's always on top */
-    /* Add any other specific styles if needed, like a margin around it */
-    margin: 5px;
-  }
-  header h1 {
-    font-size: 1.8rem;
-    margin-top: 20px;
-    /* **INCREASED SPACE:** More space above the main header from photo-container */
-    margin-bottom: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 10px; /* Add horizontal padding to prevent text from touching edges */
-  }
-  header h2 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 30px; /* **INCREASED SPACE:** More space below the sub-header, pushing buttons/banner down */
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 10px; /* Add horizontal padding */
-  }
-  /* Assuming these are your buttons */
-  .header-buttons { /* Ensure your buttons are wrapped in a div with this class in HTML */
-      display: flex;
-      flex-direction: column; /* Stack the buttons vertically */
-      align-items: center;
-      /* Center the buttons */
-      width: 100%;
-      margin-bottom: 25px;
-      /* Space below the buttons, before the banner */
-  }
-  /* Apply styles to your actual button classes, e.g., .your-button-class */
-  .cta-btn {
-      width: 85%;
-      /* Make buttons wider for easier tapping */
-      max-width: 300px;
-      /* Limit max width on larger mobiles */
-      margin-bottom: 15px;
-      /* Add space between stacked buttons */
-      padding: 12px 0;
-      font-size: 1rem;
-      border-radius: 8px;
-      /* Consistent styling */
-  }
-  .cta-btn-container :last-child {
-      margin-bottom: 0;
-      /* No margin after the last button */
-  }
-  /* --- CONTENT BELOW HEADER --- */
-  .notary-needs-banner { /* Assuming this is the section with "We Handle All..." */
-      padding: 20px;
-      /* Add overall padding to the banner */
-      margin-bottom: 30px;
-      /* Space below the banner */
-      box-sizing: border-box;
-      width: 100%;
-  }
-  .notary-needs-banner h3 {
-    font-size: 2rem;
-    margin-top: 0; /* Reset */
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  .notary-needs-banner p {
-    font-size: 1rem;
-    padding: 0 10px;
-    /* Horizontal padding for text content */
-    text-align: center;
-  }
-  .section-title { /* For "WHAT WE DO" */
-    font-size: 1.4rem;
-    margin-top: 35px;
-    /* Ample space before the section title from the banner */
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .service-item {
-      margin-bottom: 15px;
-      /* Space between stacked service items */
-      padding: 15px;
-  }
-  .pricing-section-container {
-    padding: 1rem;
-  }
 
-  /* NEW: What We Do - Mobile Click Functionality */
-  .new-service-button .service-popup {
-      display: none; /* Hide by default on mobile */
-      position: static; /* Remove absolute positioning */
-      transform: translateY(0); /* Reset transform */
-      background: none; /* No black background overlay */
-      color: #000; /* Default text color */
-      padding: 0;
-      box-shadow: none;
-      border-radius: 0;
-      font-size: 0.9rem;
-      margin-top: 10px;
-  }
+    /* --- Responsive Mobile Styles (max-width: 700px) --- */
+    @media (max-width: 700px) {
+        /* General Grid Adjustments */
+        .services-grid, .trip-fees-grid, .after-hours-fees-grid {
+            grid-template-columns: 1fr; /* Single column on mobile */
+        }
 
-  .new-service-button.active .service-popup {
-      display: block; /* Show when active */
-  }
+        /* NEW: Header Adjustments for Mobile */
+        header {
+            flex-direction: column; /* Stack all direct children vertically */
+            align-items: center; /* Horizontally center */
+            text-align: center; /* Center any direct text content */
+            padding-top: 20px; /* Safe top padding */
+        }
+        .photo-container {
+            /* Force to normal flow, remove absolute positioning */
+            position: static !important;
+            flex-direction: column; /* Stack photo and text-info vertically */
+            align-items: center; /* Center items within photo-container */
+            gap: 10px; /* Adjust gap */
+            margin-bottom: 25px; /* More space below */
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 0 10px; /* Add slight horizontal padding */
+            box-sizing: border-box; /* Crucial for width calc */
+        }
+        .photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Make it round */
+            margin-bottom: 0; /* No margin as gap handles spacing */
+        }
+        .text-info {
+            align-items: center; /* Center text within text-info */
+            text-align: center; /* Center text */
+            margin-left: 0 !important;
+            width: 100%;
+        }
+        .name-title .name, .name-title .title {
+            font-size: 1rem;
+            line-height: 1.2;
+            margin: 0;
+            white-space: normal; /* Allow wrap */
+        }
+        .name-title .title {
+            font-size: 0.75rem;
+        }
+        .contact-info {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            line-height: 1.4;
+            white-space: normal; /* Allow wrap */
+            overflow-wrap: break-word;
+            word-break: break-word;
+            flex-direction: column; /* Stack contact links */
+            align-items: center; /* Center contact links */
+            gap: 2px; /* Smaller gap between contact links */
+        }
+        .seal {
+            width: 80px !important;
+            height: 80px !important;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+        header h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+        .cta-btn-container {
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center; /* Center the stacked buttons */
+            width: 100%;
+            margin-bottom: 25px;
+            gap: 10px; /* Space between stacked buttons */
+        }
+        .cta-btn {
+            width: 85%;
+            max-width: 300px;
+            padding: 12px 0;
+            font-size: 1rem;
+            border-radius: 8px;
+            margin-bottom: 0; /* Remove individual button margin, gap handles it */
+        }
 
-  .new-service-button:hover .service-popup {
-    transform: translateY(0); /* Override hover effect for mobile */
-  }
-}
+        /* Content Below Header */
+        .notary-needs-banner {
+            padding: 20px;
+            margin-bottom: 30px;
+            box-sizing: border-box;
+            width: calc(100% - 2rem); /* Account for main padding */
+            margin-left: 1rem; /* Adjust to center */
+            margin-right: 1rem; /* Adjust to center */
+        }
+        .notary-needs-banner h3 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .notary-needs-banner p {
+            font-size: 1rem;
+            padding: 0 10px;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            margin-top: 35px;
+            margin-bottom: 20px;
+        }
+        .pricing-section-container {
+            padding: 1rem;
+        }
+
+        /* NEW: What We Do - Mobile Click Functionality */
+        .new-services-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .new-service-button {
+            min-height: 100px;
+            padding: 1rem;
+        }
+        .new-service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .new-service-title {
+            font-size: 1rem;
+        }
+        .new-service-button .service-popup {
+            display: none; /* Hidden by default on mobile, shown by JS 'active' class */
+            position: static; /* Remove absolute positioning */
+            transform: translateY(0); /* Reset transform */
+            background: none; /* No black background overlay */
+            color: #000; /* Default text color */
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .new-service-button.active .service-popup {
+            display: block; /* Show when 'active' class is present (from JS click) */
+        }
+        /* Override hover effect for mobile */
+        .new-service-button:hover .service-popup {
+            transform: translateY(0);
+        }
+        .testimonials-grid {
+            grid-template-columns: 1fr; /* Stack testimonials on mobile */
+        }
+    }
+
+    /* --- Smaller Mobile Specific Adjustments (max-width: 480px) --- */
     @media (max-width: 480px) {
         .new-service-button {
             padding: 1rem 0.5rem;
-            min-height: 120px;
+            min-height: 120px; /* Keep a decent tap target */
+        }
+        .new-service-icon {
+            font-size: 3rem; /* Still decent size for icon */
+        }
+        .new-service-title {
+            font-size: 1rem;
+        }
+        .cta-btn {
+            padding: 0.7em 1.5em;
+            font-size: 0.9rem;
+        }
+        .notary-needs-banner h3 {
+            font-size: 1.8rem;
+        }
+        .notary-needs-banner p {
+            font-size: 0.95rem;
+        }
+
+        /* --- Chatbot Styles for max-width: 480px (Adjusted) --- */
+        #chatbot-container {
+            bottom: 10px;
+            right: 10px;
+        }
+        #chat-icon {
+            width: 55px;
+            height: 55px;
+            font-size: 1.8rem;
+            outline: none; /* Remove default focus outline */
+        }
+        #chat-icon:focus {
+            outline: 3px solid var(--chatbot-header-bg); /* Clear focus indicator */
+            outline-offset: 2px;
+        }
+        #chat-window {
+            width: calc(100% - 20px); /* Full width minus 10px margin on each side */
+            height: 70vh; /* Responsive height */
+            bottom: 70px; /* Position above the smaller icon */
+            left: 10px; /* Aligns with the right:10px and width calc */
+            /* Ensure correct flex behavior for mobile window */
+            flex-direction: column; /* Explicitly set for mobile */
+            opacity: 0; /* Keep hidden by default */
+            visibility: hidden; /* Keep hidden by default */
+            transform: translateY(20px) scale(0.95); /* For pop-in effect */
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            pointer-events: none; /* Disable interaction when hidden */
+        }
+        #chat-window.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto; /* Enable interaction when open */
+        }
+        #chat-header {
+            flex-shrink: 0; /* Prevent header from shrinking */
+        }
+        #close-chat {
+            outline: none; /* Remove default focus outline */
+        }
+        #close-chat:focus {
+            outline: 3px solid var(--accent); /* Clear focus indicator */
+            outline-offset: 2px;
+        }
+        #chat-messages {
+            flex-grow: 1; /* Allows messages to take available space */
+            -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+        }
+        .user-message {
+            color: var(--white); /* Ensure text color contrasts with accent background */
+        }
+        #chat-input-area {
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 10px; /* Space between stacked buttons */
+            flex-shrink: 0; /* Prevent input area from shrinking */
+        }
+        .chat-question-btn {
+            min-width: unset; /* Remove min-width restriction */
+            width: 100%; /* Make buttons full width on small screens */
+            padding: 10px 12px; /* Slightly larger padding for easier tapping */
+            font-size: 0.9rem; /* Keep a readable size */
+            outline: none; /* Remove default focus outline */
+        }
+        .chat-question-btn:focus {
+            background-color: #B8860B; /* Maintain hover style on focus */
+            outline: 3px solid var(--chatbot-header-bg); /* Clear focus indicator */
+            outline-offset: 2px;
+        }
+    }
+
+    /* --- Tablet/Larger Mobile (Optional but Recommended) --- */
+    @media (min-width: 481px) and (max-width: 768px) {
+        #chat-window {
+            width: 300px; /* Slightly smaller for tablets */
+            height: 60vh; /* Adjust height for tablets */
+            right: 15px;
+            bottom: 75px;
+        }
+        #chat-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 1.9rem;
+        }
+        .new-services-grid {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly wider buttons */
+        }
+        .new-service-button {
+            padding: 1.2rem 0.8rem;
         }
         .new-service-icon {
             font-size: 3rem;
         }
         .new-service-title {
-            font-size: 1rem;
-        }
-        .service-popup {
-            min-width: unset;
-            /* Remove min-width to allow shrinking */
-            width: 100%;
-            /* Take full width of parent on small screens */
-            left: 0;
-            transform: none; /* No translateX to avoid pushing off screen */
-        }
-        .cta-btn {
-          padding: 0.7em 1.5em;
-          /* Smaller padding for smaller buttons on mobile */
-          font-size: 0.9rem;
-        }
-        .notary-needs-banner h3 {
-          font-size: 1.8rem;
-          /* Smaller font for small screens */
-        }
-        .notary-needs-banner p {
-          font-size: 0.95rem;
+            font-size: 1.05rem;
         }
     }
+
+
     .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
     .testimonial-card {
-      background: var(--testimonial-bg);
-      /* NEW BACKGROUND COLOR */
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1rem;
-      font-size: 1rem;
-      font-style: italic;
-      font-family: 'Lato', sans-serif; /* New font */
-      border-left: 5px solid var(--accent);
-      /* Add a subtle accent line */
+        background: var(--testimonial-bg);
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        padding: 1.5rem 1rem;
+        font-size: 1rem;
+        font-style: italic;
+        font-family: 'Lato', sans-serif;
+        border-left: 5px solid var(--accent);
     }
     details {
-      margin-bottom: 1.5rem;
-      background: var(--qabox-bg); /* Q&A box color - CHANGED */
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
-      font-family: 'Lato', sans-serif; /* New font */
+        margin-bottom: 1.5rem;
+        background: var(--qabox-bg);
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        font-family: 'Lato', sans-serif;
     }
     summary {
-      cursor: pointer;
-      font-weight: bold;
-      color: var(--primary);
-      font-family: 'Montserrat', sans-serif; /* New font */
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--primary);
+        font-family: 'Montserrat', sans-serif;
     }
     ol {
-      margin-top: 0.5rem;
-      padding-left: 1.5rem;
+        margin-top: 0.5rem;
+        padding-left: 1.5rem;
     }
     .scheduler {
-      width: 100%;
-      height: 800px;
-      border: none;
-      margin-top: 2rem;
+        width: 100%;
+        height: 800px;
+        border: none;
+        margin-top: 2rem;
     }
     .appointment-disclaimer {
-      font-size: 1rem;
-      color: #444;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-family: 'Lato', sans-serif; /* New font */
+        font-size: 1rem;
+        color: #444;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-family: 'Lato', sans-serif;
     }
     footer {
-      background: #073763;
-      color: var(--white);
-      text-align: center;
-      padding: 1.2rem 0;
-      margin-top: 2rem;
-      font-size: 1rem;
-      font-family: 'Lato', sans-serif;
-      /* New font */
+        background: #073763;
+        color: var(--white);
+        text-align: center;
+        padding: 1.2rem 0;
+        margin-top: 2rem;
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
     }
     .faq-title {
-      font-family: 'Montserrat', sans-serif;
-      /* New font */
-      font-size: 1.8rem;
-      /* Adjusted size */
-      color: #000000;
-      margin-bottom: 1.5rem;
-      margin-top: 2.5rem;
-      text-align: center;
-      font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.8rem;
+        color: #000000;
+        margin-bottom: 1.5rem;
+        margin-top: 2.5rem;
+        text-align: center;
+        font-weight: 700;
     }
     .faq-title i {
-      margin-right: 10px;
-      color: #f4d473;
+        margin-right: 10px;
+        color: #f4d473;
     }
-    /* Chatbot Styles */
-    #chatbot-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000; /* Ensure it's on top of everything */
-    }
-    #chat-icon {
-        width: 65px;
-        /* Slightly larger icon */
-        height: 65px;
-        /* Slightly larger icon */
-        background-color: #f1c232;
-        color: var(--white);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem; /* Larger icon size */
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
-        transition: transform 0.2s ease-in-out;
-        /* Pulse animation */
-        animation: pulse 2s infinite ease-in-out;
-    }
-    @keyframes pulse {
-        0% { transform: scale(1);
-        }
-        50% { transform: scale(1.08);
-        }
-        100% { transform: scale(1);
-        }
-    }
-    #chat-icon:hover {
-        transform: scale(1.05);
-        animation: none; /* Stop pulse on hover */
-    }
-    #chat-window {
-        width: 320px;
-        height: 400px;
-        background-color: var(--chatbot-bg);
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        display: flex;
-        flex-direction: row;
-        overflow: hidden;
-        position: absolute;
-        bottom: 80px; /* Position above the icon, adjusted for larger icon */
-        right: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        font-family: 'Lato', sans-serif;
-        /* New font for chatbot text */
-    }
-    #chat-window.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-    #chat-header {
-        background-color: var(--chatbot-header-bg);
-        color: var(--white);
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: 'Montserrat', sans-serif;
-        /* New font for chatbot header */
-    }
-    #close-chat {
-        font-size: 1.5rem;
-        cursor: pointer;
-        line-height: 1;
-    }
-    #chat-messages {
-        flex-grow: 1;
-        padding: 15px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .message {
-        max-width: 80%;
-        padding: 8px 12px;
-        border-radius: 15px;
-        line-height: 1.4;
-        word-wrap: break-word;
-    }
-    .bot-message {
-        background-color: var(--bot-message-bg);
-        align-self: flex-start;
-        border-bottom-left-radius: 2px;
-    }
-    .user-message {
-        background-color: var(--user-message-bg);
-        align-self: flex-end;
-        border-bottom-right-radius: 2px;
-    }
-    #chat-input-area {
-        padding: 10px;
-        border-top: 1px solid #ccc;
-        display: flex;
-        flex-wrap: wrap; /* Allow buttons to wrap */
-        gap: 8px;
-        /* Space between buttons */
-        justify-content: center;
-        /* Center buttons */
-    }
-    .chat-question-btn {
-        background-color: var(--accent);
-        color: var(--white);
-        border: none;
-        padding: 8px 12px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: background-color 0.2s;
-        flex-grow: 1;
-        /* Allow buttons to grow and fill space */
-        min-width: 130px;
-        /* Minimum width for buttons */
-        font-family: 'Lato', sans-serif;
-        /* New font */
-    }
-    .chat-question-btn:hover {
-        background-color: #B8860B;
-        /* Darker gold */
-    }
-    /* Mobile adjustments for chatbot */
-    @media (max-width: 480px) {
-        #chatbot-container {
-            bottom: 10px;
-            right: 10px;
-        }
-        #chat-window {
-            width: calc(100% - 20px);
-            /* Full width minus margin */
-            height: 70vh;
-            /* Use percentage of viewport height */
-            right: 10px;
-            bottom: 70px;
-            left: 10px; /* Center it */
-        }
-        #chat-icon {
-            width: 55px;
-            /* Smaller icon on mobile */
-            height: 55px;
-            font-size: 1.8rem;
-        }
-        .chat-question-btn {
-            min-width: 100px;
-            /* Adjust button size for smaller screens */
-            padding: 6px 10px;
-            font-size: 0.85rem;
-        }
-    }
-  </style>
+</style>
+
 </head>
 <body>
   <header>
