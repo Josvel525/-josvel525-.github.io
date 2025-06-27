@@ -8,315 +8,174 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
-      --primary: #1a237e; /* Darker blue, potentially for main header */
-      --secondary-blue: #1e3a8a; /* New dark blue for banner */
-      --accent: #DAA520; /* Bold gold color */
-      --bg: #f5f6fa;
+      --primary: #1a237e;
+      --secondary: #38b6ff;
+      --accent: #FFD700;
+      --bg: #f4f7fd;
       --white: #fff;
-      --gray: #eee;
-      --shadow: 0 2px 8px rgba(0,0,0,0.06);
-      --qabox-bg: #e1bee7; /* Light purple for Q&A boxes - NEW COLOR */
-      --chatbot-bg: #e0f2f7; /* Light blue for chatbot background */
-      --chatbot-header-bg: #007bb6; /* Darker blue for chatbot header */
-      --user-message-bg: #DCF8C6; /* Greenish for user messages */
-      --bot-message-bg: #EAEAEA; /* Light gray for bot messages */
-      --testimonial-bg: #fff8e1; /* Light yellow for testimonials - NEW COLOR */
+      --gray: #e0e0e0;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --testimonial-bg: #fff8e1;
+      --qabox-bg: #cfe2f3;
+      --chatbot-bg: #e0f2f7;
+      --chatbot-header-bg: #007bb6;
+      --user-message-bg: #DCF8C6;
+      --bot-message-bg: #EAEAEA;
     }
     body {
       margin: 0;
-      font-family: 'Lato', Arial, sans-serif; /* Changed font */
+      font-family: 'Lato', Arial, sans-serif;
       background: var(--bg);
-      color: #222;
+      color: #003a7a;
     }
     header {
-      background: var(--primary);
-      color: var(--white);
-      padding: 2rem 0; /* Reduced overall header padding */
+      background: #1a3f73;
+      color: #daa520;
+      padding: 2.5rem 0 2rem 0;
       text-align: center;
-      box-shadow: var(--shadow);
       position: relative;
-      /* Adjust top padding if needed, but flex items should handle spacing */
-      padding-top: 2.5rem; /* Adjusted for top elements within the new layout */
-      padding-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
     }
-
-    /* Notary Seal Styling - Top Right */
-    header .seal {
-      position: absolute;
-      top: 10px; /* Distance from top */
-      right: 15px; /* Distance from right */
-      width: 140px; /* Increased size slightly */
-      height: 140px; /* Increased size slightly */
-      opacity: 1; /* Removed transparency */
-      z-index: 1; /* Ensure it's above other elements if needed */
-    }
-
-    /* Photo and Contact Info - Top Left - Now flex row */
     .photo-container {
       position: absolute;
-      top: 15px; /* Distance from top */
-      left: 15px; /* Distance from left */
+      top: 18px;
+      left: 18px;
       display: flex;
-      flex-direction: row; /* Arranged side-by-side */
-      align-items: center; /* Align items vertically in the middle */
-      gap: 15px; /* Space between photo and text container */
-      z-index: 2; /* Ensure it's on top */
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      z-index: 2;
     }
     .photo {
-      width: 180px; /* Larger photo */
-      height: 180px;
-      border-radius: 50%;
+      width: 140px;
+      height: 140px;
+      border-radius: 10%;
       object-fit: cover;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2); /* Slightly more prominent shadow */
-      flex-shrink: 0; /* Prevent photo from shrinking */
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      background: var(--white);
     }
     .text-info {
       display: flex;
-      flex-direction: column; /* Stack name, title, contact info */
-      align-items: flex-start; /* Align text to the left */
-      color: var(--white);
+      flex-direction: column;
+      align-items: flex-start;
+      color: 	#daa520;
       text-align: left;
     }
     .name-title .name {
-      font-family: 'Montserrat', sans-serif; /* New font for name */
-      font-size: 1.2rem; /* Adjusted font size */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 2px;
-      white-space: nowrap; /* Prevent name from wrapping */
     }
     .name-title .title {
-      font-family: 'Lato', sans-serif; /* New font for title */
-      font-size: 0.9rem; /* Adjusted font size */
+      font-size: 0.9rem;
+      color: #e0e0e0;
       font-weight: 400;
-      color: #ccc; /* Slightly lighter color for title */
-      margin-bottom: 5px; /* Space below title */
-      white-space: nowrap; /* Prevent title from wrapping */
-    }
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      font-size: 0.9rem; /* Adjust font size */
-      color: var(--white);
+      margin-bottom: 2px;
     }
     .contact-info a {
       color: var(--white);
       text-decoration: none;
-      margin-bottom: 2px; /* Small space between lines */
-      font-size: 0.95rem; /* Make links slightly larger */
-      white-space: nowrap; /* Prevent breaking phone/email */
-      font-family: 'Lato', sans-serif; /* New font */
+      font-size: 0.93rem;
+      margin-bottom: 2px;
+      transition: color 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .contact-info a:hover {
-      text-decoration: underline;
+    .contact-info a:hover { color: var(--accent); }
+    header .seal {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: var(--white);
+      box-shadow: 0 0 8px rgba(0,0,0,0.10);
+      border: 2.5px solid var(--accent);
     }
-
     header h1 {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif; /* Changed font */
-      font-size: 2.2rem; /* Adjusted font size */
-      font-weight: 800; /* Bolder */
-      letter-spacing: 1.5px;
-      color: var(--white); /* Ensure color is white */
-      /* Push down slightly if content overlaps */
-      padding-top: 20px; /* Add some space from the top, considering photo */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--white);
+      margin: 0 0 0.3rem 0;
+      text-shadow: 0 2px 10px rgba(50,120,255,0.09);
     }
     header h2 {
-      margin: 0.5rem 0;
-      font-family: 'Montserrat', sans-serif; /* Changed font */
-      font-size: 1.6rem; /* Adjusted font size */
+      font-size: 1.3rem;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      letter-spacing: 1.2px;
-      color: var(--white); /* Ensure color is white */
+      color: #daa520;
+      margin: 0 0 0.7rem 0;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.07);
     }
     header p {
-      margin: 1rem 0;
-      font-family: 'Lato', sans-serif; /* Changed font */
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: #e0e0e0; /* Slightly off-white for body text */
+      margin: 0.6rem 0 1.5rem 0;
+      font-family: 'Lato', sans-serif;
+      font-size: 1.18rem;
+      color: #f9f9f9;
     }
     .cta-btn-container {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0; /* No bottom margin here, header padding handles it */
+      gap: 0.7rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
     }
     .cta-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.8em 1.8em; /* Adjusted padding for pill shape */
+      background: #c9a84f;
+      color: 	#000000;
+      padding: 0.7em 1.7em;
       border: none;
-      border-radius: 30px; /* More pronounced rounded corners for pill shape */
-      font-size: 1rem;
-      font-weight: 600;
+      border-radius: 30px;
+      font-size: 1.05rem;
+      font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      transition: background 0.2s;
-      font-family: 'Montserrat', sans-serif; /* New font */
+      box-shadow: 0 2px 12px rgba(250,207,90,0.13);
+      transition: background 0.18s, color 0.18s;
+      margin-bottom: 7px;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .cta-btn:hover { background: #B8860B; /* Darker gold */ }
-
-    /* --- New styles for the "What We Do" section and pop-out buttons --- */
-    .what-we-do-section {
-        text-align: center;
-        margin-top: 3rem;
-        padding: 0 1rem;
-        background: var(--bg); /* Match body background */
-        color: #222; /* Ensure text is visible */
-        padding-bottom: 3rem; /* Space below the section */
+    .cta-btn:hover {
+      background: #ffe082;
+      color: #1a237e;
     }
-
-    .what-we-do-section .subtitle {
-        font-family: 'Lato', sans-serif; /* New font */
-        font-size: 1.1rem;
-        color: var(--primary);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        text-transform: uppercase;
-    }
-
-    .what-we-do-section .main-title {
-        font-family: 'Montserrat', sans-serif; /* New font */
-        font-size: 2rem;
-        color: #222;
-        margin-top: 0;
-        margin-bottom: 2rem;
-        font-weight: 700;
-    }
-
-    .new-services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Flexible columns, min 200px wide */
-        gap: 1.5rem;
-        justify-content: center; /* Center grid items horizontally */
-        max-width: 1000px; /* Limit overall width */
-        margin: 0 auto; /* Center the grid container */
-    }
-
-    .new-service-button {
-        background: var(--white);
-        border-radius: 14px;
-        box-shadow: var(--shadow);
-        padding: 1.5rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; /* Vertically center content */
-        text-align: center;
-        position: relative; /* For popup positioning */
-        cursor: pointer;
-        transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-        min-height: 150px; /* Ensure a consistent height for cards */
-        color: #222; /* Default text color */
-    }
-
-    .new-service-button:hover {
-        transform: scale(1.05) translateY(-5px); /* Slightly larger and lift on hover */
-        box-shadow: 0 8px 20px 4px rgba(26,35,126,0.18), 0 3px 10px rgba(0,0,0,0.08);
-        z-index: 2; /* Bring to front on hover */
-    }
-
-    .new-service-icon {
-        font-size: 3.5rem; /* Large icon size */
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
-
-    .new-service-title {
-        font-family: 'Montserrat', sans-serif; /* New font */
-        font-size: 1.15rem;
-        font-weight: 600;
-        color: var(--primary); /* Main title color */
-        margin-bottom: 0.5rem;
-    }
-
-    .service-popup {
-        position: absolute;
-        top: 100%; /* Position below the button */
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--white);
-        border: 1px solid var(--gray);
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        padding: 1rem;
-        min-width: 250px;
-        max-width: 300px;
-        z-index: 10;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        text-align: left;
-        color: #333;
-        font-weight: 400;
-        margin-top: 10px; /* Space between button and popup */
-        font-family: 'Lato', sans-serif; /* New font */
-    }
-
-    .new-service-button:hover .service-popup {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .service-popup ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .service-popup ul li {
-        padding: 0.4rem 0;
-        border-bottom: 1px solid var(--gray);
-        font-size: 0.95rem; /* Slightly smaller text in popup */
-    }
-    .service-popup ul li:last-child {
-        border-bottom: none;
-    }
-    /* --- End new styles for "What We Do" section and pop-out buttons --- */
-
-    /* New styles for the "Notary Needs Banner" section */
     .notary-needs-banner {
-      background-color: var(--secondary-blue); /* Changed to a deep blue */
-      /* Updated slanted line effect with brighter colors */
-      background-image: repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,0.3) 0px, /* Brighter white */
-          rgba(255,255,255,0.3) 6px,
-          transparent 6px,
-          transparent 12px,
-          rgba(255,50,50,0.2) 12px, /* Brighter red */
-          rgba(255,50,50,0.2) 18px
-      ); /* Fixed the repeating linear gradient for red and white stripes */
-      background-size: 25px 25px; /* Adjust size for stripe density */
-      color: var(--white);
+      background: #faf2e1;
+      color: 	#1c1c1e;
       text-align: center;
-      padding: 1.5rem 1rem; /* Decreased vertical padding */
-      margin-bottom: 3rem; /* Space below this banner */
-      box-shadow: var(--shadow); /* Added shadow for pop */
+      padding: 2.2rem 1rem 1.5rem 1rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 12px rgba(26,35,126,0.10);
+      border-radius: 18px;
+      position: relative;
     }
-
     .notary-needs-banner h3 {
-      font-family: 'Montserrat', sans-serif; /* New font */
-      font-size: 2.4rem; /* Adjusted font size */
-      margin: 0 0 0.8rem 0;
-      font-weight: 800; /* Bolder */
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin: 0 0 0.7rem 0;
+      font-weight: 800;
       line-height: 1.2;
+      color: 	#1c1c1e;
+      Shadow: 1px 2px 8px rgba(26,35,126,0.10);
     }
-
     .notary-needs-banner p {
-      font-family: 'Lato', sans-serif; /* New font */
-      font-size: 1.1rem; /* Smaller text for sub-message */
+      font-family: 'Lato', sans-serif;
+      font-size: 1.1rem;
       margin: 0;
-      max-width: 700px; /* Limit line length for readability */
-      margin-left: auto;
-      margin-right: auto;
-      color: #e0e0e0; /* Slightly off-white */
+      color: 	#1c1c1e;
+      text-shadow: 1px 1px 4px rgba(26,35,126,0.09);
     }
-
-
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -325,7 +184,7 @@
     .section-title {
       font-family: 'Montserrat', sans-serif; /* New font */
       font-size: 1.8rem; /* Adjusted font size */
-      color: var(--primary); /* Main title color */
+      color: 	#1c1c1e;
       margin-bottom: 1.5rem;
       margin-top: 2.5rem;
       text-align: center;
@@ -338,7 +197,7 @@
         border-radius: 15px; /* Rounded corners */
         padding: 1.5rem; /* Inner padding */
         margin-bottom: 2rem; /* Space between sections */
-        background-color: var(--Light Gray); /* White background inside border */
+        background-color: var(--white); /* White background inside border */
         box-shadow: var(--shadow); /* Subtle shadow for depth */
     }
 
@@ -389,7 +248,7 @@
     }
 
     .service-description {
-      color: #222;
+      color: 222;
       font-weight: 500;
       text-align: center;
       margin-bottom: 1.2rem;
@@ -412,6 +271,92 @@
       margin-bottom: 0;
     }
 
+    /* Styles for the "WHAT WE DO" section */
+    .new-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      margin-top: 2rem; /* Added margin-top to separate from previous section */
+    }
+
+    .new-service-button {
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      min-height: 150px; /* Ensure consistent height */
+    }
+
+    .new-service-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    }
+
+    .new-service-icon {
+      font-size: 3.5rem; /* Larger icons */
+      color: #364d82;
+      margin-bottom: 0.8rem;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .new-service-button:hover .new-service-icon {
+      color: var(--primary); /* Icon color change on hover */
+    }
+
+    .new-service-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-popup {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85); /* Dark overlay */
+      color: var(--white);
+      padding: 1rem;
+      box-sizing: border-box;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-out;
+      font-size: 0.9rem;
+      text-align: left;
+      border-radius: 0 0 12px 12px;
+      z-index: 10;
+    }
+
+    .new-service-button:hover .service-popup {
+      transform: translateY(0);
+    }
+
+    .service-popup ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .service-popup li {
+      margin-bottom: 0.4rem;
+    }
+
+    .service-popup li:last-child {
+      margin-bottom: 0;
+    }
+
+
 /* Responsive for mobile */
 @media (max-width: 700px) {
   /* ... existing grid and popup styles ... */
@@ -423,6 +368,22 @@
       transform: translateX(-50%);
       max-width: 90%;
   }
+  .new-services-grid { /* Mobile adjustment for "WHAT WE DO" grid */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .new-service-button { /* Mobile adjustment for "WHAT WE DO" buttons */
+    min-height: 100px; /* Smaller height for mobile */
+    padding: 1rem;
+  }
+  .new-service-icon {
+    font-size: 2.5rem; /* Smaller icons on mobile */
+    margin-bottom: 0.5rem;
+  }
+  .new-service-title {
+    font-size: 1rem; /* Smaller title font on mobile */
+  }
+
 
   /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
   header {
@@ -653,7 +614,7 @@
       font-family: 'Lato', sans-serif; /* New font */
     }
     footer {
-      background: var(--primary);
+      background: #073763;
       color: var(--white);
       text-align: center;
       padding: 1.2rem 0;
@@ -664,7 +625,7 @@
     .faq-title {
       font-family: 'Montserrat', sans-serif; /* New font */
       font-size: 1.8rem; /* Adjusted size */
-      color: var(--primary);
+      color: #000000;
       margin-bottom: 1.5rem;
       margin-top: 2.5rem;
       text-align: center;
@@ -672,7 +633,8 @@
     }
     .faq-title i {
       margin-right: 10px;
-      color: var(--accent); /* Color the icon */
+      color: #f4d473;
+
     }
 
 
@@ -687,7 +649,7 @@
     #chat-icon {
         width: 65px; /* Slightly larger icon */
         height: 65px; /* Slightly larger icon */
-        background-color: var(--accent); /* Changed color to stand out */
+        background-color: #f1c232;
         color: var(--white);
         border-radius: 50%;
         display: flex;
@@ -845,144 +807,140 @@
       <div class="text-info">
         <div class="name-title">
           <div class="name">Joseph Velasco</div>
-          <div class="title">Commissioned Texas Notary Public</div>
+          <div class="title">Commissioned Texas Notary Public<br>Certified Loan Signing Agent</div>
         </div>
         <div class="contact-info">
-          <a href="tel:(832)356-0671">832-356-0671</a>
-          <a href="mailto:info@texaspublicnotary.us">info@texaspublicnotary.us</a>
+          <a href="tel:8323560671"><i class="fas fa-phone"></i>832-356-0671</a>
+          <a href="mailto:info@texaspublicnotary.us"><i class="fas fa-envelope"></i>info@texaspublicnotary.us</a>
         </div>
       </div>
     </div>
-
     <img src="notaryseal.png" alt="Notary Seal" class="seal">
-
-    <h1>Texas Public Notary</h1> <h2>Houston's Trusted Mobile Notary Service</h2>
+    <h1>Texas Public Notary</h1>
+    <h2>Houston's Trusted Mobile Notary Service</h2>
     <p>Fast, Reliable, and Direct to Your Door</p>
     <div class="cta-btn-container">
-      <a href="tel:8323560671" class="cta-btn">Call Us</a>
-      <a href="sms:8323560671" class="cta-btn">Text Us</a>
-      <a href="mailto:info@texaspublicnotary.us" class="cta-btn">Email Us</a>
+      <a href="tel:8323560671" class="cta-btn"><i class="fas fa-phone"></i> Call Us</a>
+      <a href="sms:8323560671" class="cta-btn"><i class="fas fa-sms"></i> Text Us</a>
+      <a href="mailto:info@texaspublicnotary.us" class="cta-btn"><i class="fas fa-envelope"></i> Email Us</a>
     </div>
   </header>
-
   <section class="notary-needs-banner">
     <h3>We Handle All Your Notary Needs 24/7</h3>
     <p>No need to travel outside of your home or office to notarize your documents.</p>
   </section>
-
-  <section class="what-we-do-section">
-      <div class="subtitle">WHAT WE DO</div>
-      <div class="main-title">Providing Fast, Affordable and Quality Notary Services</div>
-      <div class="new-services-grid">
-          <div class="new-service-button">
-              <i class="fas fa-file-signature new-service-icon"></i>
-              <div class="new-service-title">Loan Signing Services</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Certified Loan Signing Agent</li>
-                      <li>Refinances</li>
-                      <li>Buyer/Seller Packages</li>
-                      <li>HELOCs</li>
-                      <li>Reverse Mortgages</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-scroll new-service-icon"></i>
-              <div class="new-service-title">Take Acknowledgments & Proofs</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Verifying Signer Identity</li>
-                      <li>Certifying Voluntary Signatures</li>
-                      <li>Acknowledging Deeds, Contracts, and other Documents</li>
-                      <li>Taking a "Proof" of Document Execution by a Witness</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-gavel new-service-icon"></i>
-              <div class="new-service-title">Administer Oaths & Affirmations</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Administering Oaths for Affidavits</li>
-                      <li>Swearing in Witnesses for Depositions</li>
-                      <li>Administering Oaths for Verifications</li>
-                      <li>Administering Oaths of Office</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-microphone-alt new-service-icon"></i>
-              <div class="new-service-title">Take Depositions</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Administering Oaths to Witnesses</li>
-                      <li>Recording Oral Testimony</li>
-                      <li>Marking Exhibits</li>
-                      <li>Certifying Transcripts</li>
-                      <li>Ensuring Proper Procedure</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-copy new-service-icon"></i>
-              <div class="new-service-title">Certify Copies of Documents</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Certifying True Copies of Non-Recordable Documents (e.g., diplomas, personal letters)</li>
-                      <li>Requires Presentation of Original Document</li>
-                      <li>Cannot Certify Copies of Public Records (e.g., birth certificates, marriage licenses, court documents)</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-money-bill-wave new-service-icon"></i>
-              <div class="new-service-title">Protest Negotiable Instruments</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Formal Demand for Payment or Acceptance of a Negotiable Instrument</li>
-                      <li>Certifying Dishonor Upon Non-Payment or Non-Acceptance</li>
-                      <li>Notifying Parties of Dishonor</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-lock-open new-service-icon"></i>
-              <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Opening Safe Deposit Box Upon Court Order or Legal Requirement</li>
-                      <li>Creating Detailed Inventory of Box Contents</li>
-                      <li>Sealing Contents and Delivering Inventory to Appropriate Parties</li>
-                  </ul>
-              </div>
-          </div>
-
-          <div class="new-service-button">
-              <i class="fas fa-clipboard-list new-service-icon"></i>
-              <div class="new-service-title">Other General Notary Services</div>
-              <div class="service-popup">
-                  <ul>
-                      <li>Affidavits & Sworn Statements</li>
-                      <li>Power of Attorney Documents</li>
-                      <li>Medical Directives & Living Wills</li>
-                      <li>Travel Consent Forms for Minors</li>
-                      <li>Vehicle Title & Bill of Sale Documents</li>
-                      <li>I-9 Employment Eligibility Verification (Authorized Agent)</li>
-                      <li>General Document Notarizations</li>
-                      <li>Apostille & Authentication Document Preparation</li>
-                  </ul>
-              </div>
-          </div>
-      </div>
-  </section>
   <main>
+    <div class="section-title">WHAT WE DO</div>
+    <div class="new-services-grid">
+        <div class="new-service-button">
+            <i class="fas fa-file-signature new-service-icon"></i>
+            <div class="new-service-title">Loan Signing Services</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Certified Loan Signing Agent</li>
+                    <li>Refinances</li>
+                    <li>Buyer/Seller Packages</li>
+                    <li>HELOCs</li>
+                    <li>Reverse Mortgages</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-scroll new-service-icon"></i>
+            <div class="new-service-title">Take Acknowledgments & Proofs</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Verifying Signer Identity</li>
+                    <li>Certifying Voluntary Signatures</li>
+                    <li>Acknowledging Deeds, Contracts, and other Documents</li>
+                    <li>Taking a "Proof" of Document Execution by a Witness</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-gavel new-service-icon"></i>
+            <div class="new-service-title">Administer Oaths & Affirmations</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Administering Oaths for Affidavits</li>
+                    <li>Swearing in Witnesses for Depositions</li>
+                    <li>Administering Oaths for Verifications</li>
+                    <li>Administering Oaths of Office</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-microphone-alt new-service-icon"></i>
+            <div class="new-service-title">Take Depositions</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Administering Oaths to Witnesses</li>
+                    <li>Recording Oral Testimony</li>
+                    <li>Marking Exhibits</li>
+                    <li>Certifying Transcripts</li>
+                    <li>Ensuring Proper Procedure</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-copy new-service-icon"></i>
+            <div class="new-service-title">Certify Copies of Documents</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Certifying True Copies of Non-Recordable Documents (e.g., diplomas, personal letters)</li>
+                    <li>Requires Presentation of Original Document</li>
+                    <li>Cannot Certify Copies of Public Records (e.g., birth certificates, marriage licenses, court documents)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-money-bill-wave new-service-icon"></i>
+            <div class="new-service-title">Protest Negotiable Instruments</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Formal Demand for Payment or Acceptance of a Negotiable Instrument</li>
+                    <li>Certifying Dishonor Upon Non-Payment or Non-Acceptance</li>
+                    <li>Notifying Parties of Dishonor</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-lock-open new-service-icon"></i>
+            <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Opening Safe Deposit Box Upon Court Order or Legal Requirement</li>
+                    <li>Creating Detailed Inventory of Box Contents</li>
+                    <li>Sealing Contents and Delivering Inventory to Appropriate Parties</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="new-service-button">
+            <i class="fas fa-clipboard-list new-service-icon"></i>
+            <div class="new-service-title">Other General Notary Services</div>
+            <div class="service-popup">
+                <ul>
+                    <li>Affidavits & Sworn Statements</li>
+                    <li>Power of Attorney Documents</li>
+                    <li>Medical Directives & Living Wills</li>
+                    <li>Travel Consent Forms for Minors</li>
+                    <li>Vehicle Title & Bill of Sale Documents</li>
+                    <li>I-9 Employment Eligibility Verification (Authorized Agent)</li>
+                    <li>General Document Notarizations</li>
+                    <li>Apostille & Authentication Document Preparation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
     <div class="section-title">Notarization Pricing</div>
     <div class="pricing-section-container"> <div class="services-grid">
             <div class="service-card">
@@ -1049,12 +1007,12 @@
     </div> <div class="section-title">Trip Fees</div>
     <div class="pricing-section-container"> <div class="trip-fees-grid">
             <div class="service-card">
-            <div class="service-description">Within Greater Houston</div>
+            <div class="service-description"><strong>Within Greater Houston<strong/></div>
             <hr class="card-divider">
             <div class="service-price">$34.95</div>
             </div>
             <div class="service-card">
-            <div class="service-description">Outside Greater Houston</div>
+            <div class="service-description"><strong>Outside Greater Houston<strong/></div>
             <hr class="card-divider">
             <div class="service-price">Call or Text For Pricing</div>
             </div>
@@ -1062,12 +1020,12 @@
     </div> <div class="section-title">Evening and Overnight Service Fees</div>
     <div class="pricing-section-container"> <div class="after-hours-fees-grid">
             <div class="service-card">
-            <div class="service-description">Appointments From 6:00 PM – 11:30 PM</div>
+            <div class="service-description"><strong>Appointments From 6:00 PM – 11:30 PM<strong/></div>
             <hr class="card-divider">
             <div class="service-price">$24.95</div>
             </div>
             <div class="service-card">
-            <div class="service-description">Appointments From 11:30 PM – 6:00 AM</div>
+            <div class="service-description"><strong>Appointments From 11:30 PM – 6:00 AM<strong/></div>
             <hr class="card-divider">
             <div class="service-price">$49.95</div>
             </div>
@@ -1131,7 +1089,7 @@
     </details>
 
     <p class="appointment-disclaimer">
-      Appointments booked online are not finalized until you receive an appointment confirmation from us by phone or email. Please call us for urgent requests or any questions.
+      <Strong>Appointments booked online are not finalized until you receive an appointment confirmation from us by phone or email. Please call us for urgent requests or any questions.<strong/>
     </p>
     <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
   </main>
