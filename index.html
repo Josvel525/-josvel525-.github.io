@@ -1,1256 +1,1654 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas Public Notary</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Joseph Velasco - Houston Mobile Notary</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #1a237e;
-      --secondary: #38b6ff;
-      --accent: #FFD700;
-      --bg: #f4f7fd;
-      --white: #fff;
-      --gray: #e0e0e0;
-      --shadow: 0 2px 12px rgba(0,0,0,0.07);
-      --testimonial-bg: #fff8e1;
-      --qabox-bg: #cfe2f3;
-      --chatbot-bg: #e0f2f7;
-      --chatbot-header-bg: #007bb6;
-      --user-message-bg: #DCF8C6;
-      --bot-message-bg: #EAEAEA;
+      --primary-dark: #0D1B2A;
+      --primary-mid: #1B263B;
+      --primary-light: #415A77;
+      --accent-gold: #D4AF37;
+      --accent-hover: #EAC674;
+      --text-light: #E0E1DD;
+      --text-dark: #0D1B2A;
+      --bg-light: #F8F9FA;
+      --white: #FFFFFF;
+      --success-green: #28a745;
+      --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+      --shadow-dark: 0 8px 25px rgba(0, 0, 0, 0.15);
     }
+
+    /* --- General Styles & Resets --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Lato', Arial, sans-serif;
-      background: var(--bg);
-      color: #003a7a;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    header {
-      background: #1a3f73;
-      color: #daa520;
-      padding: 2.5rem 0 2rem 0;
-      text-align: center;
-      position: relative;
-      box-shadow: var(--shadow);
-      border-bottom-left-radius: 32px;
-      border-bottom-right-radius: 32px;
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1rem;
     }
-    .photo-container {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 14px;
-      z-index: 2;
+
+    .container-fluid {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
     }
-    .photo {
-      width: 170px;
-      height: 170px;
-      border-radius: 8%;
-      object-fit: cover;
-      box-shadow: 0 0 12px rgba(0,0,0,0.15);
-      background: var(--white);
-    }
-    .text-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: 	 #daa520;
-      text-align: left;
-    }
-    .name-title .name {
+
+    h1,
+    h2,
+    h3,
+    h4 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 2px;
+      color: var(--primary-dark);
     }
-    .name-title .title {
-      font-size: 0.9rem;
-      color: #e0e0e0;
-      font-weight: 400;
-      margin-bottom: 2px;
-    }
-    .contact-info a {
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.93rem;
-      margin-bottom: 2px;
-      transition: color 0.18s;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .contact-info a:hover { color: var(--accent); }
-    header .seal {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: contain;
-      background: var(--white);
-      box-shadow: 0 0 8px rgba(0,0,0,0.10);
-      border: 2.5px solid var(--accent);
-    }
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.3rem;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      color: var(--white);
-      margin: 0 0 0.3rem 0;
-      text-shadow: 0 2px 10px rgba(50,120,255,0.09);
-    }
-    header h2 {
-      font-size: 1.3rem;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      color: #daa520;
-      margin: 0 0 0.7rem 0;
-      letter-spacing: 1px;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.07);
-    }
-    header p {
-      margin: 0.6rem 0 1.5rem 0;
-      font-family: 'Lato', sans-serif;
-      font-size: 1.18rem;
-      color: #f9f9f9;
-    }
-    .cta-btn-container {
-      display: flex;
-      justify-content: center;
-      gap: 0.7rem;
-      margin-top: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .cta-btn {
-      background: #c9a84f;
-      color: 	 #000000;
-      padding: 0.7em 1.7em;
-      border: none;
-      border-radius: 30px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 2px 12px rgba(250,207,90,0.13);
-      transition: background 0.18s, color 0.18s;
-      margin-bottom: 7px;
-      font-family: 'Montserrat', sans-serif;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .cta-btn:hover {
-      background: #ffe082;
-      color: #1a237e;
-    }
-    .notary-needs-banner {
-      background: #faf2e1;
-      color: 	 #1c1c1e;
-      text-align: center;
-      padding: 2.2rem 1rem 1.5rem 1rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 2px 12px rgba(26,35,126,0.10);
-      border-radius: 18px;
-      position: relative;
-    }
-    .notary-needs-banner h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
-      margin: 0 0 0.7rem 0;
-      font-weight: 800;
-      line-height: 1.2;
-      color: 	 #1c1c1e;
-      Shadow: 1px 2px 8px rgba(26,35,126,0.10);
-    }
-    .notary-needs-banner p {
-      font-family: 'Lato', sans-serif;
-      font-size: 1.1rem;
-      margin: 0;
-      color: 	 #1c1c1e;
-      text-shadow: 1px 1px 4px rgba(26,35,126,0.09);
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      /* New font */
-      font-size: 1.8rem;
-      /* Adjusted font size */
-      color: 	 #1c1c1e;
-      margin-bottom: 1.5rem;
-      margin-top: 2.5rem;
       text-align: center;
-      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      padding-bottom: 1rem;
     }
-    /* NEW: Styling for the section containers with borders */
-    .pricing-section-container {
-        border: 1px solid var(--gray);
-        /* Light gray border */
-        border-radius: 15px;
-        /* Rounded corners */
-        padding: 1.5rem;
-        /* Inner padding */
-        margin-bottom: 2rem;
-        /* Space between sections */
-        background-color: var(--white);
-        /* White background inside border */
-        box-shadow: var(--shadow);
-        /* Subtle shadow for depth */
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--accent-gold);
+      border-radius: 2px;
     }
-    .top-bar { /* This class seems unused in your original CSS, but leaving it as is */
-      background-color: #0056b3;
-      color: white;
-      padding: 1rem 2rem;
+
+    /* --- Header & Navigation --- */
+    .main-header {
+      background: var(--primary-mid);
+      color: var(--text-light);
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-dark);
+      transition: background-color 0.3s ease;
+    }
+
+    .main-header.scrolled {
+      background-color: rgba(13, 27, 42, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      width: 95%;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      /* margin-bottom: 2rem; Removed as parent container now has it */
+
+    .logo img {
+      height: 80px;
+      width: auto;
     }
-    /* New: Styles for separate Trip and After Hours pricing */
-    .trip-fees-grid, .after-hours-fees-grid { /* Applied to both new grids */
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-        /* margin-bottom: 2rem; Removed as parent container now has it */
-    }
-    .service-card {
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1.2rem 1rem 1.2rem;
-      font-size: 1rem;
+
+    .main-nav ul {
+      list-style: none;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      border: none;
-      transition: transform 0.18s cubic-bezier(.4,1.5,.8,1), box-shadow 0.18s cubic-bezier(.4,1.5,.8,1);
-      cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      /* New font */
-    }
-    .service-card:hover {
-      transform: scale(1.04) translateY(-4px);
-      box-shadow: 0 6px 18px 2px rgba(26,35,126,0.17), 0 2px 8px rgba(0,0,0,0.06);
-      z-index: 2;
-    }
-    .service-description {
-      color: 222;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 1.2rem;
-    }
-    .card-divider {
-      width: 60%;
-      height: 1.5px;
-      background: var(--gray);
-      margin: 0 auto 1rem auto;
-      border: none;
-      opacity: 0.55;
-    }
-    .service-price {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.18rem;
-      text-align: center;
-      margin-bottom: 0;
-    }
-    /* Styles for the "WHAT WE DO" section */
-    .new-services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 2rem;
-      margin-top: 2rem;
-      /* Added margin-top to separate from previous section */
     }
-    .new-service-button {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1rem;
+
+    .main-nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--accent-gold);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--accent-gold);
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a.active::after {
+      width: 100%;
+    }
+
+    .nav-cta a {
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+
+    .nav-cta a:hover {
+      background-color: var(--accent-hover);
+      color: var(--text-dark);
+      transform: scale(1.05);
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      width: 24px;
+      height: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mobile-nav-toggle span {
+      display: block;
+      background-color: var(--white);
+      height: 3px;
+      width: 100%;
+      border-radius: 3px;
+      position: absolute;
+      left: 0;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-toggle span:nth-child(1) {
+      top: 0;
+    }
+
+    .mobile-nav-toggle span:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .mobile-nav-toggle span:nth-child(3) {
+      bottom: 0;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      background: linear-gradient(rgba(13, 27, 42, 0.7), rgba(27, 38, 59, 0.8)), url('https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 9rem 1rem 5rem;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      min-height: 150px;
-      /* Ensure consistent height */
     }
-    .new-service-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-    }
-    .new-service-icon {
+
+    .hero h1 {
       font-size: 3.5rem;
-      /* Larger icons */
-      color: #364d82;
-      margin-bottom: 0.8rem;
-      transition: color 0.2s ease-in-out;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--white);
+      animation: fadeInDown 1s ease-out;
     }
-    .new-service-button:hover .new-service-icon {
-      color: var(--primary);
-      /* Icon color change on hover */
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-light);
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      max-width: 700px;
+      animation: fadeInUp 1s ease-out 0.5s both;
     }
-    .new-service-title {
-      font-family: 'Montserrat', sans-serif;
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 1s ease-out 1s both;
+    }
+
+    .hero-cta {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      padding: 1rem 2.5rem;
       font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      color: #000000;
-      margin-bottom: 0.5rem;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-dark);
+      border: 2px solid transparent;
     }
-    .service-popup {
+
+    .hero-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-5px);
+    }
+
+    .hero-cta.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--accent-gold);
+    }
+
+    .hero-cta.secondary:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+
+    /* --- Meet Your Notary Section --- */
+    #about {
+      background-color: var(--white);
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .about-photo-wrapper {
+      position: relative;
+    }
+
+    .about-photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow-dark);
+      border: 5px solid var(--white);
+    }
+
+    .notary-seal {
       position: absolute;
       bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.85); /* Dark overlay */
-      color: var(--white);
-      padding: 1rem;
-      box-sizing: border-box;
-      transform: translateY(100%);
-      transition: transform 0.3s ease-out;
-      font-size: 0.9rem;
-      text-align: left;
-      border-radius: 0 0 12px 12px;
-      z-index: 10;
+      right: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: var(--white);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.10);
+      border: 2.5px solid var(--accent-gold);
+      transform: translate(20%, 20%);
     }
-    .new-service-button:hover .service-popup {
-      transform: translateY(0);
+
+    .about-content {
+      flex: 1;
+      min-width: 300px;
     }
-    .service-popup ul {
+
+    .about-content h2 {
+      font-size: 2.5rem;
+    }
+
+    .about-content .title {
+      font-size: 1.2rem;
+      color: var(--primary-light);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .about-contact-info a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-mid);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .about-contact-info a:hover {
+      color: var(--accent-gold);
+    }
+
+    .contact-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: var(--accent-gold);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    .icon-phone {
+      mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>');
+    }
+
+    .icon-email {
+      mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm0 48h416v56.5l-216 144L48 168.5V112zm0 336V217l216 144 216-144v202H48z"/></svg>');
+    }
+
+    /* --- Pricing Section Styles --- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: var(--shadow-light);
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-dark);
+    }
+
+    .pricing-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card-header .icon {
+      color: var(--primary-mid);
+      width: 24px;
+      height: 24px;
+    }
+
+    .pricing-card-header h3 {
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin: 0;
+    }
+
+    .pricing-card-description {
+      color: var(--primary-light);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .pricing-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .service-popup li {
-      margin-bottom: 0.4rem;
-    }
-    .service-popup li:last-child {
-      margin-bottom: 0;
-    }
-/* Responsive for mobile */
-@media (max-width: 700px) {
-  /* ... existing grid and popup styles ... */
-  .services-grid, .trip-fees-grid, .after-hours-fees-grid {
-    grid-template-columns: 1fr;
-  }
-  .service-popup {
-      left: 50%;
-      max-width: 90%;
-  }
-  .new-services-grid { /* Mobile adjustment for "WHAT WE DO" grid */
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .new-service-button { /* Mobile adjustment for "WHAT WE DO" buttons */
-    min-height: 100px;
-    /* Smaller height for mobile */
-    padding: 1rem;
-  }
-  .new-service-icon {
-    font-size: 2.5rem;
-    /* Smaller icons on mobile */
-    margin-bottom: 0.5rem;
-  }
-  .new-service-title {
-    font-size: 1rem;
-    /* Smaller title font on mobile */
-  }
-  /* --- REVISED HEADER ADJUSTMENTS FOR MOBILE --- */
-  header {
-    /* RESET initial padding, we'll manage space with flexbox */
-    padding-top: 20px;
-    /* A safe top padding for the overall header */
-    padding-bottom: 2rem;
-    display: flex;
-    /* Make the header a flex container */
-    flex-direction: column;
-    /* Stack all direct children (photo-container, h1, h2, buttons) vertically */
-    align-items: center;
-    /* Horizontally center the stacked items within the header */
-    text-align: center;
-    /* Center any direct text content of the header */
-    position: relative;
-    /* Essential for positioning the seal relative to the header */
-    box-sizing: border-box;
-    /* Include padding/border in width calculation */
-    width: 100%;
-    /* Ensure header takes full available width */
-  }
-  .photo-container {
-    /* Critical: Force to stack and remove absolute positioning */
-    flex-direction: row;
-    /* Stack photo, then text info */
-    align-items: left;
-    /* Center photo and text info horizontally within this container */
-    position: static !important;
-    /* Force to normal flow, overriding any absolute positioning */
-    top: auto !important;
-    /* Remove specific top positioning */
-    left: auto !important;
-    /* Remove specific left positioning */
-    margin-bottom: 25px;
-    /* **INCREASED SPACE:** More space below the photo-container to push down H1/H2 */
-    gap: 5px;
-    /* Smaller gap between photo and text-info */
-    width: 100%;
-    /* Ensure it takes full width for centering */
-    box-sizing: border-box;
-    padding: 0 10px;
-    /* Add slight horizontal padding to prevent edge sticking */
-  }
-  .photo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 10px; /* Space below the photo, before the text info */
-    border-radius: 50%;
-    /* Ensure it's perfectly round if desired */
-    object-fit: cover;
-    /* Ensures image covers the area without distortion */
-  }
-  .text-info {
-    margin-left: 0 !important;
-    /* Ensure no left margin pushes it */
-    text-align: left;
-    /* Center the text content within text-info */
-    width: 100%;
-    /* Ensure it takes full width to center text if needed */
-  }
-  .name-title .name, .name-title .title {
-    white-space: normal;
-    /* Allow name/title to wrap if needed */
-    font-size: 1rem;
-    line-height: 1.2;
-    margin: 0;
-    /* Remove any default margins that might interfere */
-  }
-  .name-title .title {
-    font-size: 0.75rem;
-  }
-  .contact-info {
-    font-size: 0.8rem;
-    margin-top: 5px;
-    /* Space below name/title */
-    line-height: 1.4;
-    white-space: normal !important;
-    /* CRITICAL: Ensure text wraps */
-    overflow-wrap: break-word;
-    /* Additional safety for long words */
-    word-break: break-word;
-    /* For older browsers */
-    padding: 0 5px;
-    /* Small horizontal padding to prevent overflow */
-  }
-  .seal {
-    width: 80px !important;
-    height: 80px !important;
-    /* Keeping absolute positioning for the seal as it seems to be an emblem */
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 100; /* Increased z-index to ensure it's always on top */
-    /* Add any other specific styles if needed, like a margin around it */
-    margin: 5px;
-  }
-  header h1 {
-    font-size: 1.8rem;
-    margin-top: 20px;
-    /* **INCREASED SPACE:** More space above the main header from photo-container */
-    margin-bottom: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 10px; /* Add horizontal padding to prevent text from touching edges */
-  }
-  header h2 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 30px; /* **INCREASED SPACE:** More space below the sub-header, pushing buttons/banner down */
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 10px; /* Add horizontal padding */
-  }
-  /* Assuming these are your buttons */
-  .header-buttons { /* Ensure your buttons are wrapped in a div with this class in HTML */
+
+    .pricing-list li {
       display: flex;
-      flex-direction: column; /* Stack the buttons vertically */
       align-items: center;
-      /* Center the buttons */
-      width: 100%;
-      margin-bottom: 25px;
-      /* Space below the buttons, before the banner */
-  }
-  /* Apply styles to your actual button classes, e.g., .your-button-class */
-  .cta-btn {
-      width: 85%;
-      /* Make buttons wider for easier tapping */
-      max-width: 300px;
-      /* Limit max width on larger mobiles */
-      margin-bottom: 15px;
-      /* Add space between stacked buttons */
-      padding: 12px 0;
-      font-size: 1rem;
-      border-radius: 8px;
-      /* Consistent styling */
-  }
-  .cta-btn-container :last-child {
-      margin-bottom: 0;
-      /* No margin after the last button */
-  }
-  /* --- CONTENT BELOW HEADER --- */
-  .notary-needs-banner { /* Assuming this is the section with "We Handle All..." */
-      padding: 20px;
-      /* Add overall padding to the banner */
-      margin-bottom: 30px;
-      /* Space below the banner */
-      box-sizing: border-box;
-      width: 100%;
-  }
-  .notary-needs-banner h3 {
-    font-size: 2rem;
-    margin-top: 0; /* Reset */
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  .notary-needs-banner p {
-    font-size: 1rem;
-    padding: 0 10px;
-    /* Horizontal padding for text content */
-    text-align: center;
-  }
-  .section-title { /* For "WHAT WE DO" */
-    font-size: 1.4rem;
-    margin-top: 35px;
-    /* Ample space before the section title from the banner */
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .service-item {
-      margin-bottom: 15px;
-      /* Space between stacked service items */
-      padding: 15px;
-  }
-  .pricing-section-container {
-    padding: 1rem;
-  }
-
-  /* NEW: What We Do - Mobile Click Functionality */
-  .new-service-button .service-popup {
-      display: none; /* Hide by default on mobile */
-      position: static; /* Remove absolute positioning */
-      transform: translateY(0); /* Reset transform */
-      background: none; /* No black background overlay */
-      color: #000; /* Default text color */
-      padding: 0;
-      box-shadow: none;
-      border-radius: 0;
-      font-size: 0.9rem;
-      margin-top: 10px;
-  }
-
-  .new-service-button.active .service-popup {
-      display: block; /* Show when active */
-  }
-
-  .new-service-button:hover .service-popup {
-    transform: translateY(0); /* Override hover effect for mobile */
-  }
-}
-    @media (max-width: 480px) {
-        .new-service-button {
-            padding: 1rem 0.5rem;
-            min-height: 120px;
-        }
-        .new-service-icon {
-            font-size: 3rem;
-        }
-        .new-service-title {
-            font-size: 1rem;
-        }
-        .service-popup {
-            min-width: unset;
-            /* Remove min-width to allow shrinking */
-            width: 100%;
-            /* Take full width of parent on small screens */
-            left: 0;
-            transform: none; /* No translateX to avoid pushing off screen */
-        }
-        .cta-btn {
-          padding: 0.7em 1.5em;
-          /* Smaller padding for smaller buttons on mobile */
-          font-size: 0.9rem;
-        }
-        .notary-needs-banner h3 {
-          font-size: 1.8rem;
-          /* Smaller font for small screens */
-        }
-        .notary-needs-banner p {
-          font-size: 0.95rem;
-        }
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #eee;
     }
-    .testimonials-grid {
+
+    .pricing-list li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-list .item-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+
+    .pricing-list .item-icon {
+      width: 16px;
+      height: 16px;
+      background-color: var(--success-green);
+      -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
+      mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
+    }
+
+    .pricing-list .item-price {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-family: 'Montserrat';
+    }
+
+    .fees-section-divider {
+      text-align: center;
+      margin: 4rem auto;
+    }
+
+    .fees-section-divider h2 {
+      font-size: 2rem;
+      color: var(--primary-dark);
+      display: inline-block;
+      position: relative;
+    }
+
+    .fees-section-divider h2::before,
+    .fees-section-divider h2::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 100px;
+      height: 2px;
+      background-color: #ddd;
+    }
+
+    .fees-section-divider h2::before {
+      right: 100%;
+      margin-right: 15px;
+    }
+
+    .fees-section-divider h2::after {
+      left: 100%;
+      margin-left: 15px;
+    }
+
+    .fees-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
-    .testimonial-card {
-      background: var(--testimonial-bg);
-      /* NEW BACKGROUND COLOR */
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      padding: 1.5rem 1rem;
-      font-size: 1rem;
-      font-style: italic;
-      font-family: 'Lato', sans-serif; /* New font */
-      border-left: 5px solid var(--accent);
-      /* Add a subtle accent line */
+
+    .fee-card {
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: var(--shadow-light);
     }
-    details {
+
+    .fee-card h3 {
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* --- NEW: Subscription Section Styles --- */
+    #subscriptions {
+      background-color: var(--white);
+    }
+
+    .subscription-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .subscription-card {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--white);
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-light);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .subscription-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-dark);
+      border-color: var(--accent-gold);
+    }
+
+    .subscription-card .plan-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .subscription-card .plan-price {
+      font-size: 2.2rem;
+      font-family: 'Montserrat';
+      font-weight: 800;
+      color: var(--primary-mid);
       margin-bottom: 1.5rem;
-      background: var(--qabox-bg); /* Q&A box color - CHANGED */
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: var(--shadow);
-      font-family: 'Lato', sans-serif; /* New font */
     }
+
+    .subscription-card .plan-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+      text-align: left;
+      color: var(--primary-light);
+      flex-grow: 1;
+    }
+
+    .subscription-card .plan-features li {
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .subscription-card .plan-features li::before {
+      content: '•';
+      color: var(--accent-gold);
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .subscription-card .cta-button {
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 50px;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .subscription-card .cta-button:hover {
+      background-color: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    .comparison-table {
+      margin: 4rem auto 0;
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 900px;
+      box-shadow: var(--shadow-light);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .comparison-table th {
+      background-color: var(--primary-mid);
+      color: var(--white);
+      font-family: 'Montserrat';
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 600;
+      text-align: left;
+    }
+
+    /* --- Testimonials Section --- */
+    #testimonials {
+      background: var(--bg-light);
+      border-top: 1px solid #ddd;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 15px;
+
+      color: var(--primary-light);
+      box-sizing: border-box;
+      text-align: center;
+      box-shadow: var(--shadow-light);
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-family: 'Montserrat';
+    }
+
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .slider-btn {
+      background: rgba(0, 0, 0, 0.1);
+      border: none;
+      color: var(--primary-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+    }
+
+    .slider-btn:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+
+    .slider-btn svg {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+    }
+
+    /* --- FAQ Section --- */
+    .faq-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    details {
+      margin-bottom: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-light);
+      border-left: 5px solid var(--primary-light);
+      transition: border-color 0.3s;
+    }
+
+    details[open] {
+      border-left-color: var(--accent-gold);
+    }
+
     summary {
       cursor: pointer;
       font-weight: bold;
-      color: var(--primary);
-      font-family: 'Montserrat', sans-serif; /* New font */
+      color: var(--primary-dark);
+      font-family: 'Montserrat';
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
     }
-    ol {
-      margin-top: 0.5rem;
-      padding-left: 1.5rem;
+
+    summary::-webkit-details-marker {
+      display: none;
     }
+
+    summary::after {
+      content: '';
+      width: 1em;
+      height: 1em;
+      background-color: var(--primary-dark);
+      mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>');
+      -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      transition: transform 0.3s ease-out;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    details div {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    /* --- Booking Section --- */
+    #booking {
+      background: var(--bg-light);
+    }
+
+    /* Changed to light background */
     .scheduler {
       width: 100%;
       height: 800px;
       border: none;
       margin-top: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow-dark);
     }
+
     .appointment-disclaimer {
       font-size: 1rem;
-      color: #444;
-      margin-bottom: 1rem;
-      text-align: center;
-      font-family: 'Lato', sans-serif; /* New font */
-    }
-    footer {
-      background: #073763;
-      color: var(--white);
-      text-align: center;
-      padding: 1.2rem 0;
-      margin-top: 2rem;
-      font-size: 1rem;
-      font-family: 'Lato', sans-serif;
-      /* New font */
-    }
-    .faq-title {
-      font-family: 'Montserrat', sans-serif;
-      /* New font */
-      font-size: 1.8rem;
-      /* Adjusted size */
-      color: #000000;
+      color: var(--primary-light);
       margin-bottom: 1.5rem;
-      margin-top: 2.5rem;
       text-align: center;
-      font-weight: 700;
+      font-style: italic;
     }
-    .faq-title i {
-      margin-right: 10px;
-      color: #f4d473;
+
+    /* --- Footer --- */
+    footer {
+      background: var(--primary-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 2rem 1rem;
     }
-    /* Chatbot Styles */
+
+    /* --- Chatbot --- */
     #chatbot-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000; /* Ensure it's on top of everything */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
     }
+
     #chat-icon {
-        width: 65px;
-        /* Slightly larger icon */
-        height: 65px;
-        /* Slightly larger icon */
-        background-color: #f1c232;
-        color: var(--white);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2rem; /* Larger icon size */
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Stronger shadow */
-        transition: transform 0.2s ease-in-out;
-        /* Pulse animation */
-        animation: pulse 2s infinite ease-in-out;
+      width: 65px;
+      height: 65px;
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+      animation: pulse 2s infinite;
     }
+
+    #chat-icon-svg {
+      width: 2rem;
+      height: 2rem;
+    }
+
     @keyframes pulse {
-        0% { transform: scale(1);
-        }
-        50% { transform: scale(1.08);
-        }
-        100% { transform: scale(1);
-        }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
     }
+
     #chat-icon:hover {
-        transform: scale(1.05);
-        animation: none; /* Stop pulse on hover */
+      transform: scale(1.1);
+      animation: none;
     }
+
     #chat-window {
-        width: 420px;
-        height: 400px;
-        background-color: var(--chatbot-bg);
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        position: absolute;
-        bottom: 80px; /* Position above the icon, adjusted for larger icon */
-        right: 0;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        font-family: 'Lato', sans-serif;
-        /* New font for chatbot text */
+      width: 380px;
+      height: 500px;
+      background-color: var(--bg-light);
+      border-radius: 10px;
+      box-shadow: var(--shadow-dark);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: absolute;
+      bottom: 90px;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
     }
+
     #chat-window.open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
+
     #chat-header {
-        background-color: var(--chatbot-header-bg);
-        color: var(--white);
-        padding: 10px 15px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: 'Montserrat', sans-serif;
-        /* New font for chatbot header */
+      background-color: var(--primary-mid);
+      color: var(--white);
+      padding: 12px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: 'Montserrat';
     }
+
     #close-chat {
-        font-size: 1.5rem;
-        cursor: pointer;
-        line-height: 1;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
     }
+
     #chat-messages {
-        flex-grow: 1;
-        padding: 15px;
-        overflow-y: auto;
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 8px 12px;
+      border-radius: 15px;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .bot-message {
+      background-color: #EAEAEA;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .user-message {
+      background-color: var(--primary-light);
+      color: var(--white);
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    #chat-input-area {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .chat-question-btn {
+      background-color: var(--white);
+      color: var(--primary-mid);
+      border: 1px solid var(--primary-mid);
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      flex-grow: 1;
+      min-width: 130px;
+    }
+
+    .chat-question-btn:hover {
+      background-color: var(--accent-gold);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+    }
+
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+    }
+
+    .typing-indicator span {
+      height: 8px;
+      width: 8px;
+      background-color: #999;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 2px;
+      animation: bounce 1.2s infinite both;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(0);
+      }
+
+      40% {
+        transform: scale(1.0);
+      }
+    }
+
+    /* --- Animations & Media Queries --- */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        padding: 3rem 1rem;
+      }
+
+      .section-title {
+        font-size: 2.1rem;
+      }
+
+      .main-nav,
+      .nav-cta {
+        display: none;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .main-nav.active {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-    }
-    .message {
-        max-width: 80%;
-        padding: 8px 12px;
-        border-radius: 15px;
-        line-height: 1.4;
-        word-wrap: break-word;
-    }
-    .bot-message {
-        background-color: var(--bot-message-bg);
-        align-self: flex-start;
-        border-bottom-left-radius: 2px;
-    }
-    .user-message {
-        background-color: var(--user-message-bg);
-        align-self: flex-end;
-        border-bottom-right-radius: 2px;
-    }
-    #chat-input-area {
-        padding: 10px;
-        border-top: 1px solid #ccc;
-        display: flex;
-        flex-wrap: wrap; /* Allow buttons to wrap */
-        gap: 8px;
-        /* Space between buttons */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-mid);
+        padding: 1rem 0;
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .main-nav.active ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .main-nav.active li {
+        width: 100%;
+        text-align: center;
+      }
+
+      .main-nav.active a {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+      }
+
+      .hero {
+        padding: 8rem 1rem 4rem;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .about-container {
+        text-align: center;
         justify-content: center;
-        /* Center buttons */
+      }
     }
-    .chat-question-btn {
-        background-color: var(--accent);
-        color: var(--white);
-        border: none;
-        padding: 8px 12px;
-        border-radius: 20px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        transition: background-color 0.2s;
-        flex-grow: 1;
-        /* Allow buttons to grow and fill space */
-        min-width: 130px;
-        /* Minimum width for buttons */
-        font-family: 'Lato', sans-serif;
-        /* New font */
+
+    @media (max-width: 768px) {
+
+      .fees-section-divider h2::before,
+      .fees-section-divider h2::after {
+        display: none;
+      }
+
+      .subscription-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .chat-question-btn:hover {
-        background-color: #B8860B;
-        /* Darker gold */
-    }
-    /* Mobile adjustments for chatbot */
+
     @media (max-width: 480px) {
-        #chatbot-container {
-            bottom: 10px;
-            right: 10px;
-        }
-        #chat-window {
-            width: calc(100% - 20px);
-            /* Full width minus margin */
-            height: 70vh;
-            /* Use percentage of viewport height */
-            right: 10px;
-            bottom: 70px;
-            left: 10px; /* Center it */
-        }
-        #chat-icon {
-            width: 55px;
-            /* Smaller icon on mobile */
-            height: 55px;
-            font-size: 1.8rem;
-        }
-        .chat-question-btn {
-            min-width: 100px;
-            /* Adjust button size for smaller screens */
-            padding: 6px 10px;
-            font-size: 0.85rem;
-        }
+      .hero {
+        padding: 7rem 1rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        width: 80%;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .about-photo {
+        width: 200px;
+        height: 200px;
+      }
+
+      .notary-seal {
+        width: 75px;
+        height: 75px;
+      }
+
+      #chat-window {
+        width: calc(100vw - 20px);
+        right: -10px;
+        height: 70vh;
+        bottom: 80px;
+      }
+
+      .chat-question-btn {
+        min-width: 120px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="photo-container">
-      <img src="headshot.jpg" alt="Your Photo" class="photo">
-      <div class="text-info">
-        <div class="name-title">
-          <div class="name">Joseph Velasco</div>
-          <div class="title">Commissioned Texas Notary Public<br>Certified Loan Signing Agent</div>
-        </div>
-        <div class="contact-info">
-          <a href="tel:8323560671"><i class="fas fa-phone"></i>832-356-0671</a>
-          <a href="mailto:info@texaspublicnotary.us"><i class="fas fa-envelope"></i>info@texaspublicnotary.us</a>
-        </div>
-      </div>
-    </div>
-    <img src="notaryseal.png" alt="Notary Seal" class="seal">
-    <h1>Houston Mobile Notary</h1>
-    <h2>Texas Public Notary</h2>
-    <p>Fast, Reliable, Affordable, and Direct to Your Door</p>
-    <div class="cta-btn-container">
-      <a href="tel:8323560671" class="cta-btn"><i class="fas fa-phone"></i> Call Us</a>
-      <a href="sms:8323560671" class="cta-btn"><i class="fas fa-sms"></i> Text Us</a>
-      <a href="mailto:info@texaspublicnotary.us" class="cta-btn"><i class="fas fa-envelope"></i> Email Us</a>
+
+  <header class="main-header" id="mainHeader">
+    <div class="nav-container">
+      <a href="#home" class="logo"><img src="notarylogo.jpg" alt="Notary Seal Logo"></a>
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <!-- NEW LINK to Subscriptions section -->
+          <li><a href="#subscriptions">Subscriptions</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta"><a href="#booking">Book Appointment</a></div>
+      <button class="mobile-nav-toggle" id="mobileNavToggle"><span></span><span></span><span></span></button>
     </div>
   </header>
-  <section class="notary-needs-banner">
-    <h3>We Handle All Your Notary Needs 24/7</h3>
-    <p>No need to travel outside of your home or office to notarize your documents.</p>
-  </section>
+
   <main>
-    <div class="section-title">WHAT WE DO</div>
-    <div class="new-services-grid">
-        <div class="new-service-button">
-            <i class="fas fa-file-signature new-service-icon"></i>
-            <div class="new-service-title">Loan Signing Services</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Certified Loan Signing Agent</li>
-                    <li>Refinances</li>
-                    <li>Buyer/Seller Packages</li>
-                    <li>HELOCs</li>
-                    <li>Reverse Mortgages</li>
-                </ul>
-            </div>
+    <section id="home" class="hero">
+      <h1>Your Trusted Notary, On-Demand.</h1>
+      <p class="subtitle">Fast, affordable, reliable, and professional mobile notary services across Houston. We come to you, 24/7, for all your signing needs.</p>
+      <div class="hero-cta-group"><a href="tel:8323560671" class="hero-cta">Call Now</a><a href="#booking" class="hero-cta secondary">Book Online</a></div>
+    </section>
+
+    <section id="about" class="container">
+      <div class="about-container">
+        <div class="about-photo-wrapper">
+          <img src="headshot.png" alt="Photo of Joseph Velasco" class="about-photo">
+          <img src="notaryseal.png" alt="Notary Seal" class="notary-seal">
         </div>
-        <div class="new-service-button">
-            <i class="fas fa-scroll new-service-icon"></i>
-            <div class="new-service-title">Take Acknowledgments & Proofs</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Verifying Signer Identity</li>
-                    <li>Certifying Voluntary Signatures</li>
-                    <li>Acknowledging Deeds, Contracts, and other Documents</li>
-                    <li>Taking a "Proof" of Document Execution by a Witness</li>
-                </ul>
-            </div>
+        <div class="about-content">
+          <h2>Joseph Velasco, CAM, CTNP, LSA</h2>
+          <p class="title">Commissioned Texas Notary Public<br>Commissioned Loan Signing Agent</p>
+          <div class="about-contact-info">
+            <a href="tel:8323560671"><span class="contact-icon icon-phone"></span> 832-356-0671</a>
+            <a href="mailto:info@texaspublicnotary.us"><span class="contact-icon icon-email"></span> info@texaspublicnotary.us</a>
+          </div>
         </div>
-        <div class="new-service-button">
-            <i class="fas fa-gavel new-service-icon"></i>
-            <div class="new-service-title">Administer Oaths & Affirmations</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Administering Oaths for Affidavits</li>
-                    <li>Swearing in Witnesses for Depositions</li>
-                    <li>Administering Oaths for Verifications</li>
-                    <li>Administering Oaths of Office</li>
-                </ul>
-            </div>
-        </div>
-        <div class="new-service-button">
-            <i class="fas fa-microphone-alt new-service-icon"></i>
-            <div class="new-service-title">Take Depositions</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Administering Oaths to Witnesses</li>
-                    <li>Recording Oral Testimony</li>
-                    <li>Marking Exhibits</li>
-                    <li>Certifying Transcripts</li>
-                    <li>Ensuring Proper Procedure</li>
-                </ul>
-            </div>
-        </div>
-        <div class="new-service-button">
-            <i class="fas fa-copy new-service-icon"></i>
-            <div class="new-service-title">Certify Copies of Documents</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Certifying True Copies of Non-Recordable Documents (e.g., diplomas, personal letters)</li>
-                    <li>Requires Presentation of Original Document</li>
-                    <li>Cannot Certify Copies of Public Records (e.g., birth certificates, marriage licenses, court documents)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="new-service-button">
-            <i class="fas fa-money-bill-wave new-service-icon"></i>
-            <div class="new-service-title">Protest Negotiable Instruments</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Formal Demand for Payment or Acceptance of a Negotiable Instrument</li>
-                    <li>Certifying Dishonor Upon Non-Payment or Non-Acceptance</li>
-                    <li>Notifying Parties of Dishonor</li>
-                </ul>
-            </div>
-        </div>
-        <div class="new-service-button">
-            <i class="fas fa-lock-open new-service-icon"></i>
-            <div class="new-service-title">Open & Inventory Safe Deposit Boxes</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Opening Safe Deposit Box Upon Court Order or Legal Requirement</li>
-                    <li>Creating Detailed Inventory of Box Contents</li>
-                    <li>Sealing Contents and Delivering Inventory to Appropriate Parties</li>
-                </ul>
-            </div>
-        </div>
-        <div class="new-service-button">
-            <i class="fas fa-clipboard-list new-service-icon"></i>
-            <div class="new-service-title">Other General Notary Services</div>
-            <div class="service-popup">
-                <ul>
-                    <li>Affidavits & Sworn Statements</li>
-                    <li>Power of Attorney Documents</li>
-                    <li>Medical Directives & Living Wills</li>
-                    <li>Travel Consent Forms for Minors</li>
-                    <li>Vehicle Title & Bill of Sale Documents</li>
-                    <li>I-9 Employment Eligibility Verification (Authorized Agent)</li>
-                    <li>General Document Notarizations</li>
-                    <li>Apostille & Authentication Document Preparation</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="section-title">Notarization Pricing</div>
-    <div class="pricing-section-container"> <div class="services-grid">
-            <div class="service-card">
-            <div class="service-description">Protesting nonacceptance or nonpayment</div>
-            <hr class="card-divider">
-            <div class="service-price">$4.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Loan Signing Services</div>
-            <hr class="card-divider">
-            <div class="service-price">Contact for pricing</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Certificate and seal to a protest</div>
-            <hr class="card-divider">
-            <div class="service-price">$4.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Acknowledgment for registration (first signature)</div>
-            <hr class="card-divider">
-            <div class="service-price">$10.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Each additional signature</div>
-            <hr class="card-divider">
-            <div class="service-price">$1.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Notice of protest</div>
-            <hr class="card-divider">
-            <div class="service-price">$1.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Other protests</div>
-            <hr class="card-divider">
-            <div class="service-price">$4.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Oath/affirmation with certificate and seal</div>
-            <hr class="card-divider">
-            <div class="service-price">$4.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Deposition of a witness per 100 words</div>
-            <hr class="card-divider">
-            <div class="service-price">$1.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Copies per page</div>
-            <hr class="card-divider">
-            <div class="service-price">$1.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Swearing witness to deposition</div>
-            <hr class="card-divider">
-            <div class="service-price">$10.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description">Notarial acts not listed</div>
-            <hr class="card-divider">
-            <div class="service-price">$10.00</div>
-            </div>
-        </div>
-    </div> <div class="section-title">Standard Trip Fees</div>
-    <div class="pricing-section-container"> <div class="trip-fees-grid">
-            <div class="service-card">
-            <div class="service-description"><strong>Within 10 Miles<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">$29.99</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description"><strong>More Than 10 Miles<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">+$1.00 Per Additional Mile</div>
-            </div>
-        </div>
-    </div> <div class="section-title">Evening/Overnight Fees</div>
-    <div class="pricing-section-container"> <div class="after-hours-fees-grid">
-            <div class="service-card">
-            <div class="service-description"><strong>Evenings (6pm-12am)<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">+$29.99</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description"><strong>Overnight (12am-8am)<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">+$49.99</div>
-              </div>
-        </div>
-    </div> <div class="section-title">Weekend/Holidays Fees</div>
-    <div class="pricing-section-container"> <div class="after-hours-fees-grid">
-            <div class="service-card">
-            <div class="service-description"><strong>Weekends<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">+$15.00</div>
-            </div>
-            <div class="service-card">
-            <div class="service-description"><strong>Holidays (Christmas, Thanksgiving, Etc.)<strong/></div>
-            <hr class="card-divider">
-            <div class="service-price">+$50.00</div>
-            </div>
-        </div>
-    </div> <div class="section-title">What Our Clients Say</div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!
-        <span class="author">— Lisa M.</span>
       </div>
-      <div class="testimonial-card">
-        Needed a notary on a Sunday morning. He was on time and made everything simple.
-        <span class="author">— Eric D.</span>
+    </section>
+
+    <section id="pricing" class="container">
+      <h2 class="section-title">Services & Pricing</h2>
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M256 0c-17.7 0-32 14.3-32 32V69.3c-11.8-3.1-24.3-4.5-37.2-4.5c-48.4 0-93.1 18.7-126.8 52.5L29.3 86.6c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L54.7 202.7c-33.8 33.8-52.5 78.4-52.5 126.8c0 12.9 1.4 25.4 4.5 37.2H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H69.3c3.1 11.8 4.5 24.3 4.5 37.2c0 48.4-18.7 93.1-52.5 126.8L3.5 482.7c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L119.5 457.3c33.8 33.8 78.4 52.5 126.8 52.5c12.9 0 25.4-1.4 37.2-4.5V480c0 17.7 14.3 32 32 32s32-14.3 32-32v-37.3c11.8 3.1 24.3 4.5 37.2 4.5c48.4 0 93.1-18.7 126.8-52.5l70.7 70.7c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L457.3 392.5c33.8-33.8 52.5-78.4 52.5-126.8c0-12.9-1.4-25.4-4.5-37.2H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-37.3c-3.1-11.8-4.5-24.3-4.5-37.2c0-48.4 18.7-93.1 52.5-126.8l70.7-70.7c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L392.5 119.5C358.7 85.8 314.1 67.2 265.2 67.2c-12.9 0-25.4 1.4-37.2 4.5V32c0-17.7-14.3-32-32-32zM128 256a128 128 0 1 0 256 0 128 128 0 1 0 -256 0z" />
+            </svg>
+            <h3>General Notarizations</h3>
+          </div>
+          <p class="pricing-card-description">Core notarial acts for personal and official documents, performed with precision and care.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Acknowledgments</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Address Verification (School/Work/Other)</span> <span class="item-price">$8.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Copy Certifications</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Affidavits/Sworn Statements</span> <span class="item-price">$10.00*</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Personal/Consent Forms</span> <span class="item-price">$7.00*</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Notary Acts Not Listed</span> <span class="item-price">$10.00*</span></li>
+
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <path fill="currentColor" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H144 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H120c-22.1 0-40-17.9-40-40V455.9c-.3-2.7-.5-5.4-.5-8.1l.7-160.2h-32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+            </svg>
+            <h3>Real Estate Documents</h3>
+          </div>
+          <p class="pricing-card-description">Critical, time-sensitive notarizations for property transactions. We come to your location to help you close deals efficiently.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Loan Signing Services</span> <span class="item-price">+$29.99</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Deeds of Trust</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Property Transfers</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>HELOC</span> <span class="item-price">Quote</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Closing Documents</span> <span class="item-price">+$10.00</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M16 128a112 112 0 1 1 224 0A112 112 0 1 1 16 128zM48 320c-13.3 0-24 10.7-24 24s10.7 24 24 24H208c13.3 0 24-10.7 24-24s-10.7-24-24-24H48zm0 96c-13.3 0-24 10.7-24 24s10.7 24 24 24H368c13.3 0 24-10.7 24-24s-10.7-24-24-24H48zM288 128a112 112 0 1 1 224 0 112 112 0 1 1 -224 0zM272 320c-13.3 0-24 10.7-24 24s10.7 24 24 24H432c13.3 0 24-10.7 24-24s-10.7-24-24-24H272z" />
+            </svg>
+            <h3>Legal Documents</h3>
+          </div>
+          <p class="pricing-card-description"><br>Ensure your legal paperwork is executed properly and in full compliance with Texas state law.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Wills & Testaments</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Living Trusts</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Powers of Attorney (POA)</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Adoption Papers</span> <span class="item-price">Quote</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Guardianship Agreements</span> <span class="item-price">$10.00</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z" />
+            </svg>
+            <h3>Financial Documents</h3>
+          </div>
+          <p class="pricing-card-description">Secure and professional notarization for financial documents, ensuring your transactions are legally binding.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Investment Documents</span> <span class="item-price">Quote</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Retirement Plan Documents</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Annuities / Tax Forms</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Loan Agreements</span> <span class="item-price">+$25.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Promissory Notes</span> <span class="item-price">$10.00</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 416c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zM352 208c0 17.7-14.3 32-32 32h-16v64h-32v-80c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32z" />
+            </svg>
+            <h3>Healthcare Documents</h3>
+          </div>
+          <p class="pricing-card-description">Crucial notarization for protecting patient rights. Mobile services for patients, families, and healthcare providers.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Medical Power of Attorney</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Living Wills</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Advanced Healthcare Directives</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Medical Consent Forms</span> <span class="item-price">$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>HIPAA Authorizations</span> <span class="item-price">$10.00</span></li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="currentColor" d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z" />
+            </svg>
+            <h3>Business & Corporate</h3>
+          </div>
+          <p class="pricing-card-description">Supporting businesses of all sizes by notarizing a wide range of documents to help you maintain compliance.</p>
+          <ul class="pricing-list">
+            <li><span class="item-name"><span class="item-icon"></span>Partnership Agreements</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Corporate Bylaws</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Articles of Incorporation</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Business Contracts</span> <span class="item-price">+$10.00</span></li>
+            <li><span class="item-name"><span class="item-icon"></span>Vendor Agreements</span> <span class="item-price">+$10.00</span></li>
+          </ul>
+        </div>
+
       </div>
-      <div class="testimonial-card">
-        Clear communication and affordable pricing. Will definitely use again.
-        <span class="author">— Tanya S.</span>
+
+      <div class="fees-section-divider">
+        <h2>Travel & Other Fees</h2>
       </div>
-      <div class="testimonial-card">
-        I didn’t know what to expect but he explained everything and made it super easy.
-        <span class="author">— Mike H.</span>
+
+      <div class="fees-grid">
+        <div class="fee-card">
+          <h3>Mobile & Travel Fees</h3>
+          <ul class="pricing-list">
+            <li><span class="item-name">Standard Trip Fee (0-10 miles from 77080)</span> <span class="item-price">$29.99</span></li>
+            <li><span class="item-name">Additional Mileage <br>(>10 miles from 77080)</span> <span class="item-price">$1.00/mile</span></li>
+          </ul>
+        </div>
+        <div class="fee-card">
+          <h3>After-Hours & Holiday Fees</h3>
+          <ul class="pricing-list">
+            <li><span class="item-name">Evening Fee (6pm - 12am)</span> <span class="item-price">+$29.99</span></li>
+            <li><span class="item-name">Late Night Fee (12am - 8am)</span> <span class="item-price">+$39.99</span></li>
+            <li><span class="item-name">Weekend / Holiday Fee</span> <span class="item-price">+$49.99</span></li>
+          </ul>
+        </div>
+        <div class="fee-card">
+          <h3>Other Services</h3>
+          <ul class="pricing-list">
+            <li><span class="item-name">I-9 Employment 3rd Party Verification</span> <span class="item-price">$40.00</span></li>
+            <li><span class="item-name">Printing & Document Prep</span> <span class="item-price">$1.00/page</span></li>
+            <li><span class="item-name">Hospital & Nursing Home Signings</span> <span class="item-price">$29.99</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="testimonial-card">
-        Very professional. Even my lawyer was impressed with how well organized he was.
-        <span class="author">— Rachel T.</span>
+
+    </section>
+
+    <!-- ==================================================== -->
+    <!-- ========= NEW SUBSCRIPTION SECTION START ========= -->
+    <!-- ==================================================== -->
+    <section id="subscriptions" class="container">
+      <h2 class="section-title">Monthly Subscription Plans</h2>
+      <div class="subscription-grid">
+
+        <div class="subscription-card">
+          <div class="plan-title">Starter</div>
+          <div class="plan-price">$49.95<span style="font-size: 1rem; color: var(--primary-light);">/mo</span></div>
+          <ul class="plan-features">
+            <li>5 notarizations per month</li>
+            <li>2 included mobile visit (10 mi radius from 77080)</li>
+            <li>10% discount on extras</li>
+            <li>Trip fee for additional visits only $19.99 within 10 miles from 77080</li>
+            <li>Rollover 1 unused notarization</li>
+          </ul>
+          <a href="contact.html?plan=Starter" class="cta-button">Choose This Plan</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="plan-title">Pro</div>
+          <div class="plan-price">$119.95<span style="font-size: 1rem; color: var(--primary-light);">/mo</span></div>
+          <ul class="plan-features">
+            <li>Up to 10 notarizations/month</li>
+            <li>3 mobile visits (15 mi radius from 77080)</li>
+            <li>Priority scheduling</li>
+            <li>20% discount on extras</li>
+            <li>Trip fee for additional visits only $14.99 within 10 mile radius from 77080</li>
+            <li>Rollover 1 unused home/office visit</li>
+          </ul>
+          <a href="contact.html?plan=Pro" class="cta-button">Choose This Plan</a>
+        </div>
+
+        <div class="subscription-card">
+          <div class="plan-title">Enterprise</div>
+          <div class="plan-price">Customized</div>
+          <ul class="plan-features">
+            <li>25+ notarizations/month</li>
+            <li>6+ mobile visits (15 mi radius from 77080)</li>
+            <li>Phone/Email support for general notarization questions</li>
+            <li>After-hours/weekend access</li>
+            <li>All travel fees included</li>
+          </ul>
+          <a href="contact.html?plan=Enterprise" class="cta-button">Contact Sales</a>
+        </div>
       </div>
-      <div class="testimonial-card">
-        It felt like I was dealing with someone who genuinely cared. That’s rare.
-        <span class="author">— Bryan K.</span>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Plan Feature</th>
+            <th>Starter</th>
+            <th>Pro</th>
+            <th>Enterprise</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly Price</td>
+            <td>$49.95</td>
+            <td>$119.95</td>
+            <td>Customized</td>
+          </tr>
+          <tr>
+            <td>Included Notarizations</td>
+            <td>5</td>
+            <td>10</td>
+            <td>25–30+</td>
+          </tr>
+          <tr>
+            <td>Mobile Visits</td>
+            <td>2 visit (10 mi)</td>
+            <td>3 visits (15 mi)</td>
+            <td>6+ visits (20+ mi)</td>
+          </tr>
+          <tr>
+            <td>Discounts</td>
+            <td>10% off extras</td>
+            <td>20% off travel</td>
+            <td>25% off extras + free travel</td>
+          </tr>
+          <tr>
+            <td>Scheduling Priority</td>
+            <td>—</td>
+            <td>Yes</td>
+            <td>Yes + after hours</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Email</td>
+            <td>Email + Phone</td>
+            <td>Dedicated Rep</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <!-- ================================================== -->
+    <!-- ========= NEW SUBSCRIPTION SECTION END ========= -->
+    <!-- ================================================== -->
+
+    <section id="testimonials" class="container-fluid">
+      <div class="container">
+        <h2 class="section-title">Why Houston Trusts Us</h2>
+        <div class="testimonial-slider">
+          <div class="testimonial-track">
+            <div class="testimonial">
+              <p class="testimonial-text">"Joseph showed up at 2AM with zero hesitation. Fast, friendly, and professional!"</p>
+              <p class="testimonial-author">— Lisa M.</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">"Needed a notary on a Sunday morning. He was on time and made everything simple."</p>
+              <p class="testimonial-author">— Eric D.</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">"Clear communication and affordable pricing. Will definitely use again."</p>
+              <p class="testimonial-author">— Tanya S.</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">"I didn’t know what to expect but he explained everything and made it super easy."</p>
+              <p class="testimonial-author">— Mike H.</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">"Very professional. Even my lawyer was impressed with how well organized he was."</p>
+              <p class="testimonial-author">— Rachel T.</p>
+            </div>
+            <div class="testimonial">
+              <p class="testimonial-text">"It felt like I was dealing with someone who genuinely cared. That’s rare."</p>
+              <p class="testimonial-author">— Bryan K.</p>
+            </div>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+              </svg></button>
+            <button class="slider-btn next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+              </svg></button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="faq-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</div>
-    <details>
-      <summary>Can a notary public give me legal advice?</summary>
-      I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN TEXAS AND MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE.
-    </details>
-    <details>
-      <summary>Do you offer after hours services?</summary>
-      Absolutely, please text us at 832-356-0671 or email us at info@texaspublicnotary.us for after hours or other special requests!
-    </details>
-    <details>
-      <summary>Can notary publics in Texas perform notary acts in all counties in Texas?</summary>
-      Yes, all active Texas commissioned notary publics can perform notary acts anywhere in the state of Texas.
-    </details>
-    <details>
-      <summary>Will I need a government issued identification card to obtain notarization services?</summary>
-      Yes. You will need valid identification and the name on the identification card must match the name and signature of the document being notarized.
-    </details>
-    <details>
-      <summary>Can you notarize a document that is already signed?</summary>
-      Yes, but all individuals who’s name and signature are to be notarized must be there in person, with valid identification, at the time your document is notarized.
-    </details>
-    <details>
-      <summary>What are other requirements to obtain notarizations?</summary>
-      <ol>
-        <li>The signer has been positively identified by the Texas notary.</li>
-        <li>The signer has personally appeared before the Texas notary to sign the document willingly, without any coercion, and for the purpose stated on the document.</li>
-        <li>The Texas notary performed the notarial act on the date stated on the notarial certificate.</li>
-      </ol>
-    </details>
-    <p class="appointment-disclaimer">
-      <strong>Appointments booked online are not finalized until you receive an appointment confirmation from us by phone or email. Please call us for urgent requests or any questions.</strong>
-    </p>
-    <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
+    </section>
+
+    <section id="faq" class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <details>
+          <summary>Can a notary public give me legal advice?</summary>
+          <div>I AM NOT AN ATTORNEY LICENSED TO PRACTICE LAW IN TEXAS AND MAY NOT GIVE LEGAL ADVICE OR ACCEPT FEES FOR LEGAL ADVICE.</div>
+        </details>
+        <details>
+          <summary>Do you offer after hours services?</summary>
+          <div>Absolutely, please text us at 832-761-3663,l or email us for after hours or other special requests! Note that additional fees apply.</div>
+        </details>
+        <details>
+          <summary>Can you perform notary acts in all Texas counties?</summary>
+          <div>Yes, all active Texas commissioned notary publics can perform notary acts anywhere in the state of Texas.</div>
+        </details>
+        <details>
+          <summary>Will I need a government issued ID?</summary>
+          <div>Yes. You will need a valid, unexpired government-issued photo identification. The name on the ID must reasonably match the name on the document.</div>
+        </details>
+        <details>
+          <summary>What are the requirements for notarization?</summary>
+          <div>
+            <ol>
+              <li>The signer must be positively identified by the Notary.</li>
+              <li>The signer must personally and willingly appear before the Notary.</li>
+              <li>The Notary must perform the act on the date stated on the certificate.</li>
+            </ol>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="booking" class="container">
+      <h2 class="section-title">Schedule Your Appointment</h2>
+      <p class="appointment-disclaimer"><strong>Appointments booked online are not finalized until you receive a confirmation from us.</strong> For urgent requests, please call or text us directly.</p>
+      <iframe class="scheduler" src="https://calendly.com/joseph-velasco/mobile-notary-service"></iframe>
+    </section>
+
   </main>
+
   <footer>
     &copy; 2025 TexasPublicNotary.US — Serving Houston and Surrounding Areas
   </footer>
+
   <div id="chatbot-container">
-      <div id="chat-icon">
-          <i class="fas fa-comments"></i>
+    <div id="chat-icon"><svg id="chat-icon-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 146.3-59.4c20.7 5.4 42.9 8.4 65.7 8.4c141.4 0 256-93.1 256-208S397.4 32 256 32z" />
+      </svg></div>
+    <div id="chat-window">
+      <div id="chat-header"><span>Notary HelpBot</span><span id="close-chat">&times;</span></div>
+      <div id="chat-messages">
+        <div class="bot-message message">Hello! How can I help you? You can ask me a question or choose one of the prompts below.</div>
       </div>
-      <div id="chat-window">
-          <div id="chat-header">
-              <h3>Texas Public Notary HelpBot</h3>
-              <span id="close-chat">&times;</span>
-          </div>
-          <div id="chat-messages">
-              <div class="bot-message message">Hello! How can I help you today?</div>
-          </div>
-          <div id="chat-input-area">
-              <button class="chat-question-btn" data-question="contact-info">Contact Info?</button>
-              <button class="chat-question-btn" data-question="service-duration">Service Duration?</button>
-              <button class="chat-question-btn" data-question="trip-fee">Trip Fee?</button>
-              <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
-              <button class="chat-question-btn" data-question="id-required">ID Required?</button>
-              <button class="chat-question-btn" data-question="after-booking">After Booking?</button>
-          </div>
+      <div id="chat-input-area">
+        <button class="chat-question-btn" data-question="contact-info">Contact Info?</button>
+        <button class="chat-question-btn" data-question="id-required">ID Required?</button>
+        <button class="chat-question-btn" data-question="payment-methods">Payment Methods?</button>
+        <button class="chat-question-btn" data-question="service-area">Service Area?</button>
+        <button class="chat-question-btn" data-question="print-docs">Can you print docs?</button>
+        <button class="chat-question-btn" data-question="no-wording">No notarial wording?</button>
+        <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
+        <button class="chat-question-btn" data-question="after-booking">What's next?</button>
       </div>
+    </div>
   </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const chatIcon = document.getElementById('chat-icon');
-        const chatWindow = document.getElementById('chat-window');
-        const closeChat = document.getElementById('close-chat');
-        const chatMessages = document.getElementById('chat-messages');
-        const questionButtons = document.querySelectorAll('.chat-question-btn');
-        const newServiceButtons = document.querySelectorAll('.new-service-button'); // Select all "WHAT WE DO" buttons
-
-        const qa = {
-            "contact-info": {
-                question: "How can I contact you with questions about your services?",
-                answer: "You can call or text us at 832-356-0671 or email us at info@texaspublicnotary.us"
-            },
-            "service-duration": {
-                question: "How long does the notary service take?",
-                answer: "It can take anywhere from a few minutes to hours depending on the service requested. Every client will be different based on each client’s specific needs, but typically it should not take more than 30 minutes."
-            },
-            "trip-fee": {
-                question: "Do you charge a trip fee and if so, how much is it?",
-                answer: "Yes, we do charge trip fees. Please refer to the trip fee pricing page."
-            },
-            "after-hours": {
-                question: "Do you offer after hours services?",
-                answer: "Yes, we are happy to assist our clients 24/7 so long as we have enough advanced notice. Please note that after hours calls will incur an additional fee which varies based on the time and day service is requested for. Please refer to the after-hours fees page for more information."
-            },
-            "id-required": {
-                question: "Do I need to have my ID to obtain notary services?",
-                answer: "Yes, a valid Government issued ID is required and must match the name of the document being notarized."
-            },
-            "after-booking": {
-                question: "Do I need to do anything after booking an appointment online?",
-                answer: "Be on the lookout for a confirmation for your requested date and time. Appointments are not finalized until you receive a confirmation either by email or phone. We may contact you if we have any questions before finalizing your booking."
-            }
+      // --- Standard Page Scripts ---
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled'));
+      const mobileNavToggle = document.getElementById('mobileNavToggle');
+      const mainNav = document.getElementById('mainNav');
+      mobileNavToggle.addEventListener('click', () => mainNav.classList.toggle('active'));
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.main-nav a');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          if (pageYOffset >= section.offsetTop - 150) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').substring(1) === current) link.classList.add('active');
+        });
+      });
+      const track = document.querySelector('.testimonial-track');
+      if (track && track.children.length > 0) {
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.slider-btn.next');
+        const prevButton = document.querySelector('.slider-btn.prev');
+        let currentSlide = 0;
+        const moveToSlide = (slideIndex) => {
+          const slideWidth = slides[0].getBoundingClientRect().width;
+          if (track) track.style.transform = 'translateX(-' + slideWidth * slideIndex + 'px)';
         };
-
-        chatIcon.addEventListener('click', () => {
-            chatWindow.classList.toggle('open');
-            // Scroll to the bottom of messages when opening
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+        if (nextButton) nextButton.addEventListener('click', () => {
+          currentSlide = (currentSlide + 1) % slides.length;
+          moveToSlide(currentSlide);
         });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.classList.remove('open');
+        if (prevButton) prevButton.addEventListener('click', () => {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+          moveToSlide(currentSlide);
         });
-
-        questionButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const questionKey = button.dataset.question;
-                const data = qa[questionKey];
-                // Display user's question
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.classList.add('user-message', 'message');
-                userMessageDiv.textContent = data.question;
-                chatMessages.appendChild(userMessageDiv);
-                // Display bot's answer
-                const botMessageDiv = document.createElement('div');
-                botMessageDiv.classList.add('bot-message', 'message');
-                botMessageDiv.textContent = data.answer;
-                chatMessages.appendChild(botMessageDiv);
-                // Scroll to the latest message
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            });
+        let autoPlayInterval = setInterval(() => {
+          if (nextButton) nextButton.click()
+        }, 5000);
+        [nextButton, prevButton].forEach(button => {
+          button.addEventListener('click', () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => {
+              if (nextButton) nextButton.click()
+            }, 5000);
+          });
         });
-
-        // Toggle service popup on click for mobile
-        newServiceButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Check if it's a mobile view (adjust breakpoint as needed)
-                if (window.innerWidth <= 700) {
-                    this.classList.toggle('active');
-                }
-            });
+      }
+      // --- Chatbot Scripts ---
+      const chatIcon = document.getElementById('chat-icon');
+      const chatWindow = document.getElementById('chat-window');
+      const closeChat = document.getElementById('close-chat');
+      const chatMessages = document.getElementById('chat-messages');
+      const questionButtons = document.querySelectorAll('.chat-question-btn');
+      const qa = {
+        "contact-info": {
+          question: "Contact Info?",
+          answer: "You can call or text us at 832-356-0671 or email us at info@texaspublicnotary.us for the fastest response."
+        },
+        "id-required": {
+          question: "Do I need an ID?",
+          answer: "Yes, a valid, unexpired Government-issued photo ID (like a driver's license or passport) is required for all signers."
+        },
+        "payment-methods": {
+          question: "What payments do you take?",
+          answer: "We accept all major credit cards, Zelle, Venmo, and cash. Payment is due at the time of service."
+        },
+        "service-area": {
+          question: "What is your service area?",
+          answer: "We primarily serve the greater Houston area. A travel fee may apply based on distance. Just ask for a quote!"
+        },
+        "print-docs": {
+          question: "Can you print documents?",
+          answer: "Yes, we can print documents for you. Please see the 'Printing & Document Prep' fee in our pricing list."
+        },
+        "no-wording": {
+          question: "My doc has no notary section?",
+          answer: "If your document doesn't have a notarial certificate, I can present you with choices (e.g., an acknowledgment or a jurat), but I cannot choose for you, as that would be legal advice."
+        },
+        "after-hours": {
+          question: "Do you work after hours?",
+          answer: "Yes, we are available 24/7 with advance notice. After-hours fees apply, please see our pricing section for details."
+        },
+        "after-booking": {
+          question: "I booked online, what's next?",
+          answer: "Your appointment is not final until you receive a confirmation call, text, or email from us. For urgent needs, please call directly."
+        }
+      };
+      if (chatIcon) chatIcon.addEventListener('click', () => chatWindow.classList.toggle('open'));
+      if (closeChat) closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
+      const addMessage = (content, type) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', type);
+        messageElement.innerHTML = content;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return messageElement;
+      };
+      const handleBotResponse = (qKey) => {
+        const botTyping = addMessage('<div class="typing-indicator"><span></span><span></span><span></span></div>', 'bot-message');
+        setTimeout(() => {
+          botTyping.innerHTML = qa[qKey].answer;
+        }, 1200);
+      };
+      questionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const qKey = button.dataset.question;
+          addMessage(qa[qKey].question, 'user-message');
+          handleBotResponse(qKey);
         });
-
-        // Close service popup if clicked outside
-        document.addEventListener('click', function(event) {
-            if (window.innerWidth <= 700) {
-                newServiceButtons.forEach(button => {
-                    if (button.classList.contains('active') && !button.contains(event.target)) {
-                        button.classList.remove('active');
-                    }
-                });
-            }
-        });
+      });
     });
   </script>
+
 </body>
+
 </html>
