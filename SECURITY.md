@@ -16,9 +16,7 @@ If you believe you've found a security vulnerability in this project, please con
 
 To report a vulnerability:
 
-📧 Email: security@yourdomain.com (Replace with your actual contact email)
-
-🔒 PGP Key (optional): [Provide a link if applicable]
+📧 Email: info@texaspublicnotary.us
 
 📆 Response SLA: We aim to respond to all reports within 3–5 business days
 
@@ -37,7 +35,7 @@ You’ll receive a confirmation of your report within 3–5 business days.
 
 If accepted, we’ll provide a target fix timeline and update you throughout the process.
 
-If declined (e.g. working as intended or not a security risk), we’ll explain why.
+If declined (e.g. working as intended or not a security risk), we’ll explain why if at all possible.
 
 🙏 Responsible Disclosure
 We ask that you:
