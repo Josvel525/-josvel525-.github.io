@@ -159,6 +159,11 @@
       width: 100%;
     }
 
+    .nav-cta {
+      display: inline-flex;
+      margin-left: 1rem;
+    }
+
     .nav-cta a {
       background-color: var(--accent-gold);
       color: var(--primary-dark);
@@ -1017,9 +1022,18 @@
         font-size: 2.1rem;
       }
 
-      .main-nav,
-      .nav-cta {
+      .main-nav {
         display: none;
+      }
+
+      .nav-cta {
+        display: inline-flex;
+      }
+
+      .nav-cta a {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        white-space: nowrap;
       }
 
       .mobile-nav-toggle {
@@ -1160,7 +1174,7 @@
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
-      <div class="nav-cta"><a href="#booking">Book Appointment</a></div>
+      <div class="nav-cta"><a href="#booking">Book Your Appointment Online Now</a></div>
       <button class="mobile-nav-toggle" id="mobileNavToggle"><span></span><span></span><span></span></button>
     </div>
   </header>
