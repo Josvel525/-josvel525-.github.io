@@ -810,15 +810,15 @@
     #chat-icon {
       width: 65px;
       height: 65px;
-      background-color: var(--accent-gold);
+      background: radial-gradient(circle at 25% 25%, #f8e8b5, #d4af37 45%, #b38600 90%);
       color: var(--primary-dark);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
       animation: pulse 2s infinite;
     }
 
@@ -832,23 +832,26 @@
       0%,
       100% {
         transform: scale(1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
       }
 
       50% {
         transform: scale(1.08);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
       }
     }
 
     #chat-icon:hover {
       transform: scale(1.1);
       animation: none;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
     }
 
     #chat-window {
-      width: 380px;
-      height: 500px;
-      background-color: var(--bg-light);
-      border-radius: 10px;
+      width: 400px;
+      height: 540px;
+      background: linear-gradient(180deg, #fdfdfd 0%, #f7f7fa 60%, #ffffff 100%);
+      border-radius: 16px;
       box-shadow: var(--shadow-dark);
       display: flex;
       flex-direction: column;
@@ -861,6 +864,7 @@
       transform: translateY(20px);
       transition: all 0.3s ease;
       font-family: 'Roboto', sans-serif;
+      border: 1px solid rgba(65, 90, 119, 0.1);
     }
 
     #chat-window.open {
@@ -870,117 +874,242 @@
     }
 
     #chat-header {
-      background-color: var(--primary-mid);
+      background: linear-gradient(135deg, #1b263b 0%, #243a5a 60%, #4a698d 100%);
       color: var(--white);
       padding: 12px 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       font-family: 'Montserrat';
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .chat-identity {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #39d98a;
+      box-shadow: 0 0 10px rgba(57, 217, 138, 0.8);
+      position: relative;
+    }
+
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid rgba(57, 217, 138, 0.6);
+    }
+
+    .bot-name {
+      font-size: 1rem;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .bot-status {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: #dbe8ff;
+      line-height: 1.1;
     }
 
     #close-chat {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       cursor: pointer;
       line-height: 1;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: background-color 0.2s;
+    }
+
+    #close-chat:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     #chat-messages {
       flex-grow: 1;
-      padding: 15px;
+      padding: 16px 16px 10px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .message {
-      max-width: 80%;
-      padding: 8px 12px;
-      border-radius: 15px;
-      line-height: 1.4;
-      word-wrap: break-word;
+      max-width: 86%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: var(--shadow-light);
+      font-size: 0.95rem;
+      animation: fadeIn 0.3s ease;
+      border: 1px solid rgba(13, 27, 42, 0.05);
     }
 
     .bot-message {
-      background-color: #EAEAEA;
+      background: linear-gradient(120deg, #1B263B, #415A77);
+      color: var(--text-light);
       align-self: flex-start;
-      border-bottom-left-radius: 2px;
+      border-bottom-left-radius: 4px;
+      position: relative;
+    }
+
+    .bot-message::before {
+      content: "🤖";
+      position: absolute;
+      left: -30px;
+      top: 8px;
+      font-size: 1rem;
+      opacity: 0.8;
     }
 
     .user-message {
-      background-color: var(--primary-light);
-      color: var(--white);
+      background: linear-gradient(135deg, #ffffff, #f4f6fa);
+      color: var(--text-dark);
       align-self: flex-end;
-      border-bottom-right-radius: 2px;
+      border-bottom-right-radius: 4px;
+    }
+
+    #chat-quick-prompts {
+      padding: 0 12px 10px;
+      border-top: 1px solid #eceff4;
+      background-color: #fdfdfd;
+    }
+
+    #quick-prompts-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--primary-mid);
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #quick-prompts-title span {
+      font-size: 1rem;
+    }
+
+    .chat-quick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px;
+      padding-bottom: 6px;
     }
 
     #chat-input-area {
-      padding: 10px;
-      border-top: 1px solid #ccc;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
+      padding: 10px 12px 12px;
+      border-top: 1px solid #eceff4;
+      background-color: #fafbff;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+    }
+
+    #user-input {
+      width: 100%;
+      border: 1px solid #d9dde4;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #user-input:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    #send-message {
+      background: linear-gradient(135deg, #d4af37, #b8901a);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    #send-message:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
     }
 
     .chat-question-btn {
-      background-color: var(--white);
-      color: var(--primary-mid);
-      border: 1px solid var(--primary-mid);
-      padding: 8px 12px;
-      border-radius: 20px;
+      background: linear-gradient(135deg, #f7f1da, #f0e1a0);
+      color: var(--primary-dark);
+      padding: 9px 11px;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-      flex-grow: 1;
-      min-width: 130px;
+      font-weight: 700;
+      box-shadow: var(--shadow-light);
+      transition: transform 0.1s ease, box-shadow 0.2s;
+      font-size: 0.88rem;
+      margin: 4px 2px;
     }
 
     .chat-question-btn:hover {
-      background-color: var(--accent-gold);
-      color: var(--primary-dark);
-      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .chat-meta-line {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      opacity: 0.85;
+      margin-top: 6px;
+      display: block;
     }
 
     .typing-indicator {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      padding: 8px 12px;
+      gap: 4px;
     }
 
     .typing-indicator span {
-      height: 8px;
-      width: 8px;
-      background-color: #999;
+      display: block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--text-light);
       border-radius: 50%;
-      display: inline-block;
-      margin: 0 2px;
       animation: bounce 1.2s infinite both;
     }
 
     .typing-indicator span:nth-child(2) {
-      animation-delay: 0.15s;
+      animation-delay: 0.2s;
     }
 
     .typing-indicator span:nth-child(3) {
-      animation-delay: 0.3s;
+      animation-delay: 0.4s;
     }
 
     @keyframes bounce {
-
       0%,
       80%,
       100% {
-        transform: scale(0);
+        transform: translateY(0);
       }
-
       40% {
-        transform: scale(1.0);
+        transform: translateY(-6px);
       }
     }
+
 
     /* --- Animations & Media Queries --- */
     @keyframes fadeInDown {
@@ -1552,19 +1681,41 @@
         <path fill="currentColor" d="M256 32C114.6 32 0 125.1 0 240c0 49.6 21.4 95 57 130.7C44.5 421.1 2.7 466 2.2 466.5c-2.2 2.3-2.8 5.7-1.5 8.7S4.8 480 8 480c66.3 0 116-31.8 146.3-59.4c20.7 5.4 42.9 8.4 65.7 8.4c141.4 0 256-93.1 256-208S397.4 32 256 32z" />
       </svg></div>
     <div id="chat-window">
-      <div id="chat-header"><span>Notary HelpBot</span><span id="close-chat">&times;</span></div>
+      <div id="chat-header">
+        <div class="chat-identity">
+          <div class="status-dot"></div>
+          <div>
+            <span class="bot-name">Notary HelpBot AI</span>
+            <span class="bot-status">Live concierge • Texas Public Notary</span>
+          </div>
+        </div>
+        <span id="close-chat">&times;</span>
+      </div>
       <div id="chat-messages">
-        <div class="bot-message message">Hello! How can I help you? You can ask me a question or choose one of the prompts below.</div>
+        <div class="bot-message message">Hello, I’m your AI-style notary concierge. I can summarize answers, suggest next steps, and prep details for your appointment.
+          <span class="chat-meta-line">Simulated AI response • <span id="ai-time">--:--</span></span>
+        </div>
+      </div>
+      <div id="chat-quick-prompts">
+        <div id="quick-prompts-title"><span>✨</span>Ask instantly</div>
+        <div class="chat-quick-grid">
+          <button class="chat-question-btn" data-question="contact-info">Contact Info?</button>
+          <button class="chat-question-btn" data-question="id-required">ID Required?</button>
+          <button class="chat-question-btn" data-question="payment-methods">Payment Methods?</button>
+          <button class="chat-question-btn" data-question="service-area">Service Area?</button>
+          <button class="chat-question-btn" data-question="print-docs">Can you print docs?</button>
+          <button class="chat-question-btn" data-question="no-wording">No notarial wording?</button>
+          <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
+          <button class="chat-question-btn" data-question="after-booking">What's next?</button>
+          <button class="chat-question-btn" data-question="remote-online">Remote online?</button>
+          <button class="chat-question-btn" data-question="witnesses">Need witnesses?</button>
+          <button class="chat-question-btn" data-question="turnaround">How fast?</button>
+          <button class="chat-question-btn" data-question="document-types">What documents?</button>
+        </div>
       </div>
       <div id="chat-input-area">
-        <button class="chat-question-btn" data-question="contact-info">Contact Info?</button>
-        <button class="chat-question-btn" data-question="id-required">ID Required?</button>
-        <button class="chat-question-btn" data-question="payment-methods">Payment Methods?</button>
-        <button class="chat-question-btn" data-question="service-area">Service Area?</button>
-        <button class="chat-question-btn" data-question="print-docs">Can you print docs?</button>
-        <button class="chat-question-btn" data-question="no-wording">No notarial wording?</button>
-        <button class="chat-question-btn" data-question="after-hours">After Hours?</button>
-        <button class="chat-question-btn" data-question="after-booking">What's next?</button>
+        <input id="user-input" type="text" placeholder="Type a question (ex: Do you notarize wills?)" autocomplete="off">
+        <button id="send-message">Send</button>
       </div>
     </div>
   </div>
@@ -1624,65 +1775,161 @@
       const chatWindow = document.getElementById('chat-window');
       const closeChat = document.getElementById('close-chat');
       const chatMessages = document.getElementById('chat-messages');
-      const questionButtons = document.querySelectorAll('.chat-question-btn');
+      const quickPromptButtons = document.querySelectorAll('#chat-quick-prompts .chat-question-btn');
+      const sendMessageBtn = document.getElementById('send-message');
+      const userInput = document.getElementById('user-input');
+      const aiClock = document.getElementById('ai-time');
+
       const qa = {
         "contact-info": {
-          question: "Whats your contact info?",
-          answer: "You can call or text us at 281-686-0116 or email <br>us at info@texaspublicnotary.us for the fastest response."
+          question: "What's your contact info?",
+          answer: "Call or text 281-686-0116, or email info@texaspublicnotary.us. The AI concierge also watches this chat for quick follow-ups.",
+          keywords: ['contact', 'phone', 'call', 'text', 'email', 'reach']
         },
         "id-required": {
           question: "Do I need an ID?",
-          answer: "Yes, a valid, unexpired Government-issued photo ID (like a driver's license or passport) is required for all signers."
+          answer: "Yes. Bring a valid, unexpired government-issued photo ID that reasonably matches the document (driver's license, passport, state ID).",
+          keywords: ['id', 'identification', 'license', 'passport', 'photo']
         },
         "payment-methods": {
           question: "What payments do you take?",
-          answer: "We accept Cash App, Zelle, and cash. We also accept all major credit cards and debit cards, but a service fee of 3% from the card processor will apply. Payment is due at or before the time of service."
+          answer: "We accept Cash App, Zelle, and cash. Credit/debit cards are also accepted with a 3% processor fee. Payment is due at or before service.",
+          keywords: ['payment', 'card', 'cash', 'zelle', 'fee', 'credit']
         },
         "service-area": {
           question: "What is your service area?",
-          answer: "We primarily serve the greater Houston area. A travel fee of $28.95 will apply and may increase depending on distance."
+          answer: "We are Houston-based and travel across the metro area. A standard travel fee of $28.95 applies and can increase with distance or urgency.",
+          keywords: ['service', 'area', 'travel', 'houston', 'where']
         },
         "print-docs": {
           question: "Can you print documents?",
-          answer: "Yes, we can print documents for you. Black & white copies are $1 for 2 pages and color copies are $1 per page."
+          answer: "Yes. Black & white printouts are $1 for up to 2 pages and $1 per page after. Color copies are $1 per page. Email your file and we will bring it.",
+          keywords: ['print', 'copy', 'documents', 'paper']
         },
         "no-wording": {
           question: "My document has no notary section?",
-          answer: "If your document doesn't have a notarial certificate, I can present you with choices (e.g., an acknowledgment or a jurat), but I cannot choose for you, as that would be legal advice."
+          answer: "We can provide common certificates (acknowledgment or jurat) and explain the difference, but you must choose which one applies. No legal advice is given.",
+          keywords: ['wording', 'certificate', 'acknowledgment', 'jurat', 'section']
         },
         "after-hours": {
           question: "Do you work after hours?",
-          answer: "Yes, we are available 24/7 with advance notice. After-hours fees apply in addition to the standard travel fee, please see our pricing section for details."
+          answer: "Yes. 24/7 scheduling is available with advance notice. After-hours and emergency bookings include an additional fee along with travel.",
+          keywords: ['after', 'night', 'late', 'weekend', 'emergency']
         },
         "after-booking": {
           question: "I booked online, what's next?",
-          answer: "Your appointment is not final until you receive a confirmation call, text, or email from us. For urgent needs, please call or text directly."
+          answer: "Your appointment is confirmed after we call, text, or email you back. For urgent needs, text 281-686-0116 so we can prioritize you.",
+          keywords: ['book', 'next', 'confirm', 'appointment', 'scheduled']
+        },
+        "remote-online": {
+          question: "Do you offer remote online notarization?",
+          answer: "We currently focus on mobile, in-person notarizations in Texas. If your document requires RON, we can share vetted partners or schedule an in-person visit instead.",
+          keywords: ['remote', 'online', 'ron', 'virtual']
+        },
+        "witnesses": {
+          question: "Can you provide witnesses?",
+          answer: "We can help coordinate witnesses with advance notice for an additional fee, or guide you on what most signers provide themselves (friends/neighbors who are unrelated).",
+          keywords: ['witness', 'witnesses']
+        },
+        "turnaround": {
+          question: "How fast can you arrive?",
+          answer: "Same-day visits are common. Typical arrival is 30–90 minutes depending on location and traffic. Let us know your deadline and we will give a precise ETA.",
+          keywords: ['fast', 'soon', 'eta', 'how long', 'arrive', 'time']
+        },
+        "document-types": {
+          question: "What documents do you notarize?",
+          answer: "Estate documents (wills, POAs), real estate deeds, school and healthcare forms, vehicle paperwork, travel consents, and more. We do not give legal advice or draft documents.",
+          keywords: ['documents', 'notarize', 'wills', 'real estate', 'poa', 'form']
         }
       };
-      if (chatIcon) chatIcon.addEventListener('click', () => chatWindow.classList.toggle('open'));
-      if (closeChat) closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
-      const addMessage = (content, type) => {
+
+      const aiOpeners = [
+        "Here's a concise AI-style reply:",
+        "Working through your request now — here's what I have:",
+        "I'm synthesizing the notary playbook for you:",
+        "Pulling the best practice notes:",
+        "Simulated AI check complete — here's the guidance:"
+      ];
+
+      const updateClock = () => {
+        if (aiClock) aiClock.textContent = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      };
+      updateClock();
+      setInterval(updateClock, 60000);
+
+      const addMessage = (content, type, meta) => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', type);
         messageElement.innerHTML = content;
+        if (meta) {
+          const metaLine = document.createElement('span');
+          metaLine.classList.add('chat-meta-line');
+          metaLine.textContent = meta;
+          messageElement.appendChild(metaLine);
+        }
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return messageElement;
       };
-      const handleBotResponse = (qKey) => {
+
+      const handleBotResponseText = (content, metaLine) => {
         const botTyping = addMessage('<div class="typing-indicator"><span></span><span></span><span></span></div>', 'bot-message');
+        const delay = 900 + Math.random() * 600;
         setTimeout(() => {
-          botTyping.innerHTML = qa[qKey].answer;
-        }, 1200);
+          botTyping.innerHTML = content;
+          if (metaLine) {
+            const meta = document.createElement('span');
+            meta.classList.add('chat-meta-line');
+            meta.textContent = metaLine;
+            botTyping.appendChild(meta);
+          }
+        }, delay);
       };
-      questionButtons.forEach(button => {
+
+      const findMatch = (text) => {
+        const normalized = text.toLowerCase();
+        return Object.values(qa).find(item => item.keywords.some(keyword => normalized.includes(keyword)));
+      };
+
+      const randomOpener = () => aiOpeners[Math.floor(Math.random() * aiOpeners.length)];
+
+      const sendUserQuestion = (text) => {
+        if (!text.trim()) return;
+        addMessage(text, 'user-message', 'You');
+        const match = findMatch(text);
+        if (match) {
+          handleBotResponseText(`${randomOpener()} ${match.answer}`, 'AI-style answer • curated from our notary guide');
+        } else {
+          const suggestions = ['Ask about ID requirements', 'Check travel times', 'Request printing', 'Ask if witnesses are needed'];
+          const helper = suggestions.sort(() => 0.5 - Math.random()).slice(0, 2).join(' • ');
+          handleBotResponseText(`${randomOpener()} I'll keep learning from your questions. Meanwhile, you can tap a quick prompt or try: ${helper}.`, 'AI-style exploration • ask me anything about Texas notarization');
+        }
+        userInput.value = '';
+      };
+
+      if (chatIcon) chatIcon.addEventListener('click', () => chatWindow.classList.toggle('open'));
+      if (closeChat) closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
+      setTimeout(() => chatWindow?.classList.add('open'), 1800);
+
+      quickPromptButtons.forEach(button => {
         button.addEventListener('click', () => {
           const qKey = button.dataset.question;
-          addMessage(qa[qKey].question, 'user-message');
-          handleBotResponse(qKey);
+          const entry = qa[qKey];
+          if (!entry) return;
+          addMessage(entry.question, 'user-message', 'You');
+          handleBotResponseText(`${randomOpener()} ${entry.answer}`, 'AI-style answer • curated prompt');
         });
       });
+
+      if (sendMessageBtn) sendMessageBtn.addEventListener('click', () => sendUserQuestion(userInput.value));
+      if (userInput) userInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendUserQuestion(userInput.value);
+        }
+      });
     });
+
   </script>
 
 </body>
