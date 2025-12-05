@@ -943,6 +943,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      min-height: 140px;
     }
 
     .message {
@@ -1909,7 +1910,6 @@
 
       if (chatIcon) chatIcon.addEventListener('click', () => chatWindow.classList.toggle('open'));
       if (closeChat) closeChat.addEventListener('click', () => chatWindow.classList.remove('open'));
-      setTimeout(() => chatWindow?.classList.add('open'), 1800);
 
       quickPromptButtons.forEach(button => {
         button.addEventListener('click', () => {
