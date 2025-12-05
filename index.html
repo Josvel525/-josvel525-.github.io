@@ -115,9 +115,41 @@
       margin: 0 auto;
     }
 
-    .logo img {
-      height: 80px;
-      width: auto;
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+      text-decoration: none;
+      color: var(--text-light);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(65, 90, 119, 0.25), rgba(212, 175, 55, 0.08));
+      box-shadow: inset 0 0 0 1px rgba(228, 228, 228, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .logo:hover,
+    .logo:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.35), 0 8px 20px rgba(0, 0, 0, 0.15);
+      outline: none;
+    }
+
+    .logo-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+      color: var(--white);
+    }
+
+    .logo-subtitle {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      letter-spacing: 0.25px;
+      text-transform: uppercase;
     }
 
     .main-nav ul {
@@ -1234,6 +1266,18 @@
         padding: 7rem 1rem 3rem;
       }
 
+      .logo {
+        padding: 0.4rem 0.6rem;
+      }
+
+      .logo-title {
+        font-size: 1rem;
+      }
+
+      .logo-subtitle {
+        font-size: 0.7rem;
+      }
+
       .hero h1 {
         font-size: 2.2rem;
       }
@@ -1292,7 +1336,10 @@
 
   <header class="main-header" id="mainHeader">
     <div class="nav-container">
-      <a href="#home" class="logo"><img src="notarylogo.jpg" alt="Notary Seal Logo"></a>
+      <a href="#home" class="logo" aria-label="Texas Public Notary home">
+        <span class="logo-title">Texas Public Notary</span>
+        <span class="logo-subtitle">Houston's Trusted Mobile Notary</span>
+      </a>
       <nav class="main-nav" id="mainNav">
         <ul>
           <li><a href="#home" class="active">Home</a></li>
